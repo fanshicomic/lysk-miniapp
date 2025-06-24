@@ -1,0 +1,66 @@
+/**index.wxss**/
+
+#hr-section {
+  text-align: right;
+}
+
+.hr {
+  width: 100%;
+  color: white;
+  margin-bottom: .3em;
+}
+
+#title {
+  text-align: center;
+  color: white;
+  margin-top: 8vh;
+  font-size: xx-large;
+  padding: 10px;
+}
+
+#sub-title {
+  width: 100%;
+  color: white;
+  font-size: x-small;
+  opacity: .25;
+}
+
+.button-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10vh;
+  width: 100%;
+}
+
+.btn {
+  height: 13vh;
+  width: 100%;
+}
+
+.hologram-text {
+  right: -60%;
+  top: 30%;
+}
+
+.icon {
+  width: 16vh;
+  height: 16vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0.8;
+}
+
+.announcement-button {
+  position: absolute;
+  top: 2vh;
+  right: 2vh;
+  background-color: rgba(255, 255, 255, 0.1);
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
