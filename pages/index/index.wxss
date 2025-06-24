@@ -13,8 +13,8 @@
 #title {
   text-align: center;
   color: white;
-  margin-top: 8vh;
-  font-size: xx-large;
+  margin-top: 15vh;
+  font-size: 30px;
   padding: 10px;
 }
 
@@ -29,18 +29,27 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10vh;
+  margin-top: 8vh;
   width: 100%;
 }
 
 .btn {
-  height: 13vh;
+  height: 12vh;
   width: 100%;
 }
 
 .hologram-text {
-  right: -60%;
   top: 30%;
+}
+
+.hologram-orbit {
+    right: -70%;
+    top: 30%;
+  }
+
+.hologram-championships {
+    right: -60%;
+    top: 30%;
 }
 
 .icon {
