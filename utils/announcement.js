@@ -1,27 +1,23 @@
-export function showAnnouncement() {
-    const announcementKey = "1.2.3"
-    if (localStorage.getItem(announcementKey)) return;
-    localStorage.setItem(announcementKey, '1');
-
-    prepareAnnouncement();
-
-    const announcement = document.getElementById("announcement");
-    announcement.style.display = "block";
+function showAnnouncement() {
+    const announcementKey = "1.2.3";
+    if (wx.getStorageSync(announcementKey)) {
+      return null;
+    }
+  
+    wx.setStorageSync(announcementKey, '1');
+  
+    return prepareAnnouncementData();
 }
 
-export function forceDisplayAnnouncement() {
-    prepareAnnouncement();
-
-    const announcement = document.getElementById("announcement");
-    announcement.style.display = "block";
+function forceDisplayAnnouncement() {
+    return prepareAnnouncementData();
 }
 
-function prepareAnnouncement() {
-    const announcementBody = document.getElementById("announcement-general-msg");
-    const announcementLatestUpdates = document.getElementById("announcement-latest-updates");
-    announcementBody.innerText = getAnnouncementBody();
-    announcementLatestUpdates.innerText = getAnnouncementLatestUpdates();
-
+function prepareAnnouncementData() {
+    return {
+      body: getAnnouncementBody(),
+      updates: getAnnouncementLatestUpdates()
+    };
 }
 
 function getAnnouncementBody() {
@@ -40,3 +36,8 @@ function getAnnouncementLatestUpdates() {
             - 2025-06-09：新增系统公告功能+防御/生命搭档上传数据验证
             - 2025-06-07：更具体的上传数据验证`
 }
+
+module.exports = {
+    showAnnouncement: showAnnouncement,
+    forceDisplayAnnouncement: forceDisplayAnnouncement
+};

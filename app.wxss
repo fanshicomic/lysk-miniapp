@@ -336,12 +336,14 @@ page {
     width: 60vw;
     border-radius: 20px;
     border: 0;
+    font-size: medium;
 }
 
 .toast-body {
     max-height: 50vh;
     overflow: scroll;
     scrollbar-width: none;
+    padding: 15px;
 }
 
 .toast.announcement {
@@ -350,11 +352,16 @@ page {
     max-width: 350px;
 }
 
+.announcement-text {
+    margin-bottom: 20px;
+}
+
 .toast-header {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     color: white;
     background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
 }
 
 .btn-close {

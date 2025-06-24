@@ -2,7 +2,7 @@
 
 // 引入你的工具函数，注意路径是相对路径
 const { apiGet } = require('../../utils/util.js');
-const { showAnnouncement, forceDisplayAnnouncement } = require('../../utils/announcement.js');
+const announcementUtil = require('../../utils/announcement.js');
 
 Page({
   /**
@@ -13,7 +13,10 @@ Page({
     title: '深空面板助手',
     subTitle: 'Deepspace Battle Helper V1.2.3',
     blobs: [], // 用于存储背景气泡
-    showToast: false // 控制公告弹窗的显示
+    showToast: false, // 控制公告弹窗的显示
+    isAnnouncementVisible: false, // 控制公告弹窗是否显示
+    announcementBody: '',         // 公告的主要内容
+    announcementUpdates: ''     // 公告的更新日志
   },
 
   /**
@@ -39,25 +42,30 @@ Page({
       blobs: blobArray
     });
 
-    // 你需要在 WXML 里用 wx:for 来循环渲染这些气泡
-    // <view class="blobs">
-    //   <view wx:for="{{blobs}}" wx:key="index" class="blob"></view>
-    // </view>
+    const announcementData = announcementUtil.showAnnouncement();
+    if (announcementData) {
+      // 如果返回了数据，说明需要显示公告
+      this.setData({
+        isAnnouncementVisible: true,
+        announcementBody: announcementData.body,
+        announcementUpdates: announcementData.updates
+      });
+    }
   },
 
-  /**
-   * 用户自定义的事件处理函数
-   */
-  handleShowAnnouncement: function() {
-    // 这里不能直接操作DOM来显示弹窗
-    // 而是改变 data 里的变量
+  handleShowAnnouncement() {
+    const announcementData = announcementUtil.forceDisplayAnnouncement();
     this.setData({
-      showToast: true
+      isAnnouncementVisible: true,
+      announcementBody: announcementData.body,
+      announcementUpdates: announcementData.updates
     });
-    
-    // 或者调用你封装的函数
-    forceDisplayAnnouncement(); 
-  }
+  },
 
-  // ... 其他生命周期函数和自定义函数
+  // 5. 新增一个“关闭公告”的事件处理函数
+  handleCloseAnnouncement() {
+    this.setData({
+      isAnnouncementVisible: false
+    });
+  }
 })
