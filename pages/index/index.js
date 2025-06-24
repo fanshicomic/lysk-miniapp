@@ -24,11 +24,7 @@ Page({
    * 页面加载时执行，相当于你的 <script> 里的初始化代码
    */
   onLoad(options) {
-    // 1. wake up a server
     apiGet('ping', {});
-
-    // 2. show announcement
-    // showAnnouncement();
 
     // 3. 创建背景气泡
     // 小程序里不能直接操作DOM，而是通过改变data来驱动UI

@@ -3,8 +3,9 @@
 </view>
 
 <view class="main-content">
-    <view class="announcement-button" bind:tap="handleShowAnnouncement"></view>
-    <!-- <image class="announcement-icon" src="../../assets/megaphone.png" /> -->
+    <view class="announcement-button" bind:tap="handleShowAnnouncement">
+        <image class="megaphone" />
+    </view>
 
     <view class="content-wrapper">
         <view id="title">{{title}}</view> 
@@ -29,7 +30,7 @@
 
         <view class="toast announcement" wx:if="{{isAnnouncementVisible}}">
             <view class="toast-header">
-                <text class="me-auto">系统公告</text>
+                <text class="toast-title" style="width: 95%">系统公告</text>
                 <view class="btn-close" bind:tap="handleCloseAnnouncement"></view>
             </view>
             <view class="toast-body">
