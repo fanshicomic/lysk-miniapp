@@ -1,0 +1,16 @@
+{
+    "pages": [
+      "pages/index/index",
+      "pages/orbit/orbit",
+      "pages/championships/championships"
+    ],
+    "window": {
+      "backgroundTextStyle": "light",
+      "navigationBarBackgroundColor": "#000",
+      "navigationBarTitleText": "深空面板助手",
+      "navigationBarTextStyle": "white",
+      "navigationStyle": "custom"
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json"
+  }
