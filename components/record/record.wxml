@@ -4,8 +4,8 @@
       <block wx:if="{{record['对谱'] !== '不确定' && record['对谱加成'] !== '不确定'}}">
         <view class="record-matching {{matchingClass}}">{{record['对谱']}}</view>
         <block wx:for="{{[0,1,2,3,4,5]}}" wx:key="*this">
-          <svg class="record-matching-circle" src="/assets/circle-fill.svg" width="15px" height="15px" color="{{matchingColor}}" wx:if="{{index < matchingCnt}}"></svg>
-          <svg class="record-matching-circle" src="/assets/circle.svg" width="15px" height="15px" color="{{matchingColor}}" wx:if="{{index >= matchingCnt}}"></svg>
+          <svg class="record-matching-circle" src="/assets/circle-fill.svg" width="15px" height="15px" color="{{ record['对谱'] == '顺' ? '#42a366' : '#bd4e4b' }}" wx:if="{{index < matchingCnt}}"></svg>
+          <svg class="record-matching-circle" src="/assets/circle.svg" width="15px" height="15px" color="{{ record['对谱'] == '顺' ? '#42a366' : '#bd4e4b'}}" wx:if="{{index >= matchingCnt}}"></svg>
         </block>
       </block>
       <block wx:else>无对谱信息</block>
