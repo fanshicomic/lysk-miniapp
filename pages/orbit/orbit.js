@@ -18,13 +18,14 @@ Page({
     totalDbRecordsCnt: 0,
 
     isToastVisible: false,
+    toastHeader: '',
+    toastBody: '',
     isAnnouncementVisible: false,
     announcementBody: '',
     announcementUpdates: ''
   },
 
   onLoad(options) {
-    // this.showLatestRecords();
     this.dataInit();
 
     const announcementData = announcementUtil.showAnnouncement();
@@ -37,17 +38,41 @@ Page({
     }
   },
   onBack() {
-    console.log("clicked");
     wx.navigateBack({ delta: 1 });
   },
 
   dataInit() {
+    apiGet('latest-orbit-records', {})
+    .then(result => {
+        const cnt = result.total || 0;
+        const list = result.records || [];
+        this.setData({
+          totalDbRecordsCnt: cnt,
+          latestRecords: list
+        });
+      })
+      .catch(err => {
+        console.error("获取失败", err);
+        this.showToast("获取失败", err, 5000)
+      });
   },
 
   handleCloseAnnouncement() {
     this.setData({
       isAnnouncementVisible: false
     });
+  },
+
+  showToast(header, body, delay) {
+    this.data.toastHeader = header;
+    this.data.toastBody = body;
+    this.data.isToastVisible = true;
+
+    setTimeout(() => {
+        this.data.toastHeader = '';
+        this.data.toastBody = '';
+        this.data.isToastVisible = false;
+    }, delay)
   },
 
   // 关卡类型选择
@@ -64,13 +89,13 @@ Page({
     const number = e.detail.value;
     this.setData({ levelNumber: number });
     this.validatePartDropdown();
-    // this.checkIfReady();
+    this.checkIfReady();
   },
 
   // 上下段选择
   onLevelPartChange(e) {
     this.setData({ levelPart: e.detail.value });
-    // this.checkIfReady();
+    this.checkIfReady();
   },
 
   // 校验是否显示上下段
@@ -80,5 +105,23 @@ Page({
     const selected = LEVEL_TYPES.find(l => l.type === levelType);
     const show = selected && levelNumber && levelNumber % 10 === 0 && levelNumber >= 1 && levelNumber <= selected.count;
     this.setData({ partVisible: show });
+  },
+
+  checkIfReady() {
+    const type = this.data.levelType;
+    const number = parseInt(this.data.levelNumber);
+    const levelUpperBound = LEVEL_TYPES.find(l => l.type === type);
+    let visible = false;
+    if (type && number && levelUpperBound) {
+        const isValidNumber = number >= 1 && number <= levelUpperBound.count;
+        if (isValidNumber) {
+            if (number % 10 !== 0) {
+                visible = true;
+            } else if (this.data.levelPart === "上" || this.data.levelPart === "下") {
+                visible = true;
+            }
+        }
+    }
+    this.setData({ actionButtonsVisible: visible });
   },
 })
