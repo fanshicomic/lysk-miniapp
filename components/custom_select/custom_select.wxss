@@ -26,8 +26,8 @@
     backdrop-filter: blur(20px);
     border-top: 0;
     z-index: 10;
-    border-bottom-left-radius: 12rpx;
-    border-bottom-right-radius: 12rpx;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
 }
 .options view {
     padding: 15rpx;

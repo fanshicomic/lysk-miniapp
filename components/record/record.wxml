@@ -1,0 +1,84 @@
+<view class="w-100 record">
+  <view class="row">
+    <view class="w-50 record-matching-detail record-grid">
+      <block wx:if="{{record['对谱'] !== '不确定' && record['对谱加成'] !== '不确定'}}">
+        <view class="record-matching {{matchingClass}}">{{record['对谱']}}</view>
+        <block wx:for="{{[0,1,2,3,4,5]}}" wx:key="*this">
+          <svg class="record-matching-circle" src="/assets/circle-fill.svg" width="15px" height="15px" color="{{matchingColor}}" wx:if="{{index < matchingCnt}}"></svg>
+          <svg class="record-matching-circle" src="/assets/circle.svg" width="15px" height="15px" color="{{matchingColor}}" wx:if="{{index >= matchingCnt}}"></svg>
+        </block>
+      </block>
+      <block wx:else>无对谱信息</block>
+    </view>
+    <view class="w-50 record-level-detail record-grid">
+      <view>{{record['关卡'] || '-' }} {{record['关数']}}</view>
+    </view>
+  </view>
+  <view class="row">
+    <view class="w-50 record-grid record-grid-padding-right">
+      <view class="record-partner {{partnerClass}}">
+        {{record['搭档身份'] || '—'}}
+      </view>
+    </view>
+    <view class="w-25 record-grid record-grid-padding-left-right">
+      <view class="record-set-card {{setCardClass}}">
+        {{record['日卡'] || '—'}} <text wx:if="{{record['日卡'] !== '无套装'}}">{{record['阶数']}}</text>
+      </view>
+    </view>
+    <view class="w-25 record-grid record-grid-padding-left">
+      <view class="record-weapon {{weaponClass}}">
+        {{record['武器'] || '—'}}
+      </view>
+    </view>
+  </view>
+  <view class="row">
+    <view class="w-50 record-grid record-flex-row record-grid-padding-right">
+        <label class="record-text-label">攻击:</label>
+        <label class="record-number-label">{{record['攻击'] || '—'}}</label>
+    </view>
+    <view class="w-50 record-grid record-flex-row record-grid-padding-left">
+        <label class="record-text-label">生命:</label>
+        <label class="record-number-label">{{record['生命'] || '—'}}</label>
+    </view>
+  </view>
+  <view class="row">
+    <view class="w-50 record-grid record-flex-row record-grid-padding-right">
+        <label class="record-text-label">防御:</label>
+        <label class="record-number-label">{{record['防御'] || '—'}}</label>
+    </view>
+    <view class="w-50 record-grid record-flex-row record-grid-padding-left">
+        <label class="record-text-label">虚弱增伤:</label>
+        <label class="record-number-label">{{record['虚弱增伤'] || '—'}}</label>
+    </view>
+  </view>
+  <view class="row">
+    <view class="w-50 record-grid record-flex-row record-grid-padding-right">
+        <label class="record-text-label">暴击:</label>
+        <label class="record-number-label">{{record['暴击'] || '—'}}</label>
+    </view>
+    <view class="w-50 record-grid record-flex-row record-grid-padding-left">
+        <label class="record-text-label">暴伤:</label>
+        <label class="record-number-label">{{record['暴伤'] || '—'}}</label>
+    </view>
+  </view>
+  <view class="row">
+    <view class="w-50 record-grid record-flex-row record-grid-padding-right">
+        <label class="record-text-label">誓约增伤:</label>
+        <label class="record-number-label">{{record['誓约增伤'] || '—'}}</label>
+    </view>
+    <view class="w-50 record-grid record-flex-row record-grid-padding-left">
+        <label class="record-text-label">誓约回能:</label>
+        <label class="record-number-label">{{record['誓约回能'] || '—'}}</label>
+    </view>
+  </view>
+  <view class="row">
+    <view class="w-50 record-grid record-flex-row record-grid-padding-right">
+        <label class="record-text-label">加速回能:</label>
+        <label class="record-number-label">{{record['加速回能'] || '—'}}</label>
+    </view>
+    <view class="w-50 record-grid record-flex-row record-grid-padding-left" wx:if="{{record['加成'] != '<nil>'}}">
+        <label class="record-text-label">赛季加成:</label>
+        <label class="record-number-label">{{record['加成'] || '—'}}</label>
+    </view>
+  </view>
+</view>

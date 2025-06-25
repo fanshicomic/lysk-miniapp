@@ -1,5 +1,7 @@
 {
     "usingComponents": {
-        "custom-select": "/components/custom_select/custom_select"
+        "custom-select": "/components/custom_select/custom_select",
+        "record": "/components/record/record",
+        "svg": "/components/svg/svg"
     }
 }
