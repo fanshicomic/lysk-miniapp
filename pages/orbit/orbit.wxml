@@ -1,0 +1,77 @@
+<view class="main-content">
+  <navigator url="./index" style="text-decoration: none; color: inherit;">
+    <label class="back-button">
+      <image class="back-icon" src="../../assets/back.PNG" />
+    </label>
+  </navigator>
+  <view class="content-wrapper">
+    <text class="h1">轨道面板查询</text>
+    <view class="hr" />
+    <!-- 基础输入 -->
+    <view class="display-row">
+      <view class="w-50">
+        <custom-select
+        options="{{levelTypes}}"
+        selected="{{selectedValue}}"
+        title="关卡"
+        bind:select="onLevelTypeChange"/>
+      </view>
+      <view class="w-50">
+        <input id="level-number" type="number" class="form-control" placeholder="关卡编号" min="1"/>
+      </view>
+    </view>
+    <!-- 上下段 -->
+    <view class="d-none display-row" id="part-container" wx:if="{{partVisible}}">
+      <view class="custom-select w-100">
+        <view id="level-part" class="selected">--选择上下--</view>
+        <view class="options">
+          <view>上</view>
+          <view>下</view>
+        </view>
+      </view>
+    </view>
+    <!-- 动作按钮 -->
+    <view id="action-buttons" class="display-row d-none" wx:if="{{actionButtonsVisible}}">
+      <button id="fetch-records" class="btn upload-fetch-btn w-50">获取通关记录</button>
+      <button id="start-upload" class="btn upload-action-btn w-50">上传通关记录</button>
+    </view>
+    <!-- 动态面板输入 -->
+    <view class="hr" />
+    <view id="panel-inputs" class="d-none"></view>
+    <button id="submit" class="btn submit-btn w-100 d-none">提交记录</button>
+    <!-- 展示最新记录 -->
+    <text id="latest-records-title" class="mt-5 h2">最新上传面板</text>
+    <view class="total-cnt-row">
+      轨道通关数据总量：<text id="total-db-records-cnt">加载中</text>。感谢您的分享！
+    </view>
+    <view id="latest-records"></view>
+    <!-- 展示记录 -->
+    <text id="records-title" class="mt-5 d-none h2">关卡面板记录</text>
+    <view id="records" class="d-none"></view>
+    <view id="pagination" class="d-flex justify-content-center"></view>
+    <view id="toast" wx:if="{{isToastVisible}}" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <view class="toast-header">
+        <text class="me-auto" id="toast-header"></text>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </view>
+      <view class="toast-body" id="toast-body"></view>
+    </view>
+    <view class="toast announcement" wx:if="{{isAnnouncementVisible}}">
+        <view class="toast-header">
+            <text class="toast-title" style="width: 95%">系统公告</text>
+            <view class="btn-close" bind:tap="handleCloseAnnouncement"></view>
+        </view>
+        <view class="toast-body">
+            <view class="announcement-text">
+                <text>{{announcementBody}}</text>
+            </view>
+            <view class="announcement-text">
+                <text class="announcement-text">{{announcementUpdates}}</text>
+            </view>
+        </view>
+    </view>
+  </view>
+  <view class="footer">
+    <text>Contact：小红书：900197975 / 微信: rabbitlink</text>
+  </view>
+</view>

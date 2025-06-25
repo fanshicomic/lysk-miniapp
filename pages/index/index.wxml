@@ -10,7 +10,7 @@
     <view class="content-wrapper">
         <view id="title">{{title}}</view> 
         <view id="hr-section">
-            <view style="height:1px; background:rgb(255, 255, 255); margin:16rpx 0;" />
+            <view class="hr" />
             <text id="sub-title">{{subTitle}}</text> 
         </view>
 

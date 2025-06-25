@@ -1,0 +1,209 @@
+:root {
+    --green-style-color: #42a366;
+    --red-style-color: #bd4e4b;
+    --purple-style-color: #785d90;
+}
+
+.record {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 15px;
+}
+.record-grid {
+    display: flex;
+    align-items: center;
+}
+
+.record-grid-padding-left {
+    padding-left: 10px;
+}
+
+.record-grid-padding-left-right {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.record-grid-padding-right {
+    padding-right: 10px;
+}
+
+.record-partner {
+    background: rgba(255, 255, 255, 0.15);
+    /*border: 1px solid rgba(255, 255, 255, 0.2);*/
+    border-radius: 12px;
+    width: 100%;
+    height: 100%;
+}
+
+.record-weapon {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.record-set-card {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+}
+
+.record-level-detail {
+    text-align: right;
+    justify-content: flex-end;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.is-matching {
+    color: var(--green-style-color);
+    fill: var(--green-style-color);
+}
+
+.is-not-matching {
+    color: var(--red-style-color);
+    fill: var(--red-style-color);
+}
+
+.record-matching-detail {
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.record-matching {
+    margin-right: 5px;
+}
+
+.record-matching-circle {
+    margin-right: 3px;
+}
+
+.record-flex-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.record-text-label {
+    text-align: left;
+    /*flex: 1;*/
+}
+.record-number-label {
+    text-align: right;
+    /*flex: 1;*/
+}
+
+.record-attack-icon {
+    width: 17px;
+    opacity: .7;
+    margin-right: 5px;
+}
+
+.record-defence-icon {
+    width: 15px;
+    opacity: .7;
+    margin-right: 5px;
+}
+
+.record-hp-icon {
+    width: 13px;
+    opacity: .7;
+    margin-right: 5px;
+}
+
+/* Partner styles */
+
+.partner-normal {
+    background: dimgray;
+}
+
+.partner-lumiere {
+    background: linear-gradient(135deg, #e3c939, #7edbff);
+}
+
+.partner-light-seeker {
+    background: linear-gradient(135deg, #5da668, #ddd7c6);
+}
+
+.partner-foreseer {
+    background: linear-gradient(135deg, #2a355d, #4e6c91);
+}
+
+.partner-master-of-fate {
+    background: linear-gradient(135deg, #152444, #3b7e6b);
+}
+
+.partner-abyss-walker {
+    background: linear-gradient(135deg, #3b2942, #593076);
+}
+
+.partner-lemurian-sea-god {
+    background: linear-gradient(135deg, #694b7c, #5b759d);
+}
+
+.partner-god-of-the-tides {
+    background: linear-gradient(135deg, #f1ade0, #6fbde7);
+}
+
+.partner-relentless-conqueror {
+    background: linear-gradient(135deg, #250c0c, #ab6565);
+}
+
+.partner-abysm-sovereign {
+    background: linear-gradient(135deg, #000000, #6f0e0e);
+}
+
+.partner-farspace-colonel {
+    background: linear-gradient(135deg, #251332, #630000);
+}
+
+.partner-ultimate-weapon-X-02 {
+    background: linear-gradient(135deg, #22053b, #97562b);
+}
+
+/* Set card styles */
+
+.set-card-purple {
+    background-color: var(--purple-style-color);
+}
+
+.set-card-pink {
+    background-color: #d78a8e;
+}
+
+.set-card-red {
+    background-color: #ad2e3e;
+}
+
+.set-card-blue {
+    background-color: #5e9fca;
+}
+
+.set-card-green {
+    background-color: var(--green-style-color);
+}
+
+.set-card-yellow {
+    background-color: #d4b83a;
+}
+
+.set-card-none {
+    background-color: dimgray;
+}
+
+/* Weapon styles */
+
+.weapon-rare {
+    border-color: #e6c639;
+    color: #e6c639;
+}
+
+.weapon-normal {
+    border-color: var(--purple-style-color);
+    color: var(--purple-style-color);
+}
