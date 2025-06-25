@@ -9,11 +9,21 @@ page {
 .h1 {
     font-size: 25px;
     font-weight: bold;
-    margin: 32rpx auto 16rpx auto;
+    margin: 32px auto 16px auto;
     line-height: 1.3;
     text-align: center;
-    display: block;     /* 确保是块级元素 */
-    width: fit-content; /* 根据内容自适应宽度 */
+    display: block;
+    width: fit-content;
+}
+
+.h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 32px auto 16px auto;
+    line-height: 1.3;
+    text-align: center;
+    display: block;
+    width: fit-content;
 }
 
 .hr {
@@ -325,8 +335,8 @@ page {
 }
 
 .back-button {
-    margin-top: 3vh;
-    margin-left: 3vh;
+    margin-top: 10vh;
+    margin-left: 4vh;
     margin-bottom: 20px;
     background-color: rgba(255, 255, 255, 0.1);
     height: 40px;
@@ -396,7 +406,6 @@ page {
     background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCAyMCAyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHJ4PSI4IiBmaWxsPSJub25lIi8+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0iI2ZmZmZmZiIgeD0iMCIgeT0iMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIj48cGF0aCBmaWxsPSIjZmZmZmZmIiBkPSJNMTAgOC41ODZMMi45MjkgMS41MTVMMS41MTUgMi45MjlMOC41ODYgMTBsLTcuMDcxIDcuMDcxbDEuNDE0IDEuNDE0TDEwIDExLjQxNGw3LjA3MSA3LjA3MWwxLjQxNC0xLjQxNEwxMS40MTQgMTBsNy4wNzEtNy4wNzFsLTEuNDE0LTEuNDE0TDEwIDguNTg2eiIvPjwvc3ZnPjwvc3ZnPg==");
     background-repeat: no-repeat;
     background-size: contain;
-    background-opacity: 0.8;
 }
 
 .megaphone {
@@ -423,7 +432,7 @@ w-100 {
 }
 
 .form-control {
-    padding: 17rpx;
+    padding: 13rpx;
     text-align: center;
     background: rgba(255, 255, 255, 0.15);
     border: 1.3px solid rgba(255, 255, 255, 0.2);
@@ -431,5 +440,6 @@ w-100 {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    color: rgba(255, 255, 255, 0.6);
 }
   

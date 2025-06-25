@@ -1,9 +1,7 @@
 <view class="main-content">
-  <navigator url="./index" style="text-decoration: none; color: inherit;">
-    <label class="back-button">
+    <label class="back-button" bindtap="onBack"> 
       <image class="back-icon" src="../../assets/back.PNG" />
     </label>
-  </navigator>
   <view class="content-wrapper">
     <text class="h1">轨道面板查询</text>
     <view class="hr" />
@@ -12,23 +10,23 @@
       <view class="w-50">
         <custom-select
         options="{{levelTypes}}"
-        selected="{{selectedValue}}"
+        selected=""
         title="关卡"
         bind:select="onLevelTypeChange"/>
       </view>
       <view class="w-50">
-        <input id="level-number" type="number" class="form-control" placeholder="关卡编号" min="1"/>
+        <input id="level-number" type="number" class="form-control" placeholder="关卡编号" min="1" bindinput="onLevelNumberInput"/>
       </view>
     </view>
     <!-- 上下段 -->
     <view class="d-none display-row" id="part-container" wx:if="{{partVisible}}">
-      <view class="custom-select w-100">
-        <view id="level-part" class="selected">--选择上下--</view>
-        <view class="options">
-          <view>上</view>
-          <view>下</view>
+        <view class="w-100">
+            <custom-select
+            options="{{['上', '下']}}"
+            selected=""
+            title="上下"
+            bind:select="onLevelPartChange"/>
         </view>
-      </view>
     </view>
     <!-- 动作按钮 -->
     <view id="action-buttons" class="display-row d-none" wx:if="{{actionButtonsVisible}}">
@@ -38,7 +36,7 @@
     <!-- 动态面板输入 -->
     <view class="hr" />
     <view id="panel-inputs" class="d-none"></view>
-    <button id="submit" class="btn submit-btn w-100 d-none">提交记录</button>
+    <button id="submit" class="btn submit-btn w-100 d-none" wx:if="{{uploadVisible}}">提交记录</button>
     <!-- 展示最新记录 -->
     <text id="latest-records-title" class="mt-5 h2">最新上传面板</text>
     <view class="total-cnt-row">
@@ -46,7 +44,7 @@
     </view>
     <view id="latest-records"></view>
     <!-- 展示记录 -->
-    <text id="records-title" class="mt-5 d-none h2">关卡面板记录</text>
+    <text id="records-title" class="mt-5 d-none h2" wx:if="{{uploadVisible}}">关卡面板记录</text>
     <view id="records" class="d-none"></view>
     <view id="pagination" class="d-flex justify-content-center"></view>
     <view id="toast" wx:if="{{isToastVisible}}" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
