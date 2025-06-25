@@ -1,4 +1,10 @@
+.row {
+    padding: 7px 20px 0px 20px;
+}
+
 .record {
+    padding-top: 0px;
+    padding-bottom: 7px;
     text-align: center;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -48,6 +54,7 @@
 
 .record-level-detail {
     text-align: right;
+    margin-top: -1px;
     justify-content: flex-end;
     padding-bottom: 10px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);

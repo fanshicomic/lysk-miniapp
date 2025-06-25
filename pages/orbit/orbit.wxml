@@ -30,7 +30,7 @@
     </view>
     <!-- 动作按钮 -->
     <view id="action-buttons" class="display-row" wx:if="{{actionButtonsVisible}}">
-      <button id="fetch-records" class="btn upload-fetch-btn w-50">获取通关记录</button>
+      <button id="fetch-records" class="btn upload-fetch-btn w-50" bindtap="getRecords">获取通关记录</button>
       <button id="start-upload" class="btn upload-action-btn w-50">上传通关记录</button>
     </view>
     <!-- 动态面板输入 -->
@@ -38,18 +38,22 @@
     <view id="panel-inputs"></view>
     <button id="submit" class="btn submit-btn w-100" wx:if="{{uploadVisible}}">提交记录</button>
     <!-- 展示最新记录 -->
-    <text id="latest-records-title" class="mt-5 h2">最新上传面板</text>
-    <view class="total-cnt-row">
+    <text id="latest-records-title" class="mt-5 h2" wx:if="{{latestRecordsVisible}}">最新上传面板</text>
+    <view class="total-cnt-row" wx:if="{{latestRecordsVisible}}">
       轨道通关数据总量：<text id="total-db-records-cnt">{{totalDbRecordsCnt > 0 ? totalDbRecordsCnt : '加载中'}}</text>。感谢您的分享！
     </view>
-    <view id="latest-records">
+    <view id="latest-records" wx:if="{{latestRecordsVisible}}">
         <view class="record-wrapper" wx:for="{{latestRecords}}" wx:key="index">
             <record record="{{item}}"></record>
         </view>
     </view>
     <!-- 展示记录 -->
-    <text id="records-title" class="mt-5 h2" wx:if="{{uploadVisible}}">关卡面板记录</text>
-    <view id="records"></view>
+    <text id="records-title" class="mt-5 h2" wx:if="{{recordsVisible}}">关卡面板记录</text>
+    <view id="records" wx:if="{{recordsVisible}}">
+        <view class="record-wrapper" wx:for="{{records}}" wx:key="index">
+            <record record="{{item}}"></record>
+        </view>
+    </view>
     <view id="pagination" class="d-flex justify-content-center"></view>
     <view id="toast" wx:if="{{isToastVisible}}" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
       <view class="toast-header">
