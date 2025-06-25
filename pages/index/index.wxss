@@ -4,12 +4,6 @@
   text-align: right;
 }
 
-.hr {
-  width: 100%;
-  color: white;
-  margin-bottom: .3em;
-}
-
 #title {
   text-align: center;
   color: white;
