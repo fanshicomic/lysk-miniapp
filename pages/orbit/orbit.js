@@ -13,7 +13,13 @@ Page({
     panelInputs: [],
     actionButtonsVisible: false,
     uploadVisible: false,
+
+    recordsVisible: false,
     records: [],
+    pageSize: 10,
+    page: 1,
+
+    latestRecordsVisible: true,
     latestRecords: [],
     totalDbRecordsCnt: 0,
 
@@ -49,6 +55,31 @@ Page({
         this.setData({
           totalDbRecordsCnt: cnt,
           latestRecords: list
+        });
+      })
+      .catch(err => {
+        console.error("获取失败", err);
+        this.showToast("获取失败", err, 5000)
+      });
+  },
+
+  getRecords() {
+    const { levelType, levelNumber, page, pageSize } = this.data;
+    const type = levelType;
+    const level = levelNumber;
+    const offset = (page - 1) * pageSize;
+    console.log
+    this.setData({
+        recordsVisible: true,
+        latestRecordsVisible: false
+    });
+    apiGet('orbit-records', {type, level, offset})
+    .then(result => {
+        const cnt = result.total || 0;
+        const list = result.records || [];
+        this.setData({
+          page: Math.ceil(cnt / this.pageSize),
+          records: list
         });
       })
       .catch(err => {
