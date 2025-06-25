@@ -4,5 +4,6 @@ let API_BASE;
 // } else {
 //     API_BASE = 'https://lysk-battle-record-426168069563.asia-southeast1.run.app/';
 // }
-API_BASE = 'http://127.0.0.1:8080/';
+// API_BASE = 'http://127.0.0.1:8080/';
+API_BASE = 'https://lysk-battle-record-426168069563.asia-southeast1.run.app/';
 export { API_BASE };

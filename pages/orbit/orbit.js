@@ -1,4 +1,4 @@
-const { apiGet } = require('../../utils/util.js');
+const { apiGet, apiPost } = require('../../utils/util.js');
 const announcementUtil = require('../../utils/announcement.js');
 const { LEVEL_TYPES, DROPDOWN_VALUES } = require('../../utils/constants.js');
 
@@ -12,6 +12,7 @@ Page({
     partVisible: false,
     panelInputs: [],
     actionButtonsVisible: false,
+    uploadVisible: false,
     records: [],
     latestRecords: [],
     totalDbRecordsCnt: 0,
@@ -34,6 +35,10 @@ Page({
         announcementUpdates: announcementData.updates
       });
     }
+  },
+  onBack() {
+    console.log("clicked");
+    wx.navigateBack({ delta: 1 });
   },
 
   dataInit() {
