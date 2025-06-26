@@ -38,23 +38,37 @@
     <view id="panel-inputs"></view>
     <button id="submit" class="btn submit-btn w-100" wx:if="{{uploadVisible}}">提交记录</button>
     <!-- 展示最新记录 -->
-    <text id="latest-records-title" class="mt-5 h2" wx:if="{{latestRecordsVisible}}">最新上传面板</text>
-    <view class="total-cnt-row" wx:if="{{latestRecordsVisible}}">
-      轨道通关数据总量：<text id="total-db-records-cnt">{{totalDbRecordsCnt > 0 ? totalDbRecordsCnt : '加载中'}}</text>。感谢您的分享！
-    </view>
-    <view id="latest-records" wx:if="{{latestRecordsVisible}}">
-        <view class="record-wrapper" wx:for="{{latestRecords}}" wx:key="index">
-            <record record="{{item}}"></record>
+    <view id="latest-records-wrapper" wx:if="{{latestRecordsVisible}}">
+        <text id="latest-records-title" class="mt-5 h2">最新上传面板</text>
+        <view class="total-cnt-row">
+        轨道通关数据总量：<text id="total-db-records-cnt">{{totalDbRecordsCnt > 0 ? totalDbRecordsCnt : '加载中'}}</text>。感谢您的分享！
+        </view>
+        <view id="latest-records">
+            <view class="record-wrapper" wx:for="{{latestRecords}}" wx:key="index">
+                <record record="{{item}}"></record>
+            </view>
         </view>
     </view>
     <!-- 展示记录 -->
-    <text id="records-title" class="mt-5 h2" wx:if="{{recordsVisible}}">关卡面板记录</text>
-    <view id="records" wx:if="{{recordsVisible}}">
-        <view class="record-wrapper" wx:for="{{records}}" wx:key="index">
-            <record record="{{item}}"></record>
+    <view id="records-wrapper" wx:if="{{recordsVisible}}">
+        <text id="records-title" class="mt-5 h2">关卡面板记录</text>
+        <view id="records">
+            <view class="record-wrapper" wx:for="{{records}}" wx:key="index">
+                <record record="{{item}}"></record>
+            </view>
+        </view>
+        <view id="pagination" wx:if="{{totalPage > 0}}">
+            <button
+                wx:for="{{pages}}"
+                wx:key="*this"
+                class="btn mx-1 page-btn"
+                bindtap="onPageChange"
+                data-page="{{item}}"
+            >
+            {{item}}
+        </button>
         </view>
     </view>
-    <view id="pagination" class="d-flex justify-content-center"></view>
     <view id="toast" wx:if="{{isToastVisible}}" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
       <view class="toast-header">
         <text class="me-auto" id="toast-header">{{toastHeader}}</text>
