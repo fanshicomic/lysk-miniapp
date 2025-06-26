@@ -1,0 +1,12 @@
+<view class="panel-inputs">
+  <view wx:for="{{panelInputs}}" wx:key="*this" class="display-row">
+    <view wx:for="{{item}}" wx:key="key" class="w-50">
+      <block wx:if="{{item.isDropdown}}">
+        <custom-select options="{{item.options}}" title="{{item.key}}"></custom-select>
+      </block>
+      <block wx:else>
+        <input value="{{inputValues[item.key]}}" placeholder="{{item.key}}" type="digit" id="{{'input-' + item.key}}" class="form-control" data-key="{{item.key}}" bindinput="onInput" />
+      </block>
+    </view>
+  </view>
+</view>
