@@ -28,6 +28,14 @@ h1, h2 {
     margin: 0 auto
 }
 
+#latest-records-wrapper {
+    margin-bottom: 30px;
+}
+
+#records-wrapper {
+    margin-bottom: 30px;
+}
+
 .btn {
     text-align: center;
     background: rgba(255, 255, 255, 0.15);
@@ -40,7 +48,9 @@ h1, h2 {
 }
 
 .page-btn {
-    width: 30px;
+    width: 40px !important;
+    margin-left: 5px !important;
+    margin-right: 5px !important;
 }
 .page-btn:hover,
 .page-btn:focus {
@@ -65,6 +75,11 @@ h1, h2 {
 .btn {
     font-size: 0.95rem;
     padding: 8px;
+}
+
+.wx-1 {
+    margin-right: .25rem;
+    margin-left: .25rem;
 }
 
 .upload-fetch-btn {
@@ -109,7 +124,9 @@ h1, h2 {
 }
 
 #pagination {
-    margin-bottom: 100px;
+    margin-top: 15px;
+    justify-content: center;
+    display: flex;
 }
 
 .footer {

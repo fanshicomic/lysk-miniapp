@@ -16,8 +16,11 @@ Page({
 
     recordsVisible: false,
     records: [],
+
     pageSize: 10,
-    page: 1,
+    totalPage: 0,
+    currentPage: 1,
+    pages: [],
 
     latestRecordsVisible: true,
     latestRecords: [],
@@ -63,30 +66,61 @@ Page({
       });
   },
 
-  getRecords() {
-    const { levelType, levelNumber, page, pageSize } = this.data;
+  getRecords(page = 1) {
+    const { levelType, levelNumber, levelPart, pageSize } = this.data;
     const type = levelType;
-    const level = levelNumber;
+    const level = levelPart ? levelNumber + '_' + levelPart : levelNumber;
     const offset = (page - 1) * pageSize;
-    console.log
     this.setData({
         recordsVisible: true,
-        latestRecordsVisible: false
+        latestRecordsVisible: false,
+        currentPage: page
     });
     apiGet('orbit-records', {type, level, offset})
     .then(result => {
         const cnt = result.total || 0;
         const list = result.records || [];
         this.setData({
-          page: Math.ceil(cnt / this.pageSize),
+          totalPage: Math.ceil(cnt / pageSize),
           records: list
         });
+        this.generatePageNumbers();
+        console.log(cnt)
+        console.log(this.data.totalPage)
+        console.log(this.data.pages)
       })
       .catch(err => {
         console.error("获取失败", err);
         this.showToast("获取失败", err, 5000)
       });
   },
+
+  onPageChange: function(e) {
+    const selectedPage = e.currentTarget.dataset.page;
+
+    if (selectedPage == this.data.currentPage) {
+        return;
+    }
+
+    this.setData({
+        currentPage: selectedPage
+    });
+
+    this.getRecords(selectedPage);
+  },
+
+  generatePageNumbers() {
+    const { totalPage } = this.data;
+    if (totalPage > 0) {
+        const pages = [];
+        for (let i = 1; i <= totalPage; i++) {
+            pages.push(i);
+        }
+        this.setData({
+            pages: pages
+        });
+    }
+   },
 
   handleCloseAnnouncement() {
     this.setData({
