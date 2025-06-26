@@ -85,9 +85,6 @@ Page({
           records: list
         });
         this.generatePageNumbers();
-        console.log(cnt)
-        console.log(this.data.totalPage)
-        console.log(this.data.pages)
       })
       .catch(err => {
         console.error("获取失败", err);
@@ -109,18 +106,43 @@ Page({
     this.getRecords(selectedPage);
   },
 
-  generatePageNumbers() {
-    const { totalPage } = this.data;
-    if (totalPage > 0) {
-        const pages = [];
-        for (let i = 1; i <= totalPage; i++) {
-            pages.push(i);
-        }
-        this.setData({
-            pages: pages
-        });
+  generatePageNumbers: function() {
+    const totalPage = this.data.totalPage;
+    const currentPage = this.data.currentPage;
+    const pages = [];
+ 
+    if (totalPage <= 5) {
+       // If 5 or fewer pages, show all page numbers
+       for (let i = 1; i <= totalPage; i++) {
+          pages.push(i);
+       }
+    } else {
+       // If more than 5 pages, calculate the window
+       let startPage, endPage;
+ 
+       if (currentPage <= 3) {
+          // If near the beginning, show pages 1-5
+          startPage = 1;
+          endPage = 5;
+       } else if (currentPage > totalPage - 2) {
+          // If near the end, show the last 5 pages
+          startPage = totalPage - 4;
+          endPage = totalPage;
+       } else {
+          // Otherwise, center the current page
+          startPage = currentPage - 2;
+          endPage = currentPage + 2;
+       }
+ 
+       for (let i = startPage; i <= endPage; i++) {
+          pages.push(i);
+       }
     }
-   },
+ 
+    this.setData({
+       pages: pages
+    });
+ },
 
   handleCloseAnnouncement() {
     this.setData({
