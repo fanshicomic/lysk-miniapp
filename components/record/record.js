@@ -28,15 +28,11 @@ Component({
             }
         }
     },
-    watch: {
-        'record': function(newVal, oldVal) {
-            newVal['关数'] = newVal['关数'].replace(/_/g, ' ');
-            this.setData({
-                record: newVal
-            })
-        }
-    },
     computed: {
+        getLevelDisplay(data) {
+            const level = data.record['关数'];
+            return level.replace(/_/g, ' ');
+        },
         getSetCardColorMap(data) {
             const card = data.record['日卡'];
             const partner = data.record['搭档身份'];

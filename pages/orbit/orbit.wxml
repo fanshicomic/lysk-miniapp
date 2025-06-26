@@ -31,12 +31,14 @@
     <!-- 动作按钮 -->
     <view id="action-buttons" class="display-row" wx:if="{{actionButtonsVisible}}">
       <button id="fetch-records" class="btn upload-fetch-btn w-50" bindtap="getRecords">获取通关记录</button>
-      <button id="start-upload" class="btn upload-action-btn w-50">上传通关记录</button>
+      <button id="start-upload" class="btn upload-action-btn w-50" bindtap="onStartUpload">上传通关记录</button>
     </view>
     <!-- 动态面板输入 -->
     <view class="hr" />
-    <view id="panel-inputs"></view>
-    <button id="submit" class="btn submit-btn w-100" wx:if="{{uploadVisible}}">提交记录</button>
+    <view id="panel-inputs" wx:if="{{uploadVisible}}">
+        <upload-form id="upload-form" wx:if="{{uploadVisible}}" level-type="{{levelType}}"></upload-form>
+        <button id="submit" class="btn submit-btn w-100">提交记录</button>
+    </view>
     <!-- 展示最新记录 -->
     <view id="latest-records-wrapper" wx:if="{{latestRecordsVisible}}">
         <text id="latest-records-title" class="mt-5 h2">最新上传面板</text>
@@ -61,7 +63,7 @@
             <button
                 wx:for="{{pages}}"
                 wx:key="*this"
-                class="btn mx-1 page-btn"
+                class="btn mx-1 page-btn {{item == currentPage ? 'page-btn-selected' : '' }}"
                 bindtap="onPageChange"
                 data-page="{{item}}"
             >

@@ -11,7 +11,7 @@
       <block wx:else>无对谱信息</block>
     </view>
     <view class="w-50 record-level-detail record-grid">
-      <view>{{record['关卡'] || '-' }} {{record['关数']}}</view>
+      <view>{{record['关卡'] || '-' }} {{getLevelDisplay}}</view>
     </view>
   </view>
   <view class="row">
