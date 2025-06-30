@@ -56,7 +56,21 @@ Component({
     data: {
         panelInputs: [],
         inputValues: {
-            'matching': ''
+            'hp': '',
+            'attack': '',
+            'defence': '',
+            'crit-rate': '',
+            'crit-dmg': '',
+            'oath-boost': '',
+            'oath-regen': '',
+            'energy-regen': '',
+            'weaken-boost': '',
+            'matching': '',
+            'matching-buffer': '',
+            'partner-identity': '',
+            'sun-card': '',
+            'stage': '',
+            'weapon': ''
         },
     },
 
@@ -83,9 +97,16 @@ Component({
             });
         },
 
+        onSelectChange(e) {
+            const { key } = e.currentTarget.dataset;
+            const { value } = e.detail;
+            this.setData({
+                [`inputValues.${key}`]: value
+            });
+        },
+
         onPartnerChange(e) {
             const partner = e.detail.value;
-            console.log(partner);
             this.setData({
                 selectedPartner: partner,
                 'inputValues.partner-identity': '',
@@ -116,6 +137,12 @@ Component({
                 })
             }
         },
+
+        getInputData() {
+            let res = this.data.inputValues;
+            res['partner'] = this.data.selectedPartner;
+            return res;
+        }
     },
 
     lifetimes: {

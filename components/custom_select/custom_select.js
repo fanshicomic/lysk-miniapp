@@ -42,35 +42,10 @@ Component({
                 });
                 this.triggerEvent('close');
             }
-        },
-        _autoRefreshOptions(options) {
-            if (options.length === 1) {
-                if (this.data.selected !== options[0]) {
-                    this.setData({
-                        selected: options[0]
-                    });
-                    this.triggerEvent('select', {
-                        value: options[0]
-                    });
-                }
-            } else if (options.length > 1) {
-                if (this.data.selected !== '') {
-                    this.setData({
-                        selected: ''
-                    });
-                    this.triggerEvent('select', {
-                        value: ''
-                    });
-                }
-            }
-        },
-        refreshSelection() {
-            this._autoRefreshOptions(this.data.options);
         }
     },
     lifetimes: {
         attached: function () {
-            this.refreshSelection();
         }
     }
 });

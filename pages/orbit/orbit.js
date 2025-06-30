@@ -185,10 +185,6 @@ Page({
             levelType: type
         });
         this.validatePartDropdown();
-        // const uploadForm = this.selectComponent('#upload-form');
-        // if (uploadForm) {
-        //     uploadForm.updatePartnerOptions(type);
-        // }
         this.checkIfReady();
     },
 
@@ -250,4 +246,12 @@ Page({
             latestRecordsVisible: false
         });
     },
+
+    onSubmit() {
+        const uploadForm = this.selectComponent('#upload-form');
+        if (uploadForm) {
+            const inputData = uploadForm.getInputData();
+            console.log(inputData);
+        }
+    }
 })
