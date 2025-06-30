@@ -185,10 +185,10 @@ Page({
             levelType: type
         });
         this.validatePartDropdown();
-        const uploadForm = this.selectComponent('#upload-form');
-        if (uploadForm) {
-            uploadForm.updatePartnerOptions(type);
-        }
+        // const uploadForm = this.selectComponent('#upload-form');
+        // if (uploadForm) {
+        //     uploadForm.updatePartnerOptions(type);
+        // }
         this.checkIfReady();
     },
 

@@ -1,12 +1,9 @@
 Component({
     properties: {
         options: {
-        type: Array,
-        value: [],
-        observer: function(newVal) {
-          this._autoSelectSingleOption(newVal);
-        }
-      },
+            type: Array,
+            value: []
+        },
         selected: {
             type: String,
             value: ''
@@ -46,16 +43,34 @@ Component({
                 this.triggerEvent('close');
             }
         },
-        _autoSelectSingleOption(options) {
-            if (options.length === 1 && this.data.selected !== options[0]) {
-                this.setData({ selected: options[0] });
-                this.triggerEvent('select', { value: options[0] });
+        _autoRefreshOptions(options) {
+            if (options.length === 1) {
+                if (this.data.selected !== options[0]) {
+                    this.setData({
+                        selected: options[0]
+                    });
+                    this.triggerEvent('select', {
+                        value: options[0]
+                    });
+                }
+            } else if (options.length > 1) {
+                if (this.data.selected !== '') {
+                    this.setData({
+                        selected: ''
+                    });
+                    this.triggerEvent('select', {
+                        value: ''
+                    });
+                }
             }
+        },
+        refreshSelection() {
+            this._autoRefreshOptions(this.data.options);
         }
     },
     lifetimes: {
         attached: function () {
-            this._autoSelectSingleOption(this.data.options);
+            this.refreshSelection();
         }
     }
 });
