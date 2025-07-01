@@ -4,12 +4,9 @@ const announcementUtil = require('../../utils/announcement.js');
 Page({
   data: {
     title: '深空面板助手',
-    subTitle: 'Deepspace Battle Helper V1.2.3',
+    subTitle: 'Deepspace Battle Helper V1.3.0',
     blobs: [],
     showToast: false,
-    isAnnouncementVisible: false,
-    announcementBody: '',
-    announcementUpdates: ''
   },
 
   onLoad(options) {
@@ -27,26 +24,12 @@ Page({
 
     const announcementData = announcementUtil.showAnnouncement();
     if (announcementData) {
-      this.setData({
-        isAnnouncementVisible: true,
-        announcementBody: announcementData.body,
-        announcementUpdates: announcementData.updates
-      });
+      this.selectComponent('#announcement').show(announcementData.body, announcementData.updates);
     }
   },
 
   handleShowAnnouncement() {
     const announcementData = announcementUtil.forceDisplayAnnouncement();
-    this.setData({
-      isAnnouncementVisible: true,
-      announcementBody: announcementData.body,
-      announcementUpdates: announcementData.updates
-    });
+    this.selectComponent('#announcement').show(announcementData.body, announcementData.updates);
   },
-
-  handleCloseAnnouncement() {
-    this.setData({
-      isAnnouncementVisible: false
-    });
-  }
 })

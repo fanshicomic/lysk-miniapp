@@ -78,27 +78,8 @@
         </button>
         </view>
     </view>
-    <view id="toast" wx:if="{{isToastVisible}}" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-      <view class="toast-header">
-        <text class="me-auto" id="toast-header">{{toastHeader}}</text>
-        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-      </view>
-      <view class="toast-body" id="toast-body">{{toastBody}}</view>
-    </view>
-    <view class="toast announcement" wx:if="{{isAnnouncementVisible}}">
-        <view class="toast-header">
-            <text class="toast-title" style="width: 95%">系统公告</text>
-            <view class="btn-close" bind:tap="handleCloseAnnouncement"></view>
-        </view>
-        <view class="toast-body">
-            <view class="announcement-text">
-                <text>{{announcementBody}}</text>
-            </view>
-            <view class="announcement-text">
-                <text class="announcement-text">{{announcementUpdates}}</text>
-            </view>
-        </view>
-    </view>
+    <toast id="toast"></toast>
+    <announcement id="announcement"></announcement>
   </view>
   <view class="footer">
     <text>Contact：小红书：900197975 / 微信: rabbitlink</text>

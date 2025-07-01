@@ -1,8 +1,10 @@
 {
     "usingComponents": {
         "custom-select": "/components/custom_select/custom_select",
+        "upload-form": "/components/upload_form/upload_form",
         "record": "/components/record/record",
         "svg": "/components/svg/svg",
-        "upload-form": "/components/upload_form/upload_form"
+        "toast": "/components/toast/toast",
+        "announcement": "/components/announcement/announcement"
     }
 }

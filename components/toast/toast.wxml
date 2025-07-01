@@ -1,0 +1,7 @@
+<view wx:if="{{isVisible}}" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+  <view class="toast-header">
+    <text class="me-auto">{{header}}</text>
+    <view class="btn-close" bind:tap="hide"></view>
+  </view>
+  <view class="toast-body">{{body}}</view>
+</view>

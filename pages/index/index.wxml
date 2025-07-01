@@ -4,7 +4,6 @@
 
 <view class="main-content">
     <view class="announcement-button" bind:tap="handleShowAnnouncement">
-        <!-- <image class="megaphone" /> -->
         <svg src="/assets/megaphone.svg" color="rgba(255, 255, 255, 0.5)" width="12px" height="12px"></svg>
     </view>
 
@@ -29,20 +28,7 @@
         </view>
         </navigator>
 
-        <view class="toast announcement" wx:if="{{isAnnouncementVisible}}">
-            <view class="toast-header">
-                <text class="toast-title" style="width: 95%">系统公告</text>
-                <view class="btn-close" bind:tap="handleCloseAnnouncement"></view>
-            </view>
-            <view class="toast-body">
-                <view class="announcement-text">
-                    <text>{{announcementBody}}</text>
-                </view>
-                <view class="announcement-text">
-                    <text class="announcement-text">{{announcementUpdates}}</text>
-                </view>
-            </view>
-        </view>
+        <announcement id="announcement"></announcement>
     </view>
 </view>
 

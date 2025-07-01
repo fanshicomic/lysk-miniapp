@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-      "svg": "/components/svg/svg"
+      "svg": "/components/svg/svg",
+      "announcement": "/components/announcement/announcement"
   }
 }

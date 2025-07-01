@@ -33,13 +33,6 @@ Page({
         latestRecordsVisible: true,
         latestRecords: [],
         totalDbRecordsCnt: 0,
-
-        isToastVisible: false,
-        toastHeader: '',
-        toastBody: '',
-        isAnnouncementVisible: false,
-        announcementBody: '',
-        announcementUpdates: ''
     },
 
     onLoad(options) {
@@ -47,11 +40,7 @@ Page({
 
         const announcementData = announcementUtil.showAnnouncement();
         if (announcementData) {
-            this.setData({
-                isAnnouncementVisible: true,
-                announcementBody: announcementData.body,
-                announcementUpdates: announcementData.updates
-            });
+            this.selectComponent('#announcement').show(announcementData.body, announcementData.updates);
         }
     },
     onBack() {
@@ -164,22 +153,8 @@ Page({
         });
     },
 
-    handleCloseAnnouncement() {
-        this.setData({
-            isAnnouncementVisible: false
-        });
-    },
-
     showToast(header, body, delay) {
-        this.data.toastHeader = header;
-        this.data.toastBody = body;
-        this.data.isToastVisible = true;
-
-        setTimeout(() => {
-            this.data.toastHeader = '';
-            this.data.toastBody = '';
-            this.data.isToastVisible = false;
-        }, delay)
+        this.selectComponent('#toast').show(header, body, delay);
     },
 
     // 关卡类型选择
@@ -269,7 +244,49 @@ Page({
         const uploadForm = this.selectComponent('#upload-form');
         if (uploadForm) {
             const inputData = uploadForm.getInputData();
-            console.log(inputData);
+            const { levelType, levelMode, levelNumber, levelPart } = this.data;
+            const level = levelPart ? `${levelNumber}_${levelPart}` : levelNumber;
+            let stage = inputData['stage']
+            if (stage !== '无套装') {
+                stage = stage.substring(0, stage.length - 5);
+            }
+            const data = {
+                '生命': inputData['hp'],
+                '攻击': inputData['attack'],
+                '防御': inputData['defence'],
+                '暴击': inputData['crit-rate'],
+                '暴伤': inputData['crit-dmg'],
+                '誓约增伤': inputData['oath-boost'],
+                '誓约回能': inputData['oath-regen'],
+                '加速回能': inputData['energy-regen'],
+                '虚弱增伤': inputData['weaken-boost'],
+                '对谱': inputData['matching'],
+                '对谱加成': inputData['matching-buffer'],
+                '搭档': inputData['partner'],
+                '搭档身份': inputData['partner-identity'],
+                '日卡': inputData['sun-card'],
+                '阶数': stage,
+                '武器': inputData['weapon'],
+                '关卡': levelType,
+                '模式': levelMode,
+                '关数': level,
+                '时间': new Date().toISOString()
+            };
+
+            apiPost('orbit-record', data)
+                .then(result => {
+                    if (result.status === 'OK') {
+                        this.showToast("上传成功", "Thanks♪(･ω･)ﾉ感谢您的使用！", 3000);
+                        this.setData({ uploadVisible: false });
+                        this.getRecords();
+                    } else {
+                        this.showToast("上传失败", result.error || '未知错误', 3000);
+                    }
+                })
+                .catch(err => {
+                    console.error('Post error:', err);
+                    this.showToast("上传失败", "网络请求失败，请稍后再试。", 5000);
+                });
         }
     }
 })
