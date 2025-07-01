@@ -7,14 +7,21 @@
     <view class="hr" />
     <!-- 基础输入 -->
     <view class="display-row">
-      <view class="w-50">
+      <view class="w-33">
         <custom-select
         options="{{levelTypes}}"
         selected=""
         title="关卡"
         bind:select="onLevelTypeChange"/>
       </view>
-      <view class="w-50">
+      <view class="w-33">
+        <custom-select
+        options="{{levelModes}}"
+        selected="{{levelMode}}"
+        title="模式"
+        bind:select="onLevelModeChange"/>
+      </view>
+      <view class="w-33">
         <input id="level-number" type="number" class="form-control" placeholder="关卡编号" min="1" bindinput="onLevelNumberInput"/>
       </view>
     </view>

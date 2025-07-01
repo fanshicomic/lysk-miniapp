@@ -31,7 +31,12 @@ Component({
     computed: {
         getLevelDisplay(data) {
             const level = data.record['关数'];
-            return level.replace(/_/g, ' ');
+            let label = data.record['关卡'];
+            if (data.record['关卡'] == '开放') {
+                label += ' ' + data.record['模式'];
+            }
+            label += ' ' + level.replace(/_/g, ' ');
+            return label
         },
         getSetCardColorMap(data) {
             const card = data.record['日卡'];

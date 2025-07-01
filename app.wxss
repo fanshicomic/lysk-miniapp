@@ -424,6 +424,11 @@ page {
     width: 25%; 
 }
 
+.w-33 {
+    box-sizing: border-box;
+    width: 33.3%;
+}
+
 .w-50 {
     box-sizing: border-box;
     width: 50%;

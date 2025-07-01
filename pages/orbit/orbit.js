@@ -12,8 +12,10 @@ Page({
     data: {
         panelKeys: ["生命", "攻击", "防御", "暴击", "暴伤", "誓约增伤", "誓约回能", "加速回能", "虚弱增伤", "对谱", "对谱加成", "搭档", "搭档身份", "日卡", "阶数", "武器"],
         levelTypes: ["光", "冰", "火", "能量", "引力", "开放"],
+        levelModes: ["稳定", "波动"],
         levelType: '',
         levelNumber: '',
+        levelMode: '',
         levelPart: '',
         partVisible: false,
         panelInputs: [],
@@ -76,11 +78,13 @@ Page({
     getRecords(page = 1) {
         const {
             levelType,
+            levelMode,
             levelNumber,
             levelPart,
             pageSize
         } = this.data;
         const type = levelType;
+        const mode = levelMode;
         const level = levelPart ? levelNumber + '_' + levelPart : levelNumber;
         const offset = (page - 1) * pageSize;
         this.setData({
@@ -90,6 +94,7 @@ Page({
         });
         apiGet('orbit-records', {
                 type,
+                mode,
                 level,
                 offset
             })
@@ -103,7 +108,6 @@ Page({
                 this.generatePageNumbers();
             })
             .catch(err => {
-                console.error("获取失败", err);
                 this.showToast("获取失败", err, 5000)
             });
     },
@@ -184,7 +188,19 @@ Page({
         this.setData({
             levelType: type
         });
-        this.validatePartDropdown();
+        if (type !== '开放') {
+            this.setData({ levelMode: '稳定' });
+        } else {
+            this.setData({ levelMode: '' });
+        }
+        this.checkIfReady();
+    },
+
+    onLevelModeChange(e) {
+        const mode = e.detail.value;
+        this.setData({
+            levelMode: mode
+        });
         this.checkIfReady();
     },
 
@@ -209,12 +225,9 @@ Page({
     // 校验是否显示上下段
     validatePartDropdown() {
         const {
-            levelType,
             levelNumber
         } = this.data;
-        // 这里 LEVEL_TYPES 需在 data 或 utils 里定义
-        const selected = LEVEL_TYPES.find(l => l.type === levelType);
-        const show = selected && levelNumber && levelNumber % 10 === 0 && levelNumber >= 1 && levelNumber <= selected.count;
+        const show = levelNumber && levelNumber % 10 === 0;
         this.setData({
             partVisible: show
         });
@@ -222,8 +235,13 @@ Page({
 
     checkIfReady() {
         const type = this.data.levelType;
+        const mode = this.data.levelMode;
         const number = parseInt(this.data.levelNumber);
-        const levelUpperBound = LEVEL_TYPES.find(l => l.type === type);
+        if (mode === '') {
+            return;
+        }
+
+        const levelUpperBound = LEVEL_TYPES[mode].find(l => l.type === type);
         let visible = false;
         if (type && number && levelUpperBound) {
             const isValidNumber = number >= 1 && number <= levelUpperBound.count;
