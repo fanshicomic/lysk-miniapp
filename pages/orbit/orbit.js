@@ -4,13 +4,11 @@ const {
 } = require('../../utils/util.js');
 const announcementUtil = require('../../utils/announcement.js');
 const {
-    LEVEL_TYPES,
-    DROPDOWN_VALUES
+    LEVEL_TYPES
 } = require('../../utils/constants.js');
 
 Page({
     data: {
-        panelKeys: ["生命", "攻击", "防御", "暴击", "暴伤", "誓约增伤", "誓约回能", "加速回能", "虚弱增伤", "对谱", "对谱加成", "搭档", "搭档身份", "日卡", "阶数", "武器"],
         levelTypes: ["光", "冰", "火", "能量", "引力", "开放"],
         levelModes: ["稳定", "波动"],
         levelType: '',
@@ -64,7 +62,7 @@ Page({
             });
     },
 
-    getRecords(page = 1) {
+    getRecords(page) {
         const {
             levelType,
             levelMode,
@@ -72,6 +70,9 @@ Page({
             levelPart,
             pageSize
         } = this.data;
+        if (!Number.isInteger(page)) {
+            page = 1;
+        }
         const type = levelType;
         const mode = levelMode;
         const level = levelPart ? levelNumber + '_' + levelPart : levelNumber;
@@ -261,7 +262,7 @@ Page({
                 '加速回能': inputData['energy-regen'],
                 '虚弱增伤': inputData['weaken-boost'],
                 '对谱': inputData['matching'],
-                '对谱加成': inputData['matching-buffer'],
+                '对谱加成': inputData['matching-buff'],
                 '搭档': inputData['partner'],
                 '搭档身份': inputData['partner-identity'],
                 '日卡': inputData['sun-card'],
@@ -278,7 +279,7 @@ Page({
                     if (result.status === 'OK') {
                         this.showToast("上传成功", "Thanks♪(･ω･)ﾉ感谢您的使用！", 3000);
                         this.setData({ uploadVisible: false });
-                        this.getRecords();
+                        this.getRecords(1);
                     } else {
                         this.showToast("上传失败", result.error || '未知错误', 3000);
                     }

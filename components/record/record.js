@@ -1,3 +1,7 @@
+import {
+    DROPDOWN_VALUES
+} from '../../utils/constants.js';
+
 const computedBehavior = require('miniprogram-computed').behavior;
 
 Component({
@@ -55,9 +59,9 @@ Component({
             const blueCards = ["永恒", "静谧", "戮夜"];
             if (blueCards.includes(card)) return "set-card-blue";
             if (card === "心晴") {
-                const xavier = ["光猎", "逐光骑士", "遥远少年", "Evol特警", "深空猎人"];
-                const zayne = ["九黎司命", "永恒先知", "极地军医", "黎明抹杀者", "临空医生"];
-                const rafayel = ["潮汐之神", "深海潜行者", "画坛新锐", "海妖魅影", "艺术家"];
+                const xavier = DROPDOWN_VALUES['沈星回搭档'];
+                const zayne =  DROPDOWN_VALUES['黎深搭档'];
+                const rafayel = DROPDOWN_VALUES['祁煜搭档'];
                 if (xavier.includes(partner)) return "set-card-red";
                 if (zayne.includes(partner)) return "set-card-pink";
                 if (rafayel.includes(partner)) return "set-card-yellow";

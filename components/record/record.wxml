@@ -76,7 +76,7 @@
         <label class="record-text-label">加速回能:</label>
         <label class="record-number-label">{{record['加速回能'] || '—'}}</label>
     </view>
-    <view class="w-50 record-grid record-flex-row record-grid-padding-left" wx:if="{{record['加成'] != '<nil>'}}">
+    <view class="w-50 record-grid record-flex-row record-grid-padding-left" wx:if="{{record['加成'] != '<nil>' && record['加成'] != ''}}">
         <label class="record-text-label">赛季加成:</label>
         <label class="record-number-label">{{record['加成'] || '—'}}</label>
     </view>

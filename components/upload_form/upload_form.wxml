@@ -41,7 +41,7 @@
     </view>
     <view class="display-row">
         <view class="w-50">
-            <custom-select options="{{getMatchingBufferOptions}}" title="对谱加成" selected="{{inputValues['matching-buffer']}}" data-key="matching-buffer" bind:select="onSelectChange"></custom-select>
+            <custom-select options="{{getMatchingBuffOptions}}" title="对谱加成" selected="{{inputValues['matching-buff']}}" data-key="matching-buff" bind:select="onSelectChange"></custom-select>
         </view>
         <view class="w-50">
             <custom-select options="{{getPartnerOptions}}" title="搭档" selected="{{selectedPartner}}" bind:select="onPartnerChange"></custom-select>
@@ -62,5 +62,11 @@
         <view class="w-50">
             <custom-select options="{{getWeaponOptions}}" title="武器" selected="{{inputValues['weapon']}}" data-key="weapon" bind:select="onSelectChange"></custom-select>
         </view>
+    </view>
+    <view class="display-row" wx:if="{{battleType === 'championships'}}">
+        <view class="w-50">
+            <custom-select options="{{getChampionshipsBuffOptions}}" title="赛季加成" selected="{{inputValues['championships-buff']}}" data-key="championships-buff" bind:select="onSelectChange"></custom-select>
+        </view>
+        <view class="w-50"></view>
     </view>
 </view>

@@ -37,8 +37,8 @@
     </view>
     <!-- 动作按钮 -->
     <view id="action-buttons" class="display-row" wx:if="{{actionButtonsVisible}}">
-      <button id="fetch-records" class="btn upload-fetch-btn w-50" bindtap="getRecords">获取通关记录</button>
-      <button id="start-upload" class="btn upload-action-btn w-50" bindtap="onStartUpload">上传通关记录</button>
+      <button id="fetch-records" class="btn upload-fetch-btn w-50" bindtap="getRecords">获取记录</button>
+      <button id="start-upload" class="btn upload-action-btn w-50" bindtap="onStartUpload">上传记录</button>
     </view>
     <!-- 动态面板输入 -->
     <view class="hr" />

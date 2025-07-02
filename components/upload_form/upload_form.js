@@ -10,7 +10,7 @@ Component({
         getMatchingOptions() {
             return DROPDOWN_VALUES['对谱'];
         },
-        getMatchingBufferOptions() {
+        getMatchingBuffOptions() {
             return DROPDOWN_VALUES['对谱加成'];
         },
         getStageOptions() {
@@ -20,10 +20,20 @@ Component({
             return DROPDOWN_VALUES['武器'];
         },
         getPartnerOptions(data) {
-            if (data.selectedPartner !== "") {
-                return [data.selectedPartner]
-            }
-            return DROPDOWN_VALUES['搭档'];
+            switch (data.levelType) {
+                case "光":
+                    return ["沈星回"]
+                case "冰":
+                    return ["黎深"]
+                case "火":
+                    return ["祁煜"]
+                case "能量":
+                    return ["秦彻"]
+                case "引力":
+                    return ["夏以昼"]
+                default:
+                    return DROPDOWN_VALUES['搭档'];
+            }            
         },
         getPartnerIdentityOptions(data) {
             if (data.selectedPartner !== "") {
@@ -40,9 +50,15 @@ Component({
             } else {
                 return [];
             }            
+        },
+        getChampionshipsBuffOptions() {
+            return DROPDOWN_VALUES['加成'];
         }
     },
     properties: {
+        battleType: {
+            type: String,
+        },
         levelType: {
             type: String,
             observer: 'onLevelTypeChange'
@@ -66,11 +82,12 @@ Component({
             'energy-regen': '',
             'weaken-boost': '',
             'matching': '',
-            'matching-buffer': '',
+            'matching-buff': '',
             'partner-identity': '',
             'sun-card': '',
             'stage': '',
-            'weapon': ''
+            'weapon': '',
+            'championships-buff': ''
         },
     },
 
