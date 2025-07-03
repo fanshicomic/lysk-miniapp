@@ -1,5 +1,6 @@
 const { apiGet } = require('../../utils/util.js');
 const announcementUtil = require('../../utils/announcement.js');
+const app = getApp();
 
 Page({
   data: {
@@ -7,6 +8,8 @@ Page({
     subTitle: 'Deepspace Battle Helper V1.3.0',
     blobs: [],
     showToast: false,
+    userInfo: null, // We can keep this for potential future use
+    showLoginPanel: false, // Controls the visibility of the login panel
   },
 
   onLoad(options) {
@@ -26,6 +29,78 @@ Page({
     if (announcementData) {
       this.selectComponent('#announcement').show(announcementData.body, announcementData.updates);
     }
+  },
+
+  onShow() {
+    // Check if a token exists. If not, show the login panel.
+    const token = wx.getStorageSync('token');
+    if (!token) {
+      this.setData({ showLoginPanel: true });
+    } else {
+      this.setData({ showLoginPanel: false });
+    }
+  },
+
+  handleLogin() {
+    wx.login({
+      success: (loginRes) => {
+        if (loginRes.code) {
+          // Send the code to the backend to get a token
+          this.authenticate(loginRes.code);
+        } else {
+          console.error('wx.login failed! ' + loginRes.errMsg);
+          wx.showToast({
+            title: '登录失败',
+            icon: 'none'
+          });
+        }
+      },
+      fail: (err) => {
+        console.error('wx.login call failed:', err);
+        wx.showToast({
+          title: '登录接口调用失败',
+          icon: 'none'
+        });
+      }
+    });
+  },
+
+  authenticate(code) {
+    wx.request({
+      url: `${app.globalData.serverHost}/login`,
+      method: 'POST',
+      data: {
+        code: code
+      },
+      success: (res) => {
+        if (res.statusCode === 200 && res.data.token) {
+          console.log('Login successful. Received token:', res.data.token);
+          wx.setStorageSync('token', res.data.token);
+          this.setData({ showLoginPanel: false }); // Hide panel on success
+          wx.showToast({
+            title: '登录成功',
+            icon: 'success'
+          });
+        } else {
+          console.error('Authentication failed on server:', res);
+          wx.showToast({
+            title: res.data.error || '服务器认证失败',
+            icon: 'none'
+          });
+        }
+      },
+      fail: (err) => {
+        console.error('Request to backend failed:', err);
+        wx.showToast({
+          title: '请求后端失败',
+          icon: 'none'
+        });
+      }
+    });
+  },
+
+  handleSkipLogin() {
+    this.setData({ showLoginPanel: false });
   },
 
   handleShowAnnouncement() {
