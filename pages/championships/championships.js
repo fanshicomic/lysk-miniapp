@@ -2,7 +2,7 @@ const {
     apiGet,
     apiPost
 } = require('../../utils/util.js');
-const announcementUtil = require('../../utils/announcement.js');
+
 
 Page({
     data: {
@@ -28,10 +28,7 @@ Page({
     onLoad(options) {
         this.dataInit();
 
-        const announcementData = announcementUtil.showAnnouncement();
-        if (announcementData) {
-            this.selectComponent('#announcement').show(announcementData.body, announcementData.updates);
-        }
+        this.selectComponent('#announcement').showAnnouncement();
     },
     onBack() {
         wx.navigateBack({

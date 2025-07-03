@@ -1,5 +1,5 @@
 const { apiGet } = require('../../utils/util.js');
-const announcementUtil = require('../../utils/announcement.js');
+
 const app = getApp();
 
 Page({
@@ -25,10 +25,7 @@ Page({
       blobs: blobArray
     });
 
-    const announcementData = announcementUtil.showAnnouncement();
-    if (announcementData) {
-      this.selectComponent('#announcement').show(announcementData.body, announcementData.updates);
-    }
+    this.selectComponent('#announcement').showAnnouncement();
   },
 
   onShow() {
@@ -104,7 +101,6 @@ Page({
   },
 
   handleShowAnnouncement() {
-    const announcementData = announcementUtil.forceDisplayAnnouncement();
-    this.selectComponent('#announcement').show(announcementData.body, announcementData.updates);
+    this.selectComponent('#announcement').forceDisplayAnnouncement();
   },
 })
