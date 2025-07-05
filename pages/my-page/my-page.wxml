@@ -39,6 +39,7 @@
     <view id="action-buttons" class="display-row">
       <button id="fetch-records" class="btn upload-fetch-btn w-100" bindtap="getRecords">获取记录</button>
     </view>
+    <view class="hr" />
     <!-- 展示最新记录 -->
     <view id="all-records-wrapper" wx:if="{{allRecordsVisible}}">
         <text id="all-records-title" class="mt-5 h2">我的面板</text>

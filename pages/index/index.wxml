@@ -32,8 +32,15 @@
 
         <navigator url="/pages/championships/championships" class="button-section">
         <view class="btn hologram">
-            <image class="icon" style="top: 5px" src="../../assets/championships.gif" />
+            <image class="icon" src="../../assets/championships.gif" />
             <text class="hologram-text hologram-championships" data-text="锦标赛">锦标赛</text>
+        </view>
+        </navigator>
+
+        <navigator url="/pages/my-page/my-page" class="button-section">
+        <view class="btn hologram">
+            <image class="icon" src="../../assets/sword.gif" />
+            <text class="hologram-text hologram-my-page" data-text="档案室">档案室</text>
         </view>
         </navigator>
 

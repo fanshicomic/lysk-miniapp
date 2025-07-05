@@ -81,7 +81,7 @@ Page({
             allRecordsVisible: false,
             currentPage: page
         });
-        apiGet('my-orbit-records', {
+        apiGet('my-orbit-record', {
                 type,
                 mode,
                 level,

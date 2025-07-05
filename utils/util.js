@@ -15,7 +15,7 @@ async function apiGet(endpoint, params = {}) {
         wx.request({
             url,
             method: 'GET',
-            headers,
+            header: headers,
             success: res => resolve(res.data),
             fail: reject
         });

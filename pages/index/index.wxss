@@ -7,7 +7,7 @@
 #title {
     text-align: center;
     color: white;
-    margin-top: 17vh;
+    margin-top: 15vh;
     font-size: 30px;
     padding: 10px;
 }
@@ -59,8 +59,8 @@
 
 .announcement-button {
     position: absolute;
-    top: 13vh;
-    right: 4vh;
+    top: 7vh;
+    left: 12vw;
     background-color: rgba(255, 255, 255, 0.1);
     height: 30px;
     width: 30px;
