@@ -1,0 +1,90 @@
+<view class="main-content">
+    <view class="back-button" bindtap="onBack"> 
+      <svg src="/assets/back.svg" color="white" width="13px" height="13px"></svg>
+    </view>
+  <view class="content-wrapper">
+    <text class="h1">我的轨道记录</text>
+    <view class="hr" />
+    <!-- 基础输入 -->
+    <view class="display-row">
+      <view class="w-33">
+        <custom-select
+        options="{{levelTypes}}"
+        selected=""
+        title="关卡"
+        bind:select="onLevelTypeChange"/>
+      </view>
+      <view class="w-33">
+        <custom-select
+        options="{{levelModes}}"
+        selected="{{levelMode}}"
+        title="模式"
+        bind:select="onLevelModeChange"/>
+      </view>
+      <view class="w-33">
+        <input id="level-number" type="number" class="form-control" placeholder="关卡编号" min="1" bindinput="onLevelNumberInput"/>
+      </view>
+    </view>
+    <!-- 上下段 -->
+    <view class="display-row" id="part-container" wx:if="{{partVisible}}">
+        <view class="w-100">
+            <custom-select
+            options="{{['上', '下']}}"
+            selected=""
+            title="上下"
+            bind:select="onLevelPartChange"/>
+        </view>
+    </view>
+    <!-- 动作按钮 -->
+    <view id="action-buttons" class="display-row">
+      <button id="fetch-records" class="btn upload-fetch-btn w-100" bindtap="getRecords">获取记录</button>
+    </view>
+    <!-- 展示最新记录 -->
+    <view id="all-records-wrapper" wx:if="{{allRecordsVisible}}">
+        <text id="all-records-title" class="mt-5 h2">我的面板</text>
+        <view class="total-cnt-row">
+        我的轨道通关数据总量：<text id="total-db-records-cnt">{{totalDbRecordsCnt > 0 ? totalDbRecordsCnt : '加载中'}}</text>。
+        </view>
+        <view id="all-records">
+            <view class="record-wrapper" wx:for="{{allRecords}}" wx:key="index">
+                <record record="{{item}}"></record>
+            </view>
+        </view>
+        <view id="all-records-pagination" wx:if="{{allRecordsTotalPage > 0}}">
+            <button
+                wx:for="{{allRecordsPages}}"
+                wx:key="*this"
+                class="btn mx-1 page-btn {{item == allRecordsCurrentPage ? 'page-btn-selected' : '' }}"
+                bindtap="onAllRecordsPageChange"
+                data-page="{{item}}"
+            >
+            {{item}}
+        </button>
+        </view>
+    </view>
+    <!-- 展示记录 -->
+    <view id="records-wrapper" wx:if="{{recordsVisible}}">
+        <text id="records-title" class="mt-5 h2">关卡面板记录</text>
+        <view id="records">
+            <view class="record-wrapper" wx:for="{{records}}" wx:key="index">
+                <record record="{{item}}"></record>
+            </view>
+        </view>
+        <view id="pagination" wx:if="{{totalPage > 0}}">
+            <button
+                wx:for="{{pages}}"
+                wx:key="*this"
+                class="btn mx-1 page-btn {{item == currentPage ? 'page-btn-selected' : '' }}"
+                bindtap="onPageChange"
+                data-page="{{item}}"
+            >
+            {{item}}
+        </button>
+        </view>
+    </view>
+    <toast id="toast"></toast>
+  </view>
+  <view class="footer">
+    <text>Contact：小红书：900197975 / 微信: rabbitlink</text>
+  </view>
+</view>

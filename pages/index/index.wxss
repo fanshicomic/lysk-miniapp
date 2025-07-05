@@ -23,35 +23,37 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 7vh;
+    margin-top: 5vh;
     width: 100%;
 }
 
 .btn {
-    height: 12vh;
+    height: 8vh;
     width: 100%;
 }
 
 .hologram-text {
-    top: 30%;
+    top: 20%;
 }
 
 .hologram-orbit {
-    right: -70%;
-    top: 30%;
+    right: -65%;
 }
 
 .hologram-championships {
-    right: -60%;
-    top: 30%;
+    right: -55%;
+}
+
+.hologram-my-page {
+    right: -55%;
 }
 
 .icon {
-    width: 16vh;
-    height: 16vh;
+    width: 25vw;
+    height: 25vw;
     position: absolute;
-    left: 0;
-    top: 0;
+    left: 7%;
+    top: 5%;
     opacity: 0.8;
 }
 

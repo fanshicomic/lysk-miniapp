@@ -2,7 +2,8 @@
     "pages": [
       "pages/index/index",
       "pages/orbit/orbit",
-      "pages/championships/championships"
+      "pages/championships/championships",
+      "pages/my-page/my-page"
     ],
     "window": {
       "backgroundTextStyle": "light",
