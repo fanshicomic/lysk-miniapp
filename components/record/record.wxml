@@ -48,37 +48,37 @@
     </view>
     <view class="w-50 record-grid record-flex-row record-grid-padding-left">
         <label class="record-text-label">虚弱增伤:</label>
-        <label class="record-number-label">{{record['虚弱增伤'] || '—'}}</label>
+        <label class="record-number-label">{{record['虚弱增伤']}}%</label>
     </view>
   </view>
   <view class="row">
     <view class="w-50 record-grid record-flex-row record-grid-padding-right">
         <label class="record-text-label">暴击:</label>
-        <label class="record-number-label">{{record['暴击'] || '—'}}</label>
+        <label class="record-number-label">{{record['暴击']}}%</label>
     </view>
     <view class="w-50 record-grid record-flex-row record-grid-padding-left">
         <label class="record-text-label">暴伤:</label>
-        <label class="record-number-label">{{record['暴伤'] || '—'}}</label>
+        <label class="record-number-label">{{record['暴伤']}}%</label>
     </view>
   </view>
   <view class="row">
     <view class="w-50 record-grid record-flex-row record-grid-padding-right">
         <label class="record-text-label">誓约增伤:</label>
-        <label class="record-number-label">{{record['誓约增伤'] || '—'}}</label>
+        <label class="record-number-label">{{record['誓约增伤'] ? record['誓约增伤']+'%' : '—'}}</label>
     </view>
     <view class="w-50 record-grid record-flex-row record-grid-padding-left">
         <label class="record-text-label">誓约回能:</label>
-        <label class="record-number-label">{{record['誓约回能'] || '—'}}</label>
+        <label class="record-number-label">{{record['誓约回能']? record['誓约回能']+'%' : '—'}}</label>
     </view>
   </view>
   <view class="row">
     <view class="w-50 record-grid record-flex-row record-grid-padding-right">
         <label class="record-text-label">加速回能:</label>
-        <label class="record-number-label">{{record['加速回能'] || '—'}}</label>
+        <label class="record-number-label">{{record['加速回能'] ? record['加速回能']+'%' : '—'}}</label>
     </view>
     <view class="w-50 record-grid record-flex-row record-grid-padding-left" wx:if="{{record['加成'] != '<nil>' && record['加成'] != ''}}">
         <label class="record-text-label">赛季加成:</label>
-        <label class="record-number-label">{{record['加成'] || '—'}}</label>
+        <label class="record-number-label">{{record['加成']}}%</label>
     </view>
   </view>
 </view>

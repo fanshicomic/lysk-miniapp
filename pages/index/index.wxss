@@ -79,17 +79,19 @@
 /* Login Panel Styles */
 .login-panel {
     width: 60vw; /* Set a specific width */
+    height: 20vh;
     position: absolute;
-    top: 40vh; /* Adjust vertical position */
+    top: 35vh; /* Adjust vertical position */
     left: 50%; /* Move left edge to center */
     transform: translateX(-50%); /* Shift back by half its width to truly center */
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px 20px 20px;
     z-index: 1000;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 10px; /* Add some rounded corners for better appearance */
+    backdrop-filter: blur(20px);
 }
 
 .login-panel-text {
@@ -101,7 +103,8 @@
 .login-panel-buttons {
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: 90%;
+    gap: 10px;
 }
 
 .login-btn,

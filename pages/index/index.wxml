@@ -5,10 +5,11 @@
 <view class="main-content">
     <!-- Login Panel -->
     <view class="login-panel" wx:if="{{showLoginPanel}}">
-        <view class="login-panel-text">登录后即可同步个人数据</view>
+        <svg src="/assets/user-circle.svg" color="white" width="8vh" height="8vh"></svg>
+        <view class="login-panel-text">登录以同步个人面板记录</view>
         <view class="login-panel-buttons">
-            <button class="login-btn" bind:tap="handleLogin">微信一键登录</button>
             <button class="skip-btn" bind:tap="handleSkipLogin">暂不登录</button>
+            <button class="login-btn" bind:tap="handleLogin">一键登录</button>
         </view>
     </view>
     <view class="announcement-button" bind:tap="handleShowAnnouncement">
