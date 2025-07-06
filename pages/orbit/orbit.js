@@ -1,6 +1,7 @@
 const {
     apiGet,
-    apiPost
+    apiPost,
+    apiUploadFile
 } = require('../../utils/util.js');
 
 const {
@@ -235,6 +236,50 @@ Page({
         this.setData({
             uploadVisible: true,
             latestRecordsVisible: false
+        });
+    },
+
+    onOCRUpload() {
+        if (!this.data.uploadVisible) {
+            this.setData({
+                uploadVisible: true,
+                latestRecordsVisible: false
+            });
+        }
+
+        wx.chooseMedia({
+            count: 1,
+            mediaType: ['image'],
+            sizeType: ['compressed'],
+            sourceType: ['album', 'camera'],
+            success: (res) => {
+                const tempFilePath = res.tempFiles[0].tempFilePath;
+                wx.showLoading({
+                    title: '识图中...',
+                });
+                apiUploadFile('ocr', tempFilePath, 'photo')
+                    .then(result => {
+                        wx.hideLoading();
+                        if (result.result) {
+                            const uploadForm = this.selectComponent('#upload-form');
+                            if (uploadForm) {
+                                const currentValues = uploadForm.data.inputValues;
+                                const newValues = { ...currentValues, ...result.result };
+                                uploadForm.setData({
+                                    inputValues: newValues
+                                });
+                            }
+                            this.showToast("识图成功", "识图精度有限，请确认数据是否正确!", 5000);
+                        } else {
+                            this.showToast("识图失败", result.error + ', ' + result.detail, 5000);
+                        }
+                    })
+                    .catch(err => {
+                        wx.hideLoading();
+                        this.showToast("上传失败", "请检查网络连接", 5000);
+                        console.error('OCR upload failed:', err);
+                    });
+            }
         });
     },
 

@@ -42,4 +42,48 @@ async function apiPost(endpoint, data) {
     });
 }
 
-export { apiGet, apiPost };
+async function apiUploadFile(endpoint, filePath, fileName) {
+    const token = wx.getStorageSync('token');
+    const headers = { 'Content-Type': 'multipart/form-data' };
+    if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+    }
+
+    const url = `${app.globalData.ocrServerHost}/${endpoint}`;
+    return new Promise((resolve, reject) => {
+        wx.uploadFile({
+            url,
+            filePath,
+            name: fileName,
+            header: headers,
+            dataType: 'binary',
+            success: res => {
+                const result = JSON.parse(res.data);
+                if (result.result) {
+                    const mapping = {
+                        "生命": "hp",
+                        "攻击": "attack",
+                        "防御": "defence",
+                        "暴击": "crit-rate",
+                        "暴伤": "crit-dmg",
+                        "誓约增伤": "oath-boost",
+                        "誓约回能": "oath-regen",
+                        "加速回能": "energy-regen",
+                        "虚弱增伤": "weaken-boost"
+                    };
+                    const mappedResult = {};
+                    for (const [key, value] of Object.entries(result.result)) {
+                        if (mapping[key]) {
+                            mappedResult[mapping[key]] = value;
+                        }
+                    }
+                    result.result = mappedResult;
+                }
+                resolve(result);
+            },
+            fail: reject
+        });
+    });
+}
+
+export { apiGet, apiPost, apiUploadFile };

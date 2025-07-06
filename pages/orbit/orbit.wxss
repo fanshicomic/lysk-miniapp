@@ -106,6 +106,16 @@ h1, h2 {
     color: inherit;
 }
 
+.ocr-action-btn {
+    border: 0;
+    background-color: cornflowerblue;
+}
+.ocr-action-btn:hover,
+.ocr-action-btn:focus {
+    background-color: cornflowerblue;
+    color: inherit;
+}
+
 .submit-btn {
     border: 0;
     background-color: darkslateblue;
