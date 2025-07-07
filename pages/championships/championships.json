@@ -5,6 +5,7 @@
         "record": "/components/record/record",
         "svg": "/components/svg/svg",
         "toast": "/components/toast/toast",
-        "announcement": "/components/announcement/announcement"
+        "announcement": "/components/announcement/announcement",
+        "footer": "/components/footer/footer"
     }
 }

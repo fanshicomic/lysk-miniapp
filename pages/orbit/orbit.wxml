@@ -82,7 +82,5 @@
     <toast id="toast"></toast>
     <announcement id="announcement"></announcement>
   </view>
-  <view class="footer">
-    <text>Contact：小红书：900197975 / 微信: rabbitlink</text>
-  </view>
+  <footer />
 </view>
