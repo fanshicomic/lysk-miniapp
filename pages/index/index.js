@@ -5,7 +5,7 @@ const app = getApp();
 Page({
   data: {
     title: '深空面板助手',
-    subTitle: 'Deepspace Battle Helper V2.0.0',
+    subTitle: 'Deepspace Battle Helper V2.0.1',
     blobs: [],
     showToast: false,
     userInfo: null, // We can keep this for potential future use
@@ -103,4 +103,20 @@ Page({
   handleShowAnnouncement() {
     this.selectComponent('#announcement').forceDisplayAnnouncement();
   },
+
+  onShareAppMessage: function (res) {
+    return {
+      title: '深空面板助手',
+      path: '/pages/index/index',
+      imageUrl: '/assets/sharing.jpg'
+    }
+  },
+
+  onShareTimeline: function () {
+    return {
+      title: '深空面板助手',
+      query: 'from=timeline',
+      imageUrl: '/assets/sharing.jpg'
+    }
+  }
 })
