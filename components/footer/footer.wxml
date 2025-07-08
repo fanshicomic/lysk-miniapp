@@ -1,3 +1,10 @@
+<!--components/footer/footer.wxml-->
 <view class="footer">
-  <text>Contact：微信群：+rabbitlink / 小红书：900197975 </text>
+  <text>Contact：微信群：<text class="link" bindtap="showQRCode">点我</text>  / 小红书：900197975 </text>
+</view>
+
+<view class="modal" wx:if="{{showModal}}" bindtap="hideQRCode">
+  <view class="modal-content">
+    <image src="https://uygnim.com/lysk/assets/group.jpg" mode="widthFix"></image>
+  </view>
 </view>
