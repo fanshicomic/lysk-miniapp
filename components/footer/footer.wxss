@@ -20,7 +20,7 @@
 }
 
 .link {
-    color: #007aff;
+    color: #64afff;
     text-decoration: underline;
     cursor: pointer;
 }
