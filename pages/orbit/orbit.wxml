@@ -3,7 +3,7 @@
       <svg src="/assets/back.svg" color="white" width="13px" height="13px"></svg>
     </view>
   <view class="content-wrapper">
-    <text class="h1">轨道面板查询</text>
+    <text class="h1">轨道通关面板</text>
     <view class="hr" />
     <!-- 基础输入 -->
     <view class="display-row">
@@ -45,7 +45,7 @@
     <view class="hr" />
     <view id="panel-inputs" wx:if="{{uploadVisible}}">
         <upload-form id="upload-form" wx:if="{{uploadVisible}}" level-type="{{levelType}}"></upload-form>
-        <button id="submit" class="btn submit-btn w-100" bindtap="onSubmit">提交记录</button>
+        <button id="submit" class="btn submit-btn w-100" bindtap="onSubmit">提交通关记录</button>
     </view>
     <!-- 展示最新记录 -->
     <view id="latest-records-wrapper" wx:if="{{latestRecordsVisible}}">
