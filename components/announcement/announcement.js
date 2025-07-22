@@ -45,7 +45,7 @@ Component({
     },
 
     showAnnouncement() {
-      const announcementKey = "2.0.6";
+      const announcementKey = "2.1.0";
       if (wx.getStorageSync(announcementKey)) {
         return null;
       }
