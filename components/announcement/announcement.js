@@ -38,13 +38,14 @@ Component({
 
     _getAnnouncementLatestUpdates() {
       return `最新更新
+            - 2025-07-22：支持沈星回新搭档与日卡
             - 2025-07-07：小程序版支持
             - 2025-07-06：支持识图功能
             - 2025-07-05：开放档案室。登录后上传记录会与微信账号绑定，个人轨道记录可从档案室查看`
     },
 
     showAnnouncement() {
-      const announcementKey = "2.0.0";
+      const announcementKey = "2.0.6";
       if (wx.getStorageSync(announcementKey)) {
         return null;
       }

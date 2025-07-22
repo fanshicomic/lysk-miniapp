@@ -50,13 +50,13 @@ Component({
             if (pinkCards.includes(card)) return "set-card-pink";
             const purpleCards = ["深海", "斑斓", "寂路"];
             if (purpleCards.includes(card)) return "set-card-purple";
-            const redCards = ["拥雪", "夜色", "碧海", "远空", "长昼"];
+            const redCards = ["夜誓", "拥雪", "夜色", "碧海", "远空", "长昼"];
             if (redCards.includes(card)) return "set-card-red";
             const greenCards = ["逐光", "睱日", "深渊", "离途", "坠浪"];
             if (greenCards.includes(card)) return "set-card-green";
             const yellowCards = ["雾海", "末夜", "弦光", "深林"];
             if (yellowCards.includes(card)) return "set-card-yellow";
-            const blueCards = ["永恒", "静谧", "戮夜"];
+            const blueCards = ["永恒", "静谧", "戮夜", "鎏光"];
             if (blueCards.includes(card)) return "set-card-blue";
             if (card === "心晴") {
                 const xavier = DROPDOWN_VALUES['沈星回搭档'];
@@ -73,6 +73,7 @@ Component({
 
             if (partner === "逐光骑士") return "partner-light-seeker";
             if (partner === "光猎") return "partner-lumiere";
+            if (partner === "暗蚀国王") return "partner-king-of-darknight";
             if (partner === "永恒先知") return "partner-foreseer";
             if (partner === "九黎司命") return "partner-master-of-fate";
             if (partner === "利莫里亚海神") return "partner-lemurian-sea-god";
