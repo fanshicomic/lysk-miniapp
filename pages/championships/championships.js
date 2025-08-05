@@ -62,7 +62,6 @@ Page({
         }
         const level = levelType;
         const offset = (page - 1) * pageSize;
-        console.log(page, offset, pageSize)
         this.setData({
             recordsVisible: true,
             latestRecordsVisible: false,
@@ -227,6 +226,8 @@ Page({
                 '日卡': inputData['sun-card'],
                 '阶数': stage,
                 '武器': inputData['weapon'],
+                '卡总等级': inputData['card-total-level'],
+                '备注': inputData['note'],
                 '关卡': levelType,
                 '加成': inputData['championships-buff'],
                 '时间': new Date().toISOString()

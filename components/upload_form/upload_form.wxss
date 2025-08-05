@@ -10,6 +10,11 @@
     width: 50%;
 }
 
+.w-100 {
+    box-sizing: border-box;
+    width: 100%;
+}
+
 .form-control {
     padding: 13rpx;
     text-align: center;

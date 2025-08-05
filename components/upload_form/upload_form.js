@@ -87,19 +87,14 @@ Component({
             'sun-card': '',
             'stage': '',
             'weapon': '',
-            'championships-buff': ''
+            'championships-buff': '',
+            'card-total-level': '',
+            'note': ''
         },
     },
 
     methods: {
-        onInput(e) {
-            const {
-                key
-            } = e.currentTarget.dataset;
-            let {
-                value
-            } = e.detail;
-
+        onDigitInput(value) {
             // Replace any non-numeric characters except for a single decimal point
             value = value.replace(/[^\d.]/g, '');
 
@@ -107,6 +102,23 @@ Component({
             const parts = value.split('.');
             if (parts.length > 2) {
                 value = parts[0] + '.' + parts.slice(1).join('');
+            }
+            return value;
+        },
+
+        onInput(e) {
+            const {
+                key
+            } = e.currentTarget.dataset;
+            let {
+                value
+            } = e.detail;
+            const {
+                type
+            } = e.currentTarget.dataset;
+
+            if (type === 'digit') {
+                value = this.onDigitInput(value);
             }
 
             this.setData({

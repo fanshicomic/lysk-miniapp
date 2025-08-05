@@ -76,9 +76,18 @@
         <label class="record-text-label">加速回能:</label>
         <label class="record-number-label">{{record['加速回能'] ? record['加速回能']+'%' : '—'}}</label>
     </view>
-    <view class="w-50 record-grid record-flex-row record-grid-padding-left" wx:if="{{record['加成'] != '<nil>' && record['加成'] != ''}}">
+    <view class="w-50 record-grid record-flex-row record-grid-padding-left">
+        <label class="record-text-label">卡总等级:</label>
+        <label class="record-number-label">{{record['卡总等级'] ? record['卡总等级'] : '无数据'}}</label>
+    </view>
+  </view>
+  <view class="row" wx:if="{{record['加成'] != '<nil>' && record['加成'] != ''}}">
+    <view class="w-50 record-grid record-flex-row record-grid-padding-right">
         <label class="record-text-label">赛季加成:</label>
         <label class="record-number-label">{{record['加成']}}%</label>
     </view>
+  </view>
+  <view class="row" wx:if="{{record['备注'] != '<nil>' && record['备注'] != ''}}">
+    <label>备注: {{record['备注']}}</label>
   </view>
 </view>

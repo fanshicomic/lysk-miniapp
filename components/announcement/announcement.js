@@ -38,6 +38,7 @@ Component({
 
     _getAnnouncementLatestUpdates() {
       return `最新更新
+            - 2025-08-05：支持卡总等级与备注
             - 2025-07-22：支持沈星回新搭档与日卡
             - 2025-07-07：小程序版支持
             - 2025-07-06：支持识图功能
@@ -45,7 +46,7 @@ Component({
     },
 
     showAnnouncement() {
-      const announcementKey = "2.1.0";
+      const announcementKey = "2.2.0";
       if (wx.getStorageSync(announcementKey)) {
         return null;
       }

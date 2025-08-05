@@ -310,6 +310,8 @@ Page({
                 '日卡': inputData['sun-card'],
                 '阶数': stage,
                 '武器': inputData['weapon'],
+                '卡总等级': inputData['card-total-level'],
+                '备注': inputData['note'],
                 '关卡': levelType,
                 '模式': levelMode,
                 '关数': level,
