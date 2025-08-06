@@ -88,6 +88,6 @@
     </view>
   </view>
   <view class="row" wx:if="{{record['备注'] != '<nil>' && record['备注'] != ''}}">
-    <label>备注: {{record['备注']}}</label>
+    <label class="note">备注: {{record['备注']}}</label>
   </view>
 </view>

@@ -5,6 +5,6 @@
 
 <view class="modal" wx:if="{{showModal}}" bindtap="hideQRCode">
   <view class="modal-content">
-    <image src="https://uygnim.com/lysk/assets/group.jpg" mode="widthFix"></image>
+    <image src="https://uygnim.com/lysk/assets/group.jpg" mode="widthFix" show-menu-by-longpress="true"></image>
   </view>
 </view>

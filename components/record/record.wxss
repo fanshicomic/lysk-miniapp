@@ -116,6 +116,10 @@
     margin-right: 5px;
 }
 
+.note {
+    text-align: left;
+}
+
 /* Partner styles */
 
 .partner-normal {
