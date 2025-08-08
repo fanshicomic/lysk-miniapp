@@ -1,6 +1,6 @@
 Component({
   data: {
-    showModal: false
+    showModal: false,
   },
   methods: {
     showQRCode() {
@@ -8,6 +8,6 @@ Component({
     },
     hideQRCode() {
       this.setData({ showModal: false });
-    }
-  }
-})
+    },
+  },
+});

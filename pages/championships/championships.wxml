@@ -1,7 +1,7 @@
 <view class="main-content">
-    <view class="back-button" bindtap="onBack"> 
-      <svg src="/assets/back.svg" color="white" width="13px" height="13px"></svg>
-    </view>
+  <view class="back-button" bindtap="onBack">
+    <svg src="/assets/back.svg" color="white" width="13px" height="13px"></svg>
+  </view>
   <view class="content-wrapper">
     <text class="h1">锦标赛满星面板</text>
     <view class="hr" />
@@ -9,55 +9,83 @@
     <view class="display-row">
       <view class="w-100">
         <custom-select
-        options="{{levelTypes}}"
-        selected=""
-        title="关卡"
-        bind:select="onLevelTypeChange"/>
+          options="{{levelTypes}}"
+          selected=""
+          title="关卡"
+          bind:select="onLevelTypeChange"
+        />
       </view>
     </view>
     <!-- 动作按钮 -->
     <view id="action-buttons" class="display-row">
-      <button id="fetch-records" class="btn upload-fetch-btn w-33" bindtap="getRecords">获取记录</button>
-      <button id="start-upload" class="btn upload-action-btn w-33" bindtap="onStartUpload">手动上传</button>
-      <button id="start-ocr" class="btn ocr-action-btn w-33" bindtap="onOcrUpload">截图上传</button>
+      <button
+        id="fetch-records"
+        class="btn upload-fetch-btn w-33"
+        bindtap="getRecords"
+      >
+        获取记录
+      </button>
+      <button
+        id="start-upload"
+        class="btn upload-action-btn w-33"
+        bindtap="onStartUpload"
+      >
+        手动上传
+      </button>
+      <button
+        id="start-ocr"
+        class="btn ocr-action-btn w-33"
+        bindtap="onOcrUpload"
+      >
+        截图上传
+      </button>
     </view>
     <!-- 动态面板输入 -->
     <view class="hr" />
     <view id="panel-inputs" wx:if="{{uploadVisible}}">
-        <upload-form id="upload-form" wx:if="{{uploadVisible}}" level-type="{{levelType}}" battle-type="championships"></upload-form>
-        <button id="submit" class="btn submit-btn w-100" bindtap="onSubmit">提交记录</button>
+      <upload-form
+        id="upload-form"
+        wx:if="{{uploadVisible}}"
+        level-type="{{levelType}}"
+        battle-type="championships"
+      ></upload-form>
+      <button id="submit" class="btn submit-btn w-100" bindtap="onSubmit">
+        提交记录
+      </button>
     </view>
     <!-- 展示最新记录 -->
     <view id="latest-records-wrapper" wx:if="{{latestRecordsVisible}}">
-        <text id="latest-records-title" class="mt-5 h2">最新上传面板</text>
-        <view class="total-cnt-row">
-        当期锦标赛满星数据总量：<text id="total-db-records-cnt">{{totalDbRecordsCnt > 0 ? totalDbRecordsCnt : '加载中'}}</text>。感谢您的分享！
+      <text id="latest-records-title" class="mt-5 h2">最新上传面板</text>
+      <view class="total-cnt-row">
+        当期锦标赛满星数据总量：<text id="total-db-records-cnt"
+          >{{totalDbRecordsCnt > 0 ? totalDbRecordsCnt : '加载中'}}</text
+        >。感谢您的分享！
+      </view>
+      <view id="latest-records">
+        <view class="record-wrapper" wx:for="{{latestRecords}}" wx:key="index">
+          <record record="{{item}}"></record>
         </view>
-        <view id="latest-records">
-            <view class="record-wrapper" wx:for="{{latestRecords}}" wx:key="index">
-                <record record="{{item}}"></record>
-            </view>
-        </view>
+      </view>
     </view>
     <!-- 展示记录 -->
     <view id="records-wrapper" wx:if="{{recordsVisible}}">
-        <text id="records-title" class="mt-5 h2">关卡面板记录</text>
-        <view id="records">
-            <view class="record-wrapper" wx:for="{{records}}" wx:key="index">
-                <record record="{{item}}"></record>
-            </view>
+      <text id="records-title" class="mt-5 h2">关卡面板记录</text>
+      <view id="records">
+        <view class="record-wrapper" wx:for="{{records}}" wx:key="index">
+          <record record="{{item}}"></record>
         </view>
-        <view id="pagination" wx:if="{{totalPage > 0}}">
-            <button
-                wx:for="{{pages}}"
-                wx:key="*this"
-                class="btn mx-1 page-btn {{item == currentPage ? 'page-btn-selected' : '' }}"
-                bindtap="onPageChange"
-                data-page="{{item}}"
-            >
-            {{item}}
+      </view>
+      <view id="pagination" wx:if="{{totalPage > 0}}">
+        <button
+          wx:for="{{pages}}"
+          wx:key="*this"
+          class="btn mx-1 page-btn {{item == currentPage ? 'page-btn-selected' : '' }}"
+          bindtap="onPageChange"
+          data-page="{{item}}"
+        >
+          {{item}}
         </button>
-        </view>
+      </view>
     </view>
     <toast id="toast"></toast>
     <announcement id="announcement"></announcement>

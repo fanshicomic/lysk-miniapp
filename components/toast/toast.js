@@ -3,7 +3,7 @@ Component({
     isVisible: false,
     header: '',
     body: '',
-    duration: 3000
+    duration: 3000,
   },
 
   methods: {
@@ -12,7 +12,7 @@ Component({
         isVisible: true,
         header: header,
         body: body,
-        duration: duration || 3000
+        duration: duration || 3000,
       });
 
       setTimeout(() => {
@@ -22,8 +22,8 @@ Component({
 
     hide() {
       this.setData({
-        isVisible: false
+        isVisible: false,
       });
-    }
-  }
+    },
+  },
 });

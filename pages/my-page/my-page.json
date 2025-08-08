@@ -1,10 +1,8 @@
 {
-    "usingComponents": {
-        "custom-select": "/components/custom_select/custom_select",
-        "record": "/components/record/record",
-        "svg": "/components/svg/svg",
-        "toast": "/components/toast/toast",
-        "announcement": "/components/announcement/announcement",
-        "footer": "/components/footer/footer"
-    }
+  "usingComponents": {
+    "svg": "/components/svg/svg",
+    "toast": "/components/toast/toast",
+    "record": "/components/record/record",
+    "footer": "/components/footer/footer"
+  }
 }

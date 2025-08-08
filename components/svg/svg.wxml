@@ -1,2 +1,2 @@
 <!--component/svg.wxml-->
-	<image style="width: {{width}};height: {{height}};" src="{{svgData}}"></image>
+<image style="width: {{width}};height: {{height}};" src="{{svgData}}"></image>

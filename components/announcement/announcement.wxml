@@ -1,14 +1,14 @@
 <view class="toast announcement" wx:if="{{isVisible}}">
-    <view class="toast-header">
-        <text class="toast-title">系统公告</text>
-        <view class="btn-close" bind:tap="hide"></view>
+  <view class="toast-header">
+    <text class="toast-title">系统公告</text>
+    <view class="btn-close" bind:tap="hide"></view>
+  </view>
+  <view class="toast-body">
+    <view class="announcement-text">
+      <text>{{body}}</text>
     </view>
-    <view class="toast-body">
-        <view class="announcement-text">
-            <text>{{body}}</text>
-        </view>
-        <view class="announcement-text">
-            <text class="announcement-text">{{updates}}</text>
-        </view>
+    <view class="announcement-text">
+      <text class="announcement-text">{{updates}}</text>
     </view>
+  </view>
 </view>

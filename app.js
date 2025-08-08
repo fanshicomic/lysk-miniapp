@@ -22,7 +22,7 @@ App({
           wx.removeStorageSync('token');
           wx.removeStorageSync('userInfo');
           console.log('Session expired, user needs to log in again.');
-        }
+        },
       });
     } else {
       // No token found, user needs to log in.
@@ -32,8 +32,9 @@ App({
 
   globalData: {
     userInfo: null,
-    serverHost: 'https://lysk-battle-record-426168069563.asia-southeast1.run.app',
+    serverHost:
+      'https://lysk-battle-record-426168069563.asia-southeast1.run.app',
     ocrServerHost: 'https://ocr-service-426168069563.asia-southeast1.run.app',
     // serverHost: 'http://127.0.0.1:8080'
-  }
-})
+  },
+});

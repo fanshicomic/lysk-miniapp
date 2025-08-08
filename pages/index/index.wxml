@@ -1,50 +1,76 @@
 <view class="blobs">
-   <view wx:for="{{blobs}}" wx:key="index" class="blob"></view>
+  <view wx:for="{{blobs}}" wx:key="index" class="blob"></view>
 </view>
 
 <view class="main-content">
-    <!-- Login Panel -->
-    <view class="login-panel" wx:if="{{showLoginPanel}}">
-        <svg src="/assets/user-circle.svg" color="white" width="8vh" height="8vh"></svg>
-        <view class="login-panel-text">登录以同步个人面板记录</view>
-        <view class="login-panel-buttons">
-            <button class="skip-btn" bind:tap="handleSkipLogin">暂不登录</button>
-            <button class="login-btn" bind:tap="handleLogin">一键登录</button>
-        </view>
+  <!-- Login Panel -->
+  <view class="login-panel" wx:if="{{showLoginPanel}}">
+    <svg
+      src="/assets/user-circle.svg"
+      color="white"
+      width="8vh"
+      height="8vh"
+    ></svg>
+    <view class="login-panel-text">登录以同步个人面板记录</view>
+    <view class="login-panel-buttons">
+      <button class="skip-btn" bind:tap="handleSkipLogin">暂不登录</button>
+      <button class="login-btn" bind:tap="handleLogin">一键登录</button>
     </view>
-    <view class="announcement-button" bind:tap="handleShowAnnouncement">
-        <svg src="/assets/megaphone.svg" color="rgba(255, 255, 255, 0.5)" width="12px" height="12px"></svg>
+  </view>
+  <view class="announcement-button" bind:tap="handleShowAnnouncement">
+    <svg
+      src="/assets/megaphone.svg"
+      color="rgba(255, 255, 255, 0.5)"
+      width="12px"
+      height="12px"
+    ></svg>
+  </view>
+
+  <view class="content-wrapper">
+    <view id="title">{{title}}</view>
+    <view id="hr-section">
+      <view class="hr" />
+      <text id="sub-title">{{subTitle}}</text>
     </view>
 
-    <view class="content-wrapper">
-        <view id="title">{{title}}</view> 
-        <view id="hr-section">
-            <view class="hr" />
-            <text id="sub-title">{{subTitle}}</text> 
-        </view>
+    <navigator url="/pages/orbit/orbit" class="button-section">
+      <view class="btn hologram">
+        <image
+          class="icon"
+          src="https://uygnim.com/lysk/assets/orbit.gif"
+          mode="widthFix"
+        />
+        <text class="hologram-text hologram-orbit" data-text="轨道">轨道</text>
+      </view>
+    </navigator>
 
-        <navigator url="/pages/orbit/orbit" class="button-section">
-            <view class="btn hologram">
-                <image class="icon" src="https://uygnim.com/lysk/assets/orbit.gif" mode="widthFix" />
-                <text class="hologram-text hologram-orbit" data-text="轨道">轨道</text> 
-            </view>
-        </navigator>
+    <navigator url="/pages/championships/championships" class="button-section">
+      <view class="btn hologram">
+        <image
+          class="icon"
+          src="https://uygnim.com/lysk/assets/championships.gif"
+          mode="widthFix"
+        />
+        <text class="hologram-text hologram-championships" data-text="锦标赛"
+          >锦标赛</text
+        >
+      </view>
+    </navigator>
 
-        <navigator url="/pages/championships/championships" class="button-section">
-        <view class="btn hologram">
-            <image class="icon" src="https://uygnim.com/lysk/assets/championships.gif" mode="widthFix" />
-            <text class="hologram-text hologram-championships" data-text="锦标赛">锦标赛</text>
-        </view>
-        </navigator>
+    <navigator url="/pages/my-page/my-page" class="button-section">
+      <view class="btn hologram">
+        <image
+          class="icon"
+          src="https://uygnim.com/lysk/assets/sword.gif"
+          mode="widthFix"
+        />
+        <text class="hologram-text hologram-my-page" data-text="档案室"
+          >档案室</text
+        >
+      </view>
+    </navigator>
 
-        <navigator url="/pages/my-page/my-page" class="button-section">
-        <view class="btn hologram">
-            <image class="icon" src="https://uygnim.com/lysk/assets/sword.gif" mode="widthFix" />
-            <text class="hologram-text hologram-my-page" data-text="档案室">档案室</text>
-        </view>
-        </navigator>
-
-        <announcement id="announcement"></announcement>
-    </view>
+    <announcement id="announcement"></announcement>
+  </view>
 </view>
-<footer style="position: fixed;" />
+<footer style="position: fixed" />

@@ -1,12 +1,14 @@
 <view class="custom-select {{open ? 'open' : ''}}">
-  <view class="selected"
-        bindtap="toggleSelect">
+  <view class="selected" bindtap="toggleSelect">
     {{selected ? selected : '--' + title + '--'}}
   </view>
   <view class="options" wx:if="{{open}}">
-    <view wx:for="{{options}}" wx:key="value"
-          bindtap="selectOption"
-          data-value="{{item}}">
+    <view
+      wx:for="{{options}}"
+      wx:key="value"
+      bindtap="selectOption"
+      data-value="{{item}}"
+    >
       {{item}}
     </view>
   </view>

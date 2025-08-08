@@ -1,0 +1,144 @@
+page {
+    height: 100vh;
+    color: white;
+    background: linear-gradient(0deg, #23314c, #45324c);
+    overflow: hidden;
+}
+
+h1, h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.main-content {
+    overflow: scroll;
+    scrollbar-width: none;
+}
+.main-content::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+.content-wrapper {
+    margin-top: 5vh;
+    width: 80vw;
+    max-width: 350px;
+    min-width: 250px;
+    min-height: 85vh;
+    margin: 0 auto
+}
+
+#all-records-wrapper {
+    margin-bottom: 30px;
+}
+
+#records-wrapper {
+    margin-bottom: 30px;
+}
+
+.btn {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.page-btn {
+    width: 40px !important;
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+}
+.page-btn:hover,
+.page-btn:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: inherit;
+}
+
+.page-btn-selected {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.form-control::placeholder {
+    color: #aaa;
+}
+
+.row {
+    padding: 5px 20px 5px 20px;
+    --bs-gutter-x: 0;
+}
+
+.form-control:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.btn {
+    font-size: 0.95rem;
+    padding: 8px;
+}
+
+.wx-1 {
+    margin-right: .25rem;
+    margin-left: .25rem;
+}
+
+.upload-fetch-btn {
+    border: 0;
+    background-color: cadetblue;
+}
+.upload-fetch-btn:hover,
+.upload-fetch-btn:focus {
+    background-color: cadetblue;
+    color: inherit;
+}
+
+.upload-action-btn {
+    border: 0;
+    background-color: palevioletred;
+}
+.upload-action-btn:hover,
+.upload-action-btn:focus {
+    background-color: palevioletred;
+    color: inherit;
+}
+
+.submit-btn {
+    border: 0;
+    background-color: darkslateblue;
+    margin-top: 20px;
+}
+.submit-btn:hover,
+.submit-btn:focus {
+    background-color: darkslateblue;
+    color: inherit;
+}
+
+.total-cnt-row {
+    font-size: small;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.record-wrapper {
+    margin-top: 18px;
+}
+
+#pagination {
+    margin-top: 15px;
+    justify-content: center;
+    display: flex;
+}
+
+#all-records-pagination {
+    margin-top: 15px;
+    justify-content: center;
+    display: flex;
+}
+
+.footer {
+    position: initial;
+}

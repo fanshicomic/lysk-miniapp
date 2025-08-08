@@ -20,9 +20,9 @@ Page({
     for (let i = 0; i < blobCount; i++) {
       blobArray.push(i);
     }
-    
+
     this.setData({
-      blobs: blobArray
+      blobs: blobArray,
     });
 
     this.selectComponent('#announcement').showAnnouncement();
@@ -48,7 +48,7 @@ Page({
           console.error('wx.login failed! ' + loginRes.errMsg);
           wx.showToast({
             title: '登录失败',
-            icon: 'none'
+            icon: 'none',
           });
         }
       },
@@ -56,9 +56,9 @@ Page({
         console.error('wx.login call failed:', err);
         wx.showToast({
           title: '登录接口调用失败',
-          icon: 'none'
+          icon: 'none',
         });
-      }
+      },
     });
   },
 
@@ -67,7 +67,7 @@ Page({
       url: `${app.globalData.serverHost}/login`,
       method: 'POST',
       data: {
-        code: code
+        code: code,
       },
       success: (res) => {
         if (res.statusCode === 200 && res.data.token) {
@@ -76,13 +76,13 @@ Page({
           this.setData({ showLoginPanel: false }); // Hide panel on success
           wx.showToast({
             title: '登录成功',
-            icon: 'success'
+            icon: 'success',
           });
         } else {
           console.error('Authentication failed on server:', res);
           wx.showToast({
             title: res.data.error || '服务器认证失败',
-            icon: 'none'
+            icon: 'none',
           });
         }
       },
@@ -90,9 +90,9 @@ Page({
         console.error('Request to backend failed:', err);
         wx.showToast({
           title: '请求后端失败',
-          icon: 'none'
+          icon: 'none',
         });
-      }
+      },
     });
   },
 
@@ -108,15 +108,15 @@ Page({
     return {
       title: '深空面板助手',
       path: '/pages/index/index',
-      imageUrl: '/assets/sharing.jpg'
-    }
+      imageUrl: '/assets/sharing.jpg',
+    };
   },
 
   onShareTimeline: function () {
     return {
       title: '深空面板助手',
       query: 'from=timeline',
-      imageUrl: '/assets/sharing.jpg'
-    }
-  }
-})
+      imageUrl: '/assets/sharing.jpg',
+    };
+  },
+});

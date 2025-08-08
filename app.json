@@ -1,21 +1,22 @@
 {
-    "pages": [
-      "pages/index/index",
-      "pages/orbit/orbit",
-      "pages/championships/championships",
-      "pages/my-page/my-page"
-    ],
-    "window": {
-      "backgroundTextStyle": "light",
-      "navigationBarBackgroundColor": "#000",
-      "navigationBarTitleText": "深空面板助手",
-      "navigationBarTextStyle": "white",
-      "navigationStyle": "custom"
-    },
-    "style": "v2",
-    "sitemapLocation": "sitemap.json",
-    "useExtendedLib": {
-      "weui": true
-    },
-    "lazyCodeLoading": "requiredComponents"
-  }
+  "pages": [
+    "pages/index/index",
+    "pages/orbit/orbit",
+    "pages/championships/championships",
+    "pages/my-page/my-page",
+    "pages/my-page-orbit/my-page-orbit"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "深空面板助手",
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "custom"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "useExtendedLib": {
+    "weui": true
+  },
+  "lazyCodeLoading": "requiredComponents"
+}

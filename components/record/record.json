@@ -1,7 +1,7 @@
 {
-    "component": true,
-    "styleIsolation": "shared",
-    "usingComponents": {
-        "svg": "/components/svg/svg"
-    }
+  "component": true,
+  "styleIsolation": "shared",
+  "usingComponents": {
+    "svg": "/components/svg/svg"
+  }
 }

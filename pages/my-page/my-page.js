@@ -1,240 +1,140 @@
-const {
-    apiGet
-} = require('../../utils/util.js');
-
-const {
-    LEVEL_TYPES
-} = require('../../utils/constants.js');
+import { apiGet, apiPost, apiPut } from '../../utils/util.js';
 
 Page({
-    data: {
-        levelTypes: ["光", "冰", "火", "能量", "引力", "开放"],
-        levelModes: ["稳定", "波动"],
-        levelType: '',
-        levelNumber: '',
-        levelMode: '',
-        levelPart: '',
-        partVisible: false,
+  data: {
+    nickname: '猎人小姐', // Default nickname
+    newNickname: '',
+    editingNickname: false,
+    orbitRecordsCount: 0,
+    latestOrbitRecord: null,
+    championshipRecordsCount: 0,
+    latestChampionshipRecord: null,
+  },
 
-        recordsVisible: false,
-        records: [],
+  onLoad: function (options) {
+    const token = wx.getStorageSync('token');
+    if (!token) {
+      this.showToast('无效访问', '请先登录', 2000);
+      setTimeout(() => {
+        wx.redirectTo({ url: '/pages/index/index' });
+      }, 2000);
+      return;
+    }
 
-        pageSize: 10,
-        totalPage: 0,
-        currentPage: 1,
-        pages: [],
+    this.fetchUserNickname();
+    this.fetchOrbitRecords();
+    this.fetchChampionshipRecords();
+  },
 
-        allRecordsVisible: true,
-        allRecords: [],
-        totalDbRecordsCnt: 0,
-        allRecordsCurrentPage: 1,
-        allRecordsTotalPage: 0,
-        allRecordsPages: [],
-    },
+  onBack() {
+    wx.navigateBack({
+      delta: 1,
+    });
+  },
 
-    onLoad(options) {
-        this.getAllRecords();
-    },
-    onBack() {
-        wx.navigateBack({
-            delta: 1
+  fetchUserNickname: function() {
+    apiGet('user').then(user => {
+      if (user && user.nickname) {
+        this.setData({
+          nickname: user.nickname
         });
-    },
+      }
+    }).catch(err => {
+      // If the user is not found, or there is any other error, 
+      // the default nickname will be used.
+      console.error('Failed to fetch user nickname:', err);
+    });
+  },
 
-    getAllRecords(page = 1) {
-        const { pageSize } = this.data;
-        const offset = (page - 1) * pageSize;
-        apiGet('all-my-orbit-records', { offset })
-            .then(result => {
-                const cnt = result.total || 0;
-                const list = result.records || [];
-                this.setData({
-                    totalDbRecordsCnt: cnt,
-                    allRecords: list,
-                    allRecordsTotalPage: Math.ceil(cnt / pageSize),
-                    allRecordsCurrentPage: page,
-                });
-                this.generateAllRecordsPageNumbers();
+  fetchOrbitRecords: function() {
+    apiGet('all-my-orbit-records', { limit: 1 }).then(result => {
+      this.setData({
+        orbitRecordsCount: result.total || 0,
+        latestOrbitRecord: result.records && result.records.length > 0 ? result.records[0] : null,
+      });
+    }).catch(err => {
+      console.error('Failed to fetch orbit records:', err);
+    });
+  },
+
+  fetchChampionshipRecords: function() {
+    apiGet('all-my-championships-records', { limit: 1 }).then(result => {
+      this.setData({
+        championshipRecordsCount: result.total || 0,
+        latestChampionshipRecord: result.records && result.records.length > 0 ? result.records[0] : null,
+      });
+    }).catch(err => {
+      console.error('Failed to fetch championship records:', err);
+    });
+  },
+
+  onEditNickname: function() {
+    this.setData({
+      editingNickname: true
+    });
+  },
+
+  onCancelEditNickname: function() {
+    this.setData({
+      editingNickname: false,
+      newNickname: ''
+    });
+  },
+
+  onNicknameInput: function (e) {
+    this.setData({
+      newNickname: e.detail.value,
+    });
+  },
+
+  onUpdateNickname: function () {
+    if (this.data.newNickname.trim() === '') {
+      this.showToast('昵称不能为空', '', 2000);
+      return;
+    }
+
+    apiGet('user').then(user => {
+      if (user) {
+        // User exists, so update
+        apiPut('user', { nickname: this.data.newNickname })
+          .then(() => {
+            this.handleUpdateSuccess();
+          })
+          .catch(err => {
+            this.showToast('更新失败', err.data.error, 2000);
+          });
+      } 
+    }).catch(err => {
+        if (err.statusCode === 404) {
+            // User does not exist, so create
+            apiPost('user', { nickname: this.data.newNickname })
+            .then(() => {
+                this.handleUpdateSuccess();
             })
             .catch(err => {
-                this.showToast("获取失败", err, 5000)
+                this.showToast('创建失败', err.data.error, 2000);
             });
-    },
-
-    getRecords(page) {
-        const {
-            levelType,
-            levelMode,
-            levelNumber,
-            levelPart,
-            pageSize
-        } = this.data;
-        if (!Number.isInteger(page)) {
-            page = 1;
-        }
-        const type = levelType;
-        const mode = levelMode;
-        const level = levelPart ? levelNumber + '_' + levelPart : levelNumber;
-        const offset = (page - 1) * pageSize;
-        this.setData({
-            recordsVisible: true,
-            allRecordsVisible: false,
-            currentPage: page
-        });
-        apiGet('my-orbit-record', {
-                type,
-                mode,
-                level,
-                offset
-            })
-            .then(result => {
-                const cnt = result.total || 0;
-                const list = result.records || [];
-                this.setData({
-                    totalPage: Math.ceil(cnt / pageSize),
-                    records: list
-                });
-                this.generatePageNumbers();
-            })
-            .catch(err => {
-                this.showToast("获取失败", err, 5000)
-            });
-    },
-
-    onPageChange: function (e) {
-        const selectedPage = e.currentTarget.dataset.page;
-
-        if (selectedPage == this.data.currentPage) {
-            return;
-        }
-
-        this.setData({
-            currentPage: selectedPage
-        });
-
-        this.getRecords(selectedPage);
-    },
-    
-    onAllRecordsPageChange: function (e) {
-        const selectedPage = e.currentTarget.dataset.page;
-
-        if (selectedPage == this.data.allRecordsCurrentPage) {
-            return;
-        }
-
-        this.getAllRecords(selectedPage);
-    },
-
-    generatePageNumbers: function () {
-        const totalPage = this.data.totalPage;
-        const currentPage = this.data.currentPage;
-        const pages = [];
-
-        if (totalPage <= 5) {
-            for (let i = 1; i <= totalPage; i++) {
-                pages.push(i);
-            }
         } else {
-            let startPage, endPage;
-
-            if (currentPage <= 3) {
-                startPage = 1;
-                endPage = 5;
-            } else if (currentPage > totalPage - 2) {
-                startPage = totalPage - 4;
-                endPage = totalPage;
-            } else {
-                startPage = currentPage - 2;
-                endPage = currentPage + 2;
-            }
-
-            for (let i = startPage; i <= endPage; i++) {
-                pages.push(i);
-            }
+            this.showToast('获取用户信息失败', err.data.error, 2000);
         }
+    });
+  },
 
-        this.setData({
-            pages: pages
-        });
-    },
+  handleUpdateSuccess: function() {
+    this.setData({
+      nickname: this.data.newNickname,
+      newNickname: '', // Clear the input after update
+      editingNickname: false
+    });
+    wx.setStorageSync('nickname', this.data.newNickname);
+    this.showToast('更新成功', '昵称已更新', 2000);
+  },
 
-    generateAllRecordsPageNumbers: function () {
-        const totalPage = this.data.allRecordsTotalPage;
-        const currentPage = this.data.allRecordsCurrentPage;
-        const pages = [];
+  showToast(header, body, delay) {
+    this.selectComponent('#toast').show(header, body, delay);
+  },
 
-        if (totalPage <= 5) {
-            for (let i = 1; i <= totalPage; i++) {
-                pages.push(i);
-            }
-        } else {
-            let startPage, endPage;
-
-            if (currentPage <= 3) {
-                startPage = 1;
-                endPage = 5;
-            } else if (currentPage > totalPage - 2) {
-                startPage = totalPage - 4;
-                endPage = totalPage;
-            } else {
-                startPage = currentPage - 2;
-                endPage = currentPage + 2;
-            }
-
-            for (let i = startPage; i <= endPage; i++) {
-                pages.push(i);
-            }
-        }
-
-        this.setData({
-            allRecordsPages: pages
-        });
-    },
-
-    showToast(header, body, delay) {
-        this.selectComponent('#toast').show(header, body, delay);
-    },
-
-    onLevelTypeChange(e) {
-        const type = e.detail.value;
-        this.setData({
-            levelType: type
-        });
-        if (type !== '开放') {
-            this.setData({ levelMode: '稳定' });
-        } else {
-            this.setData({ levelMode: '' });
-        }
-    },
-
-    onLevelModeChange(e) {
-        const mode = e.detail.value;
-        this.setData({
-            levelMode: mode
-        });
-    },
-
-    onLevelNumberInput(e) {
-        const number = e.detail.value;
-        this.setData({
-            levelNumber: number
-        });
-        this.validatePartDropdown();
-    },
-
-    onLevelPartChange(e) {
-        this.setData({
-            levelPart: e.detail.value
-        });
-    },
-
-    validatePartDropdown() {
-        const {
-            levelNumber
-        } = this.data;
-        const show = levelNumber && levelNumber % 10 === 0;
-        this.setData({
-            partVisible: show
-        });
-    },
-})
+  navigateToOrbit: function() {
+    wx.navigateTo({ url: '/pages/my-page-orbit/my-page-orbit' });
+  },
+});

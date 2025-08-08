@@ -1,7 +1,7 @@
 {
   "usingComponents": {
-      "svg": "/components/svg/svg",
-      "announcement": "/components/announcement/announcement",
-      "footer": "/components/footer/footer"
+    "svg": "/components/svg/svg",
+    "announcement": "/components/announcement/announcement",
+    "footer": "/components/footer/footer"
   }
 }

@@ -1,11 +1,11 @@
 {
-    "usingComponents": {
-        "custom-select": "/components/custom_select/custom_select",
-        "upload-form": "/components/upload_form/upload_form",
-        "record": "/components/record/record",
-        "svg": "/components/svg/svg",
-        "toast": "/components/toast/toast",
-        "announcement": "/components/announcement/announcement",
-        "footer": "/components/footer/footer"
-    }
+  "usingComponents": {
+    "custom-select": "/components/custom_select/custom_select",
+    "upload-form": "/components/upload_form/upload_form",
+    "record": "/components/record/record",
+    "svg": "/components/svg/svg",
+    "toast": "/components/toast/toast",
+    "announcement": "/components/announcement/announcement",
+    "footer": "/components/footer/footer"
+  }
 }

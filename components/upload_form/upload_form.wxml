@@ -1,79 +1,225 @@
 <view class="panel-inputs">
-    <view class="display-row">
-        <view class="w-50">
-            <input value="{{inputValues['hp']}}" placeholder="生命" type="digit" id="input-hp" class="form-control" data-key="hp" data-type="digit" bindinput="onInput" />
-        </view>
-        <view class="w-50">
-            <input value="{{inputValues['attack']}}" placeholder="攻击" type="digit" id="input-attack" class="form-control" data-key="attack" data-type="digit" bindinput="onInput" />
-        </view>
+  <view class="display-row">
+    <view class="w-50">
+      <input
+        value="{{inputValues['hp']}}"
+        placeholder="生命"
+        type="digit"
+        id="input-hp"
+        class="form-control"
+        data-key="hp"
+        data-type="digit"
+        bindinput="onInput"
+      />
     </view>
-    <view class="display-row">
-        <view class="w-50">
-            <input value="{{inputValues['defence']}}" placeholder="防御" type="digit" id="input-defence" class="form-control" data-key="defence" data-type="digit" bindinput="onInput" />
-        </view>
-        <view class="w-50">
-            <input value="{{inputValues['crit-rate']}}" placeholder="暴击" type="digit" id="input-crit-rate" class="form-control" data-key="crit-rate" data-type="digit" bindinput="onInput" />
-        </view>
+    <view class="w-50">
+      <input
+        value="{{inputValues['attack']}}"
+        placeholder="攻击"
+        type="digit"
+        id="input-attack"
+        class="form-control"
+        data-key="attack"
+        data-type="digit"
+        bindinput="onInput"
+      />
     </view>
-    <view class="display-row">
-        <view class="w-50">
-            <input value="{{inputValues['crit-dmg']}}" placeholder="暴伤" type="digit" id="input-crit-dmg" class="form-control" data-key="crit-dmg" data-type="digit" bindinput="onInput" />
-        </view>
-        <view class="w-50">
-            <input value="{{inputValues['oath-boost']}}" placeholder="誓约增伤" type="digit" id="input-oath-boost" class="form-control" data-key="oath-boost" data-type="digit" bindinput="onInput" />
-        </view>
+  </view>
+  <view class="display-row">
+    <view class="w-50">
+      <input
+        value="{{inputValues['defence']}}"
+        placeholder="防御"
+        type="digit"
+        id="input-defence"
+        class="form-control"
+        data-key="defence"
+        data-type="digit"
+        bindinput="onInput"
+      />
     </view>
-    <view class="display-row">
-        <view class="w-50">
-            <input value="{{inputValues['oath-regen']}}" placeholder="誓约回能" type="digit" id="input-oath-regen" class="form-control" data-key="oath-regen" data-type="digit" bindinput="onInput" />
-        </view>
-        <view class="w-50">
-            <input value="{{inputValues['energy-regen']}}" placeholder="加速回能" type="digit" id="input-energy-regen" class="form-control" data-key="energy-regen" data-type="digit" bindinput="onInput" />
-        </view>
+    <view class="w-50">
+      <input
+        value="{{inputValues['crit-rate']}}"
+        placeholder="暴击"
+        type="digit"
+        id="input-crit-rate"
+        class="form-control"
+        data-key="crit-rate"
+        data-type="digit"
+        bindinput="onInput"
+      />
     </view>
-    <view class="display-row">
-        <view class="w-50">
-            <input value="{{inputValues['weaken-boost']}}" placeholder="虚弱增伤" type="digit" id="input-weaken-boost" class="form-control" data-key="weaken-boost" data-type="digit" bindinput="onInput" />
-        </view>
-        <view class="w-50">
-            <input value="{{inputValues['card-total-level']}}" placeholder="卡总等级" type="digit" id="input-card-total-level" class="form-control" data-key="card-total-level" data-type="digit" bindinput="onInput" />
-        </view>
+  </view>
+  <view class="display-row">
+    <view class="w-50">
+      <input
+        value="{{inputValues['crit-dmg']}}"
+        placeholder="暴伤"
+        type="digit"
+        id="input-crit-dmg"
+        class="form-control"
+        data-key="crit-dmg"
+        data-type="digit"
+        bindinput="onInput"
+      />
     </view>
-    <view class="display-row">
-        <view class="w-50">
-            <custom-select options="{{getMatchingOptions}}" title="对谱" selected="{{inputValues['matching']}}" data-key="matching" bind:select="onSelectChange"></custom-select>
-        </view>
-        <view class="w-50">
-            <custom-select options="{{getMatchingBuffOptions}}" title="对谱加成" selected="{{inputValues['matching-buff']}}" data-key="matching-buff" bind:select="onSelectChange"></custom-select>
-        </view>
+    <view class="w-50">
+      <input
+        value="{{inputValues['oath-boost']}}"
+        placeholder="誓约增伤"
+        type="digit"
+        id="input-oath-boost"
+        class="form-control"
+        data-key="oath-boost"
+        data-type="digit"
+        bindinput="onInput"
+      />
     </view>
-    <view class="display-row">
-        <view class="w-50">
-            <custom-select options="{{getPartnerOptions}}" title="搭档" selected="{{selectedPartner}}" bind:select="onPartnerChange"></custom-select>
-        </view>
-        <view class="w-50">
-            <custom-select options="{{getPartnerIdentityOptions}}" title="搭档身份" selected="{{inputValues['partner-identity']}}" data-key="partner-identity" bind:select="onSelectChange"></custom-select>
-        </view>
+  </view>
+  <view class="display-row">
+    <view class="w-50">
+      <input
+        value="{{inputValues['oath-regen']}}"
+        placeholder="誓约回能"
+        type="digit"
+        id="input-oath-regen"
+        class="form-control"
+        data-key="oath-regen"
+        data-type="digit"
+        bindinput="onInput"
+      />
     </view>
-    <view class="display-row">
-        <view class="w-50">
-            <custom-select options="{{getSunCardOptions}}" title="日卡" selected="{{inputValues['sun-card']}}" data-key="sun-card" bind:select="onSelectChange"></custom-select>
-        </view>
-        <view class="w-50">
-            <custom-select options="{{getStageOptions}}" title="阶数" selected="{{inputValues['stage']}}" data-key="stage" bind:select="onSelectChange"></custom-select>
-        </view>
+    <view class="w-50">
+      <input
+        value="{{inputValues['energy-regen']}}"
+        placeholder="加速回能"
+        type="digit"
+        id="input-energy-regen"
+        class="form-control"
+        data-key="energy-regen"
+        data-type="digit"
+        bindinput="onInput"
+      />
     </view>
-    <view class="display-row">
-        <view class="w-50">
-            <custom-select options="{{getWeaponOptions}}" title="武器" selected="{{inputValues['weapon']}}" data-key="weapon" bind:select="onSelectChange"></custom-select>
-        </view>
-        <view class="w-50">
-            <custom-select wx:if="{{battleType === 'championships'}}" options="{{getChampionshipsBuffOptions}}" title="赛季加成" selected="{{inputValues['championships-buff']}}" data-key="championships-buff" bind:select="onSelectChange"></custom-select>
-        </view>
+  </view>
+  <view class="display-row">
+    <view class="w-50">
+      <input
+        value="{{inputValues['weaken-boost']}}"
+        placeholder="虚弱增伤"
+        type="digit"
+        id="input-weaken-boost"
+        class="form-control"
+        data-key="weaken-boost"
+        data-type="digit"
+        bindinput="onInput"
+      />
     </view>
-    <view class="display-row">
-        <view class="w-100">
-            <input value="{{inputValues['note']}}" placeholder="备注，如：剩x秒等。限20字" id="input-note" class="form-control" data-key="note" data-type="text" bindinput="onInput"/>
-        </view>
+    <view class="w-50">
+      <input
+        value="{{inputValues['card-total-level']}}"
+        placeholder="卡总等级"
+        type="digit"
+        id="input-card-total-level"
+        class="form-control"
+        data-key="card-total-level"
+        data-type="digit"
+        bindinput="onInput"
+      />
     </view>
+  </view>
+  <view class="display-row">
+    <view class="w-50">
+      <custom-select
+        options="{{getMatchingOptions}}"
+        title="对谱"
+        selected="{{inputValues['matching']}}"
+        data-key="matching"
+        bind:select="onSelectChange"
+      ></custom-select>
+    </view>
+    <view class="w-50">
+      <custom-select
+        options="{{getMatchingBuffOptions}}"
+        title="对谱加成"
+        selected="{{inputValues['matching-buff']}}"
+        data-key="matching-buff"
+        bind:select="onSelectChange"
+      ></custom-select>
+    </view>
+  </view>
+  <view class="display-row">
+    <view class="w-50">
+      <custom-select
+        options="{{getPartnerOptions}}"
+        title="搭档"
+        selected="{{selectedPartner}}"
+        bind:select="onPartnerChange"
+      ></custom-select>
+    </view>
+    <view class="w-50">
+      <custom-select
+        options="{{getPartnerIdentityOptions}}"
+        title="搭档身份"
+        selected="{{inputValues['partner-identity']}}"
+        data-key="partner-identity"
+        bind:select="onSelectChange"
+      ></custom-select>
+    </view>
+  </view>
+  <view class="display-row">
+    <view class="w-50">
+      <custom-select
+        options="{{getSunCardOptions}}"
+        title="日卡"
+        selected="{{inputValues['sun-card']}}"
+        data-key="sun-card"
+        bind:select="onSelectChange"
+      ></custom-select>
+    </view>
+    <view class="w-50">
+      <custom-select
+        options="{{getStageOptions}}"
+        title="阶数"
+        selected="{{inputValues['stage']}}"
+        data-key="stage"
+        bind:select="onSelectChange"
+      ></custom-select>
+    </view>
+  </view>
+  <view class="display-row">
+    <view class="w-50">
+      <custom-select
+        options="{{getWeaponOptions}}"
+        title="武器"
+        selected="{{inputValues['weapon']}}"
+        data-key="weapon"
+        bind:select="onSelectChange"
+      ></custom-select>
+    </view>
+    <view class="w-50">
+      <custom-select
+        wx:if="{{battleType === 'championships'}}"
+        options="{{getChampionshipsBuffOptions}}"
+        title="赛季加成"
+        selected="{{inputValues['championships-buff']}}"
+        data-key="championships-buff"
+        bind:select="onSelectChange"
+      ></custom-select>
+    </view>
+  </view>
+  <view class="display-row">
+    <view class="w-100">
+      <input
+        value="{{inputValues['note']}}"
+        placeholder="备注，如：剩x秒等。限20字"
+        id="input-note"
+        class="form-control"
+        data-key="note"
+        data-type="text"
+        bindinput="onInput"
+      />
+    </view>
+  </view>
 </view>

@@ -1,5 +1,12 @@
 {
   "dependencies": {
     "miniprogram-computed": "^7.0.0"
+  },
+  "devDependencies": {
+    "@babel/parser": "^7.28.0",
+    "prettier": "^3.6.2"
+  },
+  "scripts": {
+    "format": "prettier --write \"**/*.{js,json,wxss,wxml}\""
   }
 }
