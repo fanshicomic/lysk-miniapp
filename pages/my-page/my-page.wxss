@@ -36,7 +36,6 @@ h2 {
 .greeting {
   display: flex;
   font-size: 18px;
-  margin-bottom: 20px;
   justify-content: center;
 }
 
@@ -46,6 +45,7 @@ h2 {
 }
 
 .nickname-update {
+  margin-top: 20px;
   display: flex;
   width: 100%;
 }

@@ -29,13 +29,24 @@ Page({
   },
 
   onShow() {
-    // Check if a token exists. If not, show the login panel.
-    const token = wx.getStorageSync('token');
-    if (!token) {
-      this.setData({ showLoginPanel: true });
-    } else {
-      this.setData({ showLoginPanel: false });
-    }
+    apiGet('user')
+      .then((user) => {
+        if (user) {
+          this.setData({ showLoginPanel: false });
+        }
+      })
+      .catch((err) => {
+        if (err.statusCode === 401 || err.statusCode === 404) {
+          this.setData({ showLoginPanel: true });
+        } else {
+          console.error('An unexpected error occurred:', err);
+          // Optionally, show a generic error toast to the user
+          wx.showToast({
+            title: '发生未知错误',
+            icon: 'none',
+          });
+        }
+      });
   },
 
   handleLogin() {
