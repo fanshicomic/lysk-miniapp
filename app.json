@@ -4,7 +4,8 @@
     "pages/orbit/orbit",
     "pages/championships/championships",
     "pages/my-page/my-page",
-    "pages/my-page-orbit/my-page-orbit"
+    "pages/my-page-orbit/my-page-orbit",
+    "pages/my-page-championships/my-page-championships"
   ],
   "window": {
     "backgroundTextStyle": "light",

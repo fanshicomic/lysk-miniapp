@@ -126,4 +126,26 @@ async function apiUploadFile(endpoint, filePath, fileName) {
   });
 }
 
-export { apiGet, apiPost, apiPut, apiUploadFile };
+function getChampionshipStartDate(dateString) {
+  const startDate = new Date('2025-06-02T00:00:00Z');
+  const givenDate = new Date(dateString);
+
+  // Calculate the difference in milliseconds
+  const diff = givenDate.getTime() - startDate.getTime();
+
+  // Calculate the number of 14-day periods
+  const fourteenDaysInMillis = 14 * 24 * 60 * 60 * 1000;
+  const periods = Math.floor(diff / fourteenDaysInMillis);
+
+  // Calculate the start date of the round
+  const roundStartDate = new Date(startDate.getTime() + periods * fourteenDaysInMillis);
+
+  // Format the date to YYYY-MM-DD
+  const year = roundStartDate.getFullYear();
+  const month = String(roundStartDate.getMonth() + 1).padStart(2, '0');
+  const day = String(roundStartDate.getDate()).padStart(2, '0');
+
+  return `${year}-${month}-${day}`;
+}
+
+export { apiGet, apiPost, apiPut, apiUploadFile, getChampionshipStartDate };

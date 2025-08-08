@@ -26,7 +26,7 @@
         <text>查看全部{{orbitRecordsCount}}条记录></text>
       </view>
     </view>
-    <view class="section-championships">
+    <view class="section-championships" bindtap="navigateToChampionships">
       <view class="hr" />
       <text class="h2">锦标赛记录</text>
       <record record="{{latestChampionshipRecord}}" wx:if="{{latestChampionshipRecord}}"></record>

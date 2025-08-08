@@ -137,4 +137,8 @@ Page({
   navigateToOrbit: function() {
     wx.navigateTo({ url: '/pages/my-page-orbit/my-page-orbit' });
   },
+
+  navigateToChampionships: function() {
+    wx.navigateTo({ url: '/pages/my-page-championships/my-page-championships' });
+  },
 });

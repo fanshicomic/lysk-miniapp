@@ -1,4 +1,5 @@
 import { DROPDOWN_VALUES } from '../../utils/constants.js';
+import { getChampionshipStartDate } from '../../utils/util.js'
 
 const computedBehavior = require('miniprogram-computed').behavior;
 
@@ -38,6 +39,11 @@ Component({
         label += ' ' + data.record['模式'];
       }
       label += ' ' + level.replace(/_/g, ' ');
+
+      if (data.record['加成'] != '') {
+        let time = getChampionshipStartDate(data.record['时间'])
+        label = time + '期 ' + label
+      }
       return label;
     },
     getSetCardColorMap(data) {
