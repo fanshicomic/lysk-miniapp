@@ -1,12 +1,27 @@
 <view class="main-content">
   <view class="back-button" bindtap="onBack">
-    <svg src="/assets/back.svg" color="lightgrey" width="13px" height="13px"></svg>
+    <svg
+      src="/assets/back.svg"
+      color="lightgrey"
+      width="13px"
+      height="13px"
+    ></svg>
   </view>
   <view class="content-wrapper">
     <view class="section-greeting">
       <text class="h1">个人档案室</text>
       <view class="hr" />
-      <view class="greeting">你好，{{nickname}} <svg class="edit-pencil" src="/assets/pencil.svg" color="lightgrey" width="20px" height="20px" bindtap="onEditNickname"></svg></view>
+      <view class="greeting"
+        >你好，{{nickname}}
+        <svg
+          class="edit-pencil"
+          src="/assets/pencil.svg"
+          color="lightgrey"
+          width="20px"
+          height="20px"
+          bindtap="onEditNickname"
+        ></svg
+      ></view>
       <view class="nickname-update" wx:if="{{editingNickname}}">
         <input
           class="nickname-input"
@@ -14,14 +29,29 @@
           bindinput="onNicknameInput"
           maxlength="10"
         />
-        <svg src="/assets/check.svg" color="lightgrey" width="34px" height="34px" bindtap="onUpdateNickname"></svg>
-        <svg src="/assets/x.svg" color="lightgrey" width="34px" height="34px" bindtap="onCancelEditNickname"></svg>
+        <svg
+          src="/assets/check.svg"
+          color="lightgrey"
+          width="34px"
+          height="34px"
+          bindtap="onUpdateNickname"
+        ></svg>
+        <svg
+          src="/assets/x.svg"
+          color="lightgrey"
+          width="34px"
+          height="34px"
+          bindtap="onCancelEditNickname"
+        ></svg>
       </view>
     </view>
     <view class="section-orbit" bindtap="navigateToOrbit">
       <view class="hr" />
       <text class="h2">轨道记录</text>
-      <record record="{{latestOrbitRecord}}" wx:if="{{latestOrbitRecord}}"></record>
+      <record
+        record="{{latestOrbitRecord}}"
+        wx:if="{{latestOrbitRecord}}"
+      ></record>
       <view class="record-summary">
         <text>查看全部{{orbitRecordsCount}}条记录></text>
       </view>
@@ -29,7 +59,10 @@
     <view class="section-championships" bindtap="navigateToChampionships">
       <view class="hr" />
       <text class="h2">锦标赛记录</text>
-      <record record="{{latestChampionshipRecord}}" wx:if="{{latestChampionshipRecord}}"></record>
+      <record
+        record="{{latestChampionshipRecord}}"
+        wx:if="{{latestChampionshipRecord}}"
+      ></record>
       <view class="record-summary">
         <text>查看全部{{championshipRecordsCount}}条记录></text>
       </view>

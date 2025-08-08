@@ -5,7 +5,7 @@ const app = getApp();
 Page({
   data: {
     title: '深空面板助手',
-    subTitle: 'Deepspace Battle Helper V2.2.0',
+    subTitle: 'Deepspace Battle Helper V2.3.0',
     blobs: [],
     showToast: false,
     userInfo: null, // We can keep this for potential future use

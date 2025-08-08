@@ -138,7 +138,9 @@ function getChampionshipStartDate(dateString) {
   const periods = Math.floor(diff / fourteenDaysInMillis);
 
   // Calculate the start date of the round
-  const roundStartDate = new Date(startDate.getTime() + periods * fourteenDaysInMillis);
+  const roundStartDate = new Date(
+    startDate.getTime() + periods * fourteenDaysInMillis
+  );
 
   // Format the date to YYYY-MM-DD
   const year = roundStartDate.getFullYear();

@@ -40,8 +40,8 @@ h2 {
 }
 
 .edit-pencil {
-    margin-top: 3px;
-    margin-left: 10px;
+  margin-top: 3px;
+  margin-left: 10px;
 }
 
 .nickname-update {
@@ -58,23 +58,23 @@ h2 {
 }
 
 .btn {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    color: rgba(255, 255, 255, 0.6);
-  }
+  text-align: center;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+}
 
 .update-button {
-    margin-left: 10px;
-    padding: 0;
-    width: 34px;
-    height: 34px;
-    border-radius: 34px;
-    background: cornflowerblue;
+  margin-left: 10px;
+  padding: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 34px;
+  background: cornflowerblue;
 }
 
 .section-orbit {
@@ -89,8 +89,8 @@ h2 {
 }
 
 .record-summary {
-    font-size: 12px;
-    color: #888;
-    margin-top: 10px;
-    text-align: right;
+  font-size: 12px;
+  color: #888;
+  margin-top: 10px;
+  text-align: right;
 }

@@ -38,15 +38,14 @@ Component({
 
     _getAnnouncementLatestUpdates() {
       return `最新更新
+            - 2025-08-08：个人档案室新改版。用户可设置昵称，记录有备注时会显示个人昵称
             - 2025-08-05：支持卡总等级与备注
             - 2025-07-22：支持沈星回新搭档与日卡
-            - 2025-07-07：小程序版支持
-            - 2025-07-06：支持识图功能
-            - 2025-07-05：开放档案室。登录后上传记录会与微信账号绑定，个人轨道记录可从档案室查看`;
+            - 2025-07-07：小程序版支持`;
     },
 
     showAnnouncement() {
-      const announcementKey = '2.2.0';
+      const announcementKey = '2.3.0';
       if (wx.getStorageSync(announcementKey)) {
         return null;
       }

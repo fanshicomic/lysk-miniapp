@@ -121,6 +121,9 @@
     class="row"
     wx:if="{{record['备注'] != '<nil>' && record['备注'] != ''}}"
   >
-    <label class="note">{{record['nickname'] ? record['nickname'] + '说' : '备注'}}: {{record['备注']}}</label>
+    <label class="note"
+      >{{record['nickname'] ? record['nickname'] + '说' : '备注'}}:
+      {{record['备注']}}</label
+    >
   </view>
 </view>
