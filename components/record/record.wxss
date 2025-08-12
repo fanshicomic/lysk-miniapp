@@ -197,3 +197,26 @@
   border-color: #785d90;
   color: #785d90;
 }
+
+.record-container {
+  position: relative;
+}
+
+.admin-actions {
+  position: absolute;
+  top: 10px;
+  left: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.admin-action-edit,
+.admin-action-delete {
+  font-size: 12px;
+  color: #888;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 5px 8px;
+  border-radius: 0 10px 10px 0;
+}

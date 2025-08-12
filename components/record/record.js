@@ -30,6 +30,14 @@ Component({
         时间: '',
       },
     },
+    recordId: {
+      type: String,
+      value: ''
+    },
+    showAdminActions: {
+      type: Boolean,
+      value: false
+    }
   },
   computed: {
     getLevelDisplay(data) {
@@ -107,5 +115,12 @@ Component({
       return Math.round(Math.min(matchingBonus, 30) / 5);
     },
   },
-  methods: {},
+  methods: {
+    onEdit: function() {
+      this.triggerEvent('edit', { recordId: this.data.recordId });
+    },
+    onDelete: function() {
+      this.triggerEvent('delete', { recordId: this.data.recordId });
+    }
+  }
 });

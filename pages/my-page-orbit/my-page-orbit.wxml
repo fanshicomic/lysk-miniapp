@@ -58,7 +58,6 @@
     <view class="hr" />
     <!-- 展示最新记录 -->
     <view id="all-records-wrapper" wx:if="{{allRecordsVisible}}">
-      <text id="all-records-title" class="mt-5 h2">我的面板</text>
       <view class="total-cnt-row">
         我的轨道通关数据总量：<text id="total-db-records-cnt"
           >{{totalDbRecordsCnt > 0 ? totalDbRecordsCnt : '加载中'}}</text
@@ -66,7 +65,7 @@
       </view>
       <view id="all-records">
         <view class="record-wrapper" wx:for="{{allRecords}}" wx:key="index">
-          <record record="{{item}}"></record>
+          <record record="{{item}}" record-id="{{item.id}}" show-admin-actions="{{true}}"></record>
         </view>
       </view>
       <view id="all-records-pagination" wx:if="{{allRecordsTotalPage > 0}}">
@@ -83,10 +82,9 @@
     </view>
     <!-- 展示记录 -->
     <view id="records-wrapper" wx:if="{{recordsVisible}}">
-      <text id="records-title" class="mt-5 h2">关卡面板记录</text>
       <view id="records">
         <view class="record-wrapper" wx:for="{{records}}" wx:key="index">
-          <record record="{{item}}"></record>
+          <record record="{{item}}" record-id="{{item.id}}" show-admin-actions="{{true}}"></record>
         </view>
       </view>
       <view id="pagination" wx:if="{{totalPage > 0}}">
