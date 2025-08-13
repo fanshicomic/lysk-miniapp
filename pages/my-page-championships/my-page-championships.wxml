@@ -36,7 +36,7 @@
       </view>
       <view id="latest-records">
         <view class="record-wrapper" wx:for="{{latestRecords}}" wx:key="index">
-          <record record="{{item}}" record-id="{{item.id}}" show-admin-actions="{{true}}"></record>
+          <record record="{{item}}" record-id="{{item.id}}" show-admin-actions="{{true}}" bind:delete="handleDeleteRecord"></record>
         </view>
       </view>
     </view>
@@ -44,7 +44,7 @@
     <view id="records-wrapper" wx:if="{{recordsVisible}}">
       <view id="records">
         <view class="record-wrapper" wx:for="{{records}}" wx:key="index">
-          <record record="{{item}}" record-id="{{item.id}}" show-admin-actions="{{true}}"></record>
+          <record record="{{item}}" record-id="{{item.id}}" show-admin-actions="{{true}}" bind:delete="handleDeleteRecord"></record>
         </view>
       </view>
       <view id="pagination" wx:if="{{totalPage > 0}}">
