@@ -65,7 +65,7 @@
       </view>
       <view id="all-records">
         <view class="record-wrapper" wx:for="{{allRecords}}" wx:key="index">
-          <record record="{{item}}" record-id="{{item.id}}" show-admin-actions="{{true}}"></record>
+          <record record="{{item}}" record-id="{{item.id}}" show-admin-actions="{{true}}" bind:delete="handleDeleteRecord"></record>
         </view>
       </view>
       <view id="all-records-pagination" wx:if="{{allRecordsTotalPage > 0}}">
@@ -84,7 +84,7 @@
     <view id="records-wrapper" wx:if="{{recordsVisible}}">
       <view id="records">
         <view class="record-wrapper" wx:for="{{records}}" wx:key="index">
-          <record record="{{item}}" record-id="{{item.id}}" show-admin-actions="{{true}}"></record>
+          <record record="{{item}}" record-id="{{item.id}}" show-admin-actions="{{true}}" bind:delete="handleDeleteRecord"></record>
         </view>
       </view>
       <view id="pagination" wx:if="{{totalPage > 0}}">

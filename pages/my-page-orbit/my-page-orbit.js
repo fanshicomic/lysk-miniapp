@@ -1,6 +1,4 @@
-const { apiGet } = require('../../utils/util.js');
-
-const { LEVEL_TYPES } = require('../../utils/constants.js');
+const { apiGet, apiDelete } = require('../../utils/util.js');
 
 Page({
   data: {
@@ -224,6 +222,30 @@ Page({
     const show = levelNumber && levelNumber % 10 === 0;
     this.setData({
       partVisible: show,
+    });
+  },
+
+  handleDeleteRecord: function(e) {
+    const recordId = e.detail.recordId;
+    wx.showModal({
+      title: '确认删除',
+      content: '确定要删除这条记录吗？',
+      success: (res) => {
+        if (res.confirm) {
+          apiDelete(`orbit-record/${recordId}`)
+            .then(() => {
+              this.showToast('删除成功', '记录已成功删除', 2000);
+              if (this.data.allRecordsVisible) {
+                this.getAllRecords(this.data.allRecordsCurrentPage);
+              } else {
+                this.getRecords(this.data.currentPage);
+              }
+            })
+            .catch(err => {
+              this.showToast('删除失败', err.data.error, 2000);
+            });
+        }
+      }
     });
   },
 });

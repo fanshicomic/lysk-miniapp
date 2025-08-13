@@ -204,11 +204,11 @@
 
 .admin-actions {
   position: absolute;
-  top: 10px;
+  top: 12px;
   left: 100%;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
 }
 
 .admin-action-edit,

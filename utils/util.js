@@ -150,4 +150,29 @@ function getChampionshipStartDate(dateString) {
   return `${year}-${month}-${day}`;
 }
 
-export { apiGet, apiPost, apiPut, apiUploadFile, getChampionshipStartDate };
+async function apiDelete(endpoint) {
+  const token = wx.getStorageSync('token');
+  const headers = { 'Content-Type': 'application/json' };
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
+
+  const url = `${app.globalData.serverHost}/${endpoint}`;
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url,
+      method: 'DELETE',
+      header: headers,
+      success: (res) => {
+        if (res.statusCode >= 200 && res.statusCode < 300) {
+          resolve(res.data);
+        } else {
+          reject(res);
+        }
+      },
+      fail: reject,
+    });
+  });
+}
+
+export { apiGet, apiPost, apiPut, apiDelete, apiUploadFile, getChampionshipStartDate };
