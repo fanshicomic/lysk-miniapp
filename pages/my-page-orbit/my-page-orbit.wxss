@@ -38,6 +38,8 @@ h2 {
 }
 
 .btn {
+  font-size: 0.95rem;
+  padding: 8px;
   text-align: center;
   background: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -77,11 +79,6 @@ h2 {
   color: rgba(255, 255, 255, 0.6);
 }
 
-.btn {
-  font-size: 0.95rem;
-  padding: 8px;
-}
-
 .wx-1 {
   margin-right: 0.25rem;
   margin-left: 0.25rem;
@@ -97,20 +94,17 @@ h2 {
   color: inherit;
 }
 
-.upload-action-btn {
+.cancel-btn {
   border: 0;
-  background-color: palevioletred;
 }
-.upload-action-btn:hover,
-.upload-action-btn:focus {
-  background-color: palevioletred;
+.cancel-btn:hover,
+.cancel-btn:focus {
   color: inherit;
 }
 
 .submit-btn {
   border: 0;
   background-color: darkslateblue;
-  margin-top: 20px;
 }
 .submit-btn:hover,
 .submit-btn:focus {

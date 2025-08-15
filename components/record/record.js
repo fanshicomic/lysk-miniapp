@@ -1,5 +1,5 @@
 import { DROPDOWN_VALUES } from '../../utils/constants.js';
-import { getChampionshipStartDate } from '../../utils/util.js';
+import { getChampionshipStartDate } from '../../utils/record_helper.js';
 
 const computedBehavior = require('miniprogram-computed').behavior;
 
@@ -121,6 +121,6 @@ Component({
     },
     onDelete: function() {
       this.triggerEvent('delete', { recordId: this.data.recordId });
-    }
+    },
   }
 });

@@ -1,4 +1,4 @@
-<view class="main-content">
+<scroll-view class="main-content" scroll-y="true" scroll-top="{{scrollTop}}">
   <view class="back-button" bindtap="onBack">
     <svg src="/assets/back.svg" color="white" width="13px" height="13px"></svg>
   </view>
@@ -55,6 +55,16 @@
         获取记录
       </button>
     </view>
+
+    <view wx:if="{{editFormVisible}}">
+      <view class="hr" />
+      <upload-form id="upload-form" initial-data="{{recordToEdit}}" battle-type="orbit"></upload-form>
+      <view class="display-row">
+        <button class="btn cancel-btn w-50" bindtap="handleCancelEdit">取消</button>
+        <button class="btn submit-btn w-50" bindtap="handleUpdateRecord">更新记录</button>
+      </view>
+    </view>
+
     <view class="hr" />
     <!-- 展示最新记录 -->
     <view id="all-records-wrapper" wx:if="{{allRecordsVisible}}">
@@ -65,7 +75,7 @@
       </view>
       <view id="all-records">
         <view class="record-wrapper" wx:for="{{allRecords}}" wx:key="index">
-          <record record="{{item}}" record-id="{{item.id}}" show-admin-actions="{{true}}" bind:delete="handleDeleteRecord"></record>
+          <record record="{{item}}" record-id="{{item.id}}" show-admin-actions="{{true}}" bind:delete="handleDeleteRecord" bind:edit="handleEditRecord"></record>
         </view>
       </view>
       <view id="all-records-pagination" wx:if="{{allRecordsTotalPage > 0}}">
@@ -84,7 +94,7 @@
     <view id="records-wrapper" wx:if="{{recordsVisible}}">
       <view id="records">
         <view class="record-wrapper" wx:for="{{records}}" wx:key="index">
-          <record record="{{item}}" record-id="{{item.id}}" show-admin-actions="{{true}}" bind:delete="handleDeleteRecord"></record>
+          <record record="{{item}}" record-id="{{item.id}}" show-admin-actions="{{true}}" bind:delete="handleDeleteRecord" bind:edit="handleEditRecord"></record>
         </view>
       </view>
       <view id="pagination" wx:if="{{totalPage > 0}}">
@@ -102,4 +112,4 @@
     <toast id="toast"></toast>
   </view>
   <footer />
-</view>
+</scroll-view>

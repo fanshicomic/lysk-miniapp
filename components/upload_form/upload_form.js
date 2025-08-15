@@ -65,6 +65,36 @@ Component({
       type: String,
       obeserver: 'onPartnerChange',
     },
+    initialData: {
+      type: Object,
+      observer: function(newData) {
+        if (newData) {
+          this.setData({
+            inputValues: {
+              hp: newData.生命,
+              attack: newData.攻击,
+              defence: newData.防御,
+              'crit-rate': newData.暴击,
+              'crit-dmg': newData.暴伤,
+              'oath-boost': newData.誓约增伤,
+              'oath-regen': newData.誓约回能,
+              'energy-regen': newData.加速回能,
+              'weaken-boost': newData.虚弱增伤,
+              matching: newData.对谱,
+              'matching-buff': newData.对谱加成,
+              'partner-identity': newData.搭档身份,
+              'sun-card': newData.日卡,
+              stage: this.matchStageFromBEToFE(newData.阶数),
+              weapon: newData.武器,
+              'championships-buff': newData.加成,
+              'card-total-level': newData.卡总等级,
+              note: newData.备注,
+            },
+            selectedPartner: this.matchPartner(newData.搭档身份)
+          });
+        }
+      }
+    }
   },
 
   data: {
@@ -163,6 +193,34 @@ Component({
       let res = this.data.inputValues;
       res['partner'] = this.data.selectedPartner;
       return res;
+    },
+
+    matchStageFromBEToFE(stage) {
+        let stageMap = {
+            "I": "I (零阶)",
+            "II": "II (一阶)",
+            "III": "III (二阶)",
+            "IV": "IV (三阶)",
+        };
+
+        return stageMap[stage];
+    },
+
+    matchPartner(partnerIdentity) {
+      const partners = {
+        '沈星回': DROPDOWN_VALUES['沈星回搭档'],
+        '黎深': DROPDOWN_VALUES['黎深搭档'],
+        '祁煜': DROPDOWN_VALUES['祁煜搭档'],
+        '秦彻': DROPDOWN_VALUES['秦彻搭档'],
+        '夏以昼': DROPDOWN_VALUES['夏以昼搭档'],
+      };
+
+      for (const partner in partners) {
+        if (partners[partner].includes(partnerIdentity)) {
+          return partner;
+        }
+      }
+      return ''; // Return empty string if no match is found
     },
   },
 

@@ -1,4 +1,5 @@
 const { apiGet, apiPost, apiUploadFile } = require('../../utils/util.js');
+const { mapOrbitRecordData } = require('../../utils/record_helper.js');
 
 const { LEVEL_TYPES } = require('../../utils/constants.js');
 
@@ -285,36 +286,7 @@ Page({
     const uploadForm = this.selectComponent('#upload-form');
     if (uploadForm) {
       const inputData = uploadForm.getInputData();
-      const { levelType, levelMode, levelNumber, levelPart } = this.data;
-      const level = levelPart ? `${levelNumber}_${levelPart}` : levelNumber;
-      let stage = inputData['stage'];
-      if (stage !== '无套装') {
-        stage = stage.substring(0, stage.length - 5);
-      }
-      const data = {
-        生命: inputData['hp'],
-        攻击: inputData['attack'],
-        防御: inputData['defence'],
-        暴击: inputData['crit-rate'],
-        暴伤: inputData['crit-dmg'],
-        誓约增伤: inputData['oath-boost'],
-        誓约回能: inputData['oath-regen'],
-        加速回能: inputData['energy-regen'],
-        虚弱增伤: inputData['weaken-boost'],
-        对谱: inputData['matching'],
-        对谱加成: inputData['matching-buff'],
-        搭档: inputData['partner'],
-        搭档身份: inputData['partner-identity'],
-        日卡: inputData['sun-card'],
-        阶数: stage,
-        武器: inputData['weapon'],
-        卡总等级: inputData['card-total-level'],
-        备注: inputData['note'],
-        关卡: levelType,
-        模式: levelMode,
-        关数: level,
-        时间: new Date().toISOString(),
-      };
+      const data = mapOrbitRecordData(inputData, this.data);
 
       apiPost('orbit-record', data)
         .then((result) => {
