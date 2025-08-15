@@ -97,6 +97,24 @@ h2 {
   color: inherit;
 }
 
+.cancel-btn {
+  border: 0;
+}
+.cancel-btn:hover,
+.cancel-btn:focus {
+  color: inherit;
+}
+
+.submit-btn {
+  border: 0;
+  background-color: darkslateblue;
+}
+.submit-btn:hover,
+.submit-btn:focus {
+  background-color: darkslateblue;
+  color: inherit;
+}
+
 .total-cnt-row {
   font-size: small;
   text-align: center;

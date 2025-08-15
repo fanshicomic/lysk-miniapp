@@ -1,5 +1,5 @@
 const { apiGet, apiPost, apiUploadFile } = require('../../utils/util.js');
-const { mapOrbitRecordData } = require('../../utils/record_helper.js');
+const { mapRecordData } = require('../../utils/record_helper.js');
 
 const { LEVEL_TYPES } = require('../../utils/constants.js');
 
@@ -286,7 +286,7 @@ Page({
     const uploadForm = this.selectComponent('#upload-form');
     if (uploadForm) {
       const inputData = uploadForm.getInputData();
-      const data = mapOrbitRecordData(inputData, this.data);
+      const data = mapRecordData(inputData, this.data, 'orbit');
 
       apiPost('orbit-record', data)
         .then((result) => {

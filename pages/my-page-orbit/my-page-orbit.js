@@ -1,5 +1,5 @@
 const { apiGet, apiDelete, apiPut } = require('../../utils/util.js');
-const { mapOrbitRecordData } = require('../../utils/record_helper.js');
+const { mapRecordData } = require('../../utils/record_helper.js');
 
 Page({
   data: {
@@ -267,7 +267,7 @@ Page({
     if (uploadForm) {
       const inputData = uploadForm.getInputData();
       const recordId = this.data.recordToEdit.id;
-      const data = mapOrbitRecordData(inputData, this.data.recordToEdit);
+      const data = mapRecordData(inputData, this.data.recordToEdit, 'orbit');
 
       apiPut(`orbit-record/${recordId}`, data)
         .then(() => {

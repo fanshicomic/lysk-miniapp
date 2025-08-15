@@ -22,14 +22,13 @@ function getChampionshipStartDate(dateString) {
   return `${year}-${month}-${day}`;
 }
 
-function mapOrbitRecordData(inputData, recordDetails) {
-  const { levelType, levelMode, levelNumber, levelPart } = recordDetails;
-  const level = levelPart ? `${levelNumber}_${levelPart}` : levelNumber;
+function mapRecordData(inputData, recordDetails, battleType) {
   let stage = inputData['stage'];
   if (stage && stage !== '无套装') {
     stage = stage.substring(0, stage.length - 5);
   }
-  return {
+
+  const baseData = {
     生命: inputData['hp'],
     攻击: inputData['attack'],
     防御: inputData['defence'],
@@ -48,11 +47,28 @@ function mapOrbitRecordData(inputData, recordDetails) {
     武器: inputData['weapon'],
     卡总等级: inputData['card-total-level'],
     备注: inputData['note'],
-    关卡: levelType,
-    模式: levelMode,
-    关数: level,
     时间: new Date().toISOString(),
   };
+
+  if (battleType === 'orbit') {
+    const { levelType, levelMode, levelNumber, levelPart } = recordDetails;
+    const level = levelPart ? `${levelNumber}_${levelPart}` : levelNumber;
+    return {
+      ...baseData,
+      关卡: levelType,
+      模式: levelMode,
+      关数: level,
+    };
+  } else if (battleType === 'championships') {
+    const { levelType } = recordDetails;
+    return {
+      ...baseData,
+      关卡: levelType,
+      加成: inputData['championships-buff'],
+    };
+  }
+
+  return baseData;
 }
 
-export { getChampionshipStartDate, mapOrbitRecordData };
+export { getChampionshipStartDate, mapRecordData };

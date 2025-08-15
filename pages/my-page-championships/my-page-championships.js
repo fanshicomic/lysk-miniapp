@@ -1,4 +1,5 @@
-const { apiGet, apiDelete } = require('../../utils/util.js');
+const { apiGet, apiDelete, apiPut } = require('../../utils/util.js');
+const { mapRecordData } = require('../../utils/record_helper.js');
 
 Page({
   data: {
@@ -163,5 +164,46 @@ Page({
         }
       }
     });
+  },
+
+  handleEditRecord: function(e) {
+    console.log("Edit button clicked, recordId:", e.detail.recordId);
+    const recordId = e.detail.recordId;
+    const record = this.data.latestRecords.find(r => r.id === recordId) || this.data.records.find(r => r.id === recordId);
+    console.log("Found record to edit:", record);
+    if (record) {
+      this.setData({
+        recordToEdit: record,
+        editFormVisible: true,
+        scrollTop: 0
+      });
+    }
+  },
+
+  handleUpdateRecord: function() {
+    const uploadForm = this.selectComponent('#upload-form');
+    if (uploadForm) {
+      const inputData = uploadForm.getInputData();
+      const recordId = this.data.recordToEdit.id;
+      const data = mapRecordData(inputData, this.data.recordToEdit, 'championships');
+
+      apiPut(`championships-record/${recordId}`, data)
+        .then(() => {
+          this.showToast('更新成功', '记录已成功更新', 2000);
+          this.setData({ editFormVisible: false, recordToEdit: null });
+          if (this.data.latestRecordsVisible) {
+            this.dataInit();
+          } else {
+            this.getRecords(this.data.currentPage);
+          }
+        })
+        .catch(err => {
+          this.showToast('更新失败', err.data.error, 2000);
+        });
+    }
+  },
+
+  handleCancelEdit: function() {
+    this.setData({ editFormVisible: false, recordToEdit: null });
   },
 });

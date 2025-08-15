@@ -117,6 +117,7 @@ Component({
   },
   methods: {
     onEdit: function() {
+      console.log('onEdit called inside record component. Firing event.');
       this.triggerEvent('edit', { recordId: this.data.recordId });
     },
     onDelete: function() {
