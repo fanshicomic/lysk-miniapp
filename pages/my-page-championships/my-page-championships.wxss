@@ -13,8 +13,8 @@ h2 {
 }
 
 .main-content {
-  overflow: scroll;
-  scrollbar-width: none;
+    overflow: scroll;
+    scrollbar-width: none;
 }
 .main-content::-webkit-scrollbar {
   display: none; /* Chrome/Safari */

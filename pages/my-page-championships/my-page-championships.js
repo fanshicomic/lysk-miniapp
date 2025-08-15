@@ -167,10 +167,8 @@ Page({
   },
 
   handleEditRecord: function(e) {
-    console.log("Edit button clicked, recordId:", e.detail.recordId);
     const recordId = e.detail.recordId;
     const record = this.data.latestRecords.find(r => r.id === recordId) || this.data.records.find(r => r.id === recordId);
-    console.log("Found record to edit:", record);
     if (record) {
       this.setData({
         recordToEdit: record,

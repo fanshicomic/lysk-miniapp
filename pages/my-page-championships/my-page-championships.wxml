@@ -1,4 +1,4 @@
-<view class="main-content">
+<scroll-view class="main-content" scroll-y="true" scroll-top="{{scrollTop}}">
   <view class="back-button" bindtap="onBack">
     <svg src="/assets/back.svg" color="white" width="13px" height="13px"></svg>
   </view>
@@ -73,4 +73,4 @@
     <announcement id="announcement"></announcement>
   </view>
   <footer />
-</view>
+</scroll-view>
