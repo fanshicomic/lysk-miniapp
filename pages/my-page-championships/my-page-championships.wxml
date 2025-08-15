@@ -29,10 +29,18 @@
 
     <view wx:if="{{editFormVisible}}">
       <view class="hr" />
-      <upload-form id="upload-form" initial-data="{{recordToEdit}}" battle-type="championships"></upload-form>
+      <upload-form
+        id="upload-form"
+        initial-data="{{recordToEdit}}"
+        battle-type="championships"
+      ></upload-form>
       <view class="display-row">
-        <button class="btn cancel-btn w-50" bindtap="handleCancelEdit">取消</button>
-        <button class="btn submit-btn w-50" bindtap="handleUpdateRecord">更新记录</button>
+        <button class="btn cancel-btn w-50" bindtap="handleCancelEdit">
+          取消
+        </button>
+        <button class="btn submit-btn w-50" bindtap="handleUpdateRecord">
+          更新记录
+        </button>
       </view>
     </view>
 
@@ -46,7 +54,13 @@
       </view>
       <view id="latest-records">
         <view class="record-wrapper" wx:for="{{latestRecords}}" wx:key="index">
-          <record record="{{item}}" record-id="{{item.id}}" show-admin-actions="{{true}}" bind:delete="handleDeleteRecord" bind:edit="handleEditRecord"></record>
+          <record
+            record="{{item}}"
+            record-id="{{item.id}}"
+            show-admin-actions="{{true}}"
+            bind:delete="handleDeleteRecord"
+            bind:edit="handleEditRecord"
+          ></record>
         </view>
       </view>
     </view>
@@ -54,7 +68,12 @@
     <view id="records-wrapper" wx:if="{{recordsVisible}}">
       <view id="records">
         <view class="record-wrapper" wx:for="{{records}}" wx:key="index">
-          <record record="{{item}}" record-id="{{item.id}}" show-admin-actions="{{true}}" bind:delete="handleDeleteRecord"></record>
+          <record
+            record="{{item}}"
+            record-id="{{item.id}}"
+            show-admin-actions="{{true}}"
+            bind:delete="handleDeleteRecord"
+          ></record>
         </view>
       </view>
       <view id="pagination" wx:if="{{totalPage > 0}}">

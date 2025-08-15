@@ -24,18 +24,18 @@ Page({
     apiGet('user')
       .then((user) => {
         if (user) {
-            this.fetchUserNickname();
-            this.fetchOrbitRecords();
-            this.fetchChampionshipRecords();
+          this.fetchUserNickname();
+          this.fetchOrbitRecords();
+          this.fetchChampionshipRecords();
         }
       })
       .catch((err) => {
         if (err.statusCode === 401 || err.statusCode === 404) {
-            this.showToast('无效访问', '请先登录', 2000);
-            setTimeout(() => {
-              wx.redirectTo({ url: '/pages/index/index' });
-            }, 2000);
-            return;
+          this.showToast('无效访问', '请先登录', 2000);
+          setTimeout(() => {
+            wx.redirectTo({ url: '/pages/index/index' });
+          }, 2000);
+          return;
         } else {
           console.error('An unexpected error occurred:', err);
           // Optionally, show a generic error toast to the user

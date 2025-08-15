@@ -142,7 +142,7 @@ Page({
     });
   },
 
-  handleDeleteRecord: function(e) {
+  handleDeleteRecord: function (e) {
     const recordId = e.detail.recordId;
     wx.showModal({
       title: '确认删除',
@@ -158,32 +158,38 @@ Page({
                 this.getRecords(this.data.currentPage);
               }
             })
-            .catch(err => {
+            .catch((err) => {
               this.showToast('删除失败', err.data.error, 2000);
             });
         }
-      }
+      },
     });
   },
 
-  handleEditRecord: function(e) {
+  handleEditRecord: function (e) {
     const recordId = e.detail.recordId;
-    const record = this.data.latestRecords.find(r => r.id === recordId) || this.data.records.find(r => r.id === recordId);
+    const record =
+      this.data.latestRecords.find((r) => r.id === recordId) ||
+      this.data.records.find((r) => r.id === recordId);
     if (record) {
       this.setData({
         recordToEdit: record,
         editFormVisible: true,
-        scrollTop: 0
+        scrollTop: 0,
       });
     }
   },
 
-  handleUpdateRecord: function() {
+  handleUpdateRecord: function () {
     const uploadForm = this.selectComponent('#upload-form');
     if (uploadForm) {
       const inputData = uploadForm.getInputData();
       const recordId = this.data.recordToEdit.id;
-      const data = mapRecordData(inputData, this.data.recordToEdit, 'championships');
+      const data = mapRecordData(
+        inputData,
+        this.data.recordToEdit,
+        'championships'
+      );
 
       apiPut(`championships-record/${recordId}`, data)
         .then(() => {
@@ -195,13 +201,13 @@ Page({
             this.getRecords(this.data.currentPage);
           }
         })
-        .catch(err => {
+        .catch((err) => {
           this.showToast('更新失败', err.data.error, 2000);
         });
     }
   },
 
-  handleCancelEdit: function() {
+  handleCancelEdit: function () {
     this.setData({ editFormVisible: false, recordToEdit: null });
   },
 });

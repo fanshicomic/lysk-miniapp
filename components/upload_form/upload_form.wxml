@@ -207,6 +207,14 @@
         data-key="championships-buff"
         bind:select="onSelectChange"
       ></custom-select>
+      <custom-select
+        wx:if="{{levelMode === '波动'}}"
+        options="{{getStarLevelOptions}}"
+        title="星级"
+        selected="{{inputValues['star-level']}}"
+        data-key="star-level"
+        bind:select="onSelectChange"
+      ></custom-select>
     </view>
   </view>
   <view class="display-row">

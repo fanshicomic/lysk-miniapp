@@ -45,6 +45,7 @@ function mapRecordData(inputData, recordDetails, battleType) {
     日卡: inputData['sun-card'],
     阶数: stage,
     武器: inputData['weapon'],
+    星级: inputData['star-level'],
     卡总等级: inputData['card-total-level'],
     备注: inputData['note'],
     时间: new Date().toISOString(),

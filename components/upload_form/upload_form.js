@@ -5,6 +5,9 @@ const computedBehavior = require('miniprogram-computed').behavior;
 Component({
   behaviors: [computedBehavior],
   computed: {
+    getStarLevelOptions() {
+      return DROPDOWN_VALUES['星级'];
+    },
     getMatchingOptions() {
       return DROPDOWN_VALUES['对谱'];
     },
@@ -57,6 +60,9 @@ Component({
     battleType: {
       type: String,
     },
+    levelMode: {
+      type: String,
+    },
     levelType: {
       type: String,
       observer: 'onLevelTypeChange',
@@ -67,7 +73,7 @@ Component({
     },
     initialData: {
       type: Object,
-      observer: function(newData) {
+      observer: function (newData) {
         if (newData) {
           this.setData({
             inputValues: {
@@ -88,13 +94,15 @@ Component({
               weapon: newData.武器,
               'championships-buff': newData.加成,
               'card-total-level': newData.卡总等级,
+              'star-level': newData.星级,
               note: newData.备注,
             },
-            selectedPartner: this.matchPartner(newData.搭档身份)
+            selectedPartner: this.matchPartner(newData.搭档身份),
+            levelMode: newData.模式,
           });
         }
-      }
-    }
+      },
+    },
   },
 
   data: {
@@ -117,6 +125,7 @@ Component({
       weapon: '',
       'championships-buff': '',
       'card-total-level': '',
+      'star-level': '',
       note: '',
     },
   },
@@ -196,23 +205,23 @@ Component({
     },
 
     matchStageFromBEToFE(stage) {
-        let stageMap = {
-            "I": "I (零阶)",
-            "II": "II (一阶)",
-            "III": "III (二阶)",
-            "IV": "IV (三阶)",
-        };
+      let stageMap = {
+        I: 'I (零阶)',
+        II: 'II (一阶)',
+        III: 'III (二阶)',
+        IV: 'IV (三阶)',
+      };
 
-        return stageMap[stage];
+      return stageMap[stage];
     },
 
     matchPartner(partnerIdentity) {
       const partners = {
-        '沈星回': DROPDOWN_VALUES['沈星回搭档'],
-        '黎深': DROPDOWN_VALUES['黎深搭档'],
-        '祁煜': DROPDOWN_VALUES['祁煜搭档'],
-        '秦彻': DROPDOWN_VALUES['秦彻搭档'],
-        '夏以昼': DROPDOWN_VALUES['夏以昼搭档'],
+        沈星回: DROPDOWN_VALUES['沈星回搭档'],
+        黎深: DROPDOWN_VALUES['黎深搭档'],
+        祁煜: DROPDOWN_VALUES['祁煜搭档'],
+        秦彻: DROPDOWN_VALUES['秦彻搭档'],
+        夏以昼: DROPDOWN_VALUES['夏以昼搭档'],
       };
 
       for (const partner in partners) {

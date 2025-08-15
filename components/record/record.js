@@ -32,12 +32,12 @@ Component({
     },
     recordId: {
       type: String,
-      value: ''
+      value: '',
     },
     showAdminActions: {
       type: Boolean,
-      value: false
-    }
+      value: false,
+    },
   },
   computed: {
     getLevelDisplay(data) {
@@ -116,12 +116,12 @@ Component({
     },
   },
   methods: {
-    onEdit: function() {
+    onEdit: function () {
       console.log('onEdit called inside record component. Firing event.');
       this.triggerEvent('edit', { recordId: this.data.recordId });
     },
-    onDelete: function() {
+    onDelete: function () {
       this.triggerEvent('delete', { recordId: this.data.recordId });
     },
-  }
+  },
 });

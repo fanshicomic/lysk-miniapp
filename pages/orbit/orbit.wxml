@@ -80,6 +80,7 @@
         id="upload-form"
         wx:if="{{uploadVisible}}"
         level-type="{{levelType}}"
+        level-mode="{{levelMode}}"
       ></upload-form>
       <button id="submit" class="btn submit-btn w-100" bindtap="onSubmit">
         提交通关记录
