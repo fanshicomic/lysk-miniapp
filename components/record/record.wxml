@@ -1,4 +1,24 @@
 <view class="record-container">
+  <view class="star-rank display-row" wx:if="{{record['模式']=='波动'}}">
+    <block  wx:for="{{[0,1,2]}}" wx:key="*this">
+      <svg
+        class="star-icon"
+        src="/assets/star-fill.svg"
+        width="20px"
+        height="20px"
+        color="#f7b257"
+        wx:if="{{index < getStarRank}}"
+      ></svg>
+      <svg
+        class="star-icon"
+        src="/assets/star.svg"
+        width="20px"
+        height="20px"
+        color="#f7b257"
+        wx:if="{{index >= getStarRank}}"
+      ></svg>
+    </block>
+  </view>
   <view class="w-100 record" data-id="{{recordId}}">
     <view class="row">
       <view class="w-50 record-matching-detail record-grid">
@@ -12,16 +32,16 @@
             <svg
               class="record-matching-circle"
               src="/assets/circle-fill.svg"
-              width="15px"
-              height="15px"
+              width="14px"
+              height="14px"
               color="{{getMatchingColor}}"
               wx:if="{{index < getMatchingCount}}"
             ></svg>
             <svg
               class="record-matching-circle"
               src="/assets/circle.svg"
-              width="15px"
-              height="15px"
+              width="14px"
+              height="14px"
               color="{{getMatchingColor}}"
               wx:if="{{index >= getMatchingCount}}"
             ></svg>
@@ -30,6 +50,7 @@
         <block wx:else>无对谱信息</block>
       </view>
       <view class="w-50 record-level-detail record-grid">
+        
         <view>{{getLevelDisplay}}</view>
       </view>
     </view>

@@ -114,6 +114,19 @@ Component({
       const matchingBonus = Number(count) || 0;
       return Math.round(Math.min(matchingBonus, 30) / 5);
     },
+    getStarRank(data) {
+        const starLevel = data.record['星级'];
+        switch (starLevel) {
+            case '三星':
+                return 3;
+            case '二星':
+                return 2;
+            case '一星':
+                return 1;
+            default:
+                return 0;
+        }
+    }
   },
   methods: {
     onEdit: function () {

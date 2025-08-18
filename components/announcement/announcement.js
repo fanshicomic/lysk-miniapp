@@ -38,14 +38,19 @@ Component({
 
     _getAnnouncementLatestUpdates() {
       return `最新更新
-            - 2025-08-08：个人档案室新改版。用户可设置昵称，记录有备注时会显示个人昵称
+            - 2025-08-17：
+                - 支持编辑与删除个人面板记录
+                - 波动模式支持选择星级
+            - 2025-08-08：
+                - 个人档案室新改版
+                - 用户可设置昵称，记录有备注时会显示个人昵称
             - 2025-08-05：支持卡总等级与备注
             - 2025-07-22：支持沈星回新搭档与日卡
             - 2025-07-07：小程序版支持`;
     },
 
     showAnnouncement() {
-      const announcementKey = '2.3.0';
+      const announcementKey = '2.4.0';
       if (wx.getStorageSync(announcementKey)) {
         return null;
       }
