@@ -31,7 +31,7 @@ Page({
       })
       .catch((err) => {
         if (err.statusCode === 401 || err.statusCode === 404) {
-          this.showToast('无效访问', '请先登录', 2000);
+          this.showToast('无效访问', 'session已过期，请重新登录', 2000);
           setTimeout(() => {
             wx.redirectTo({ url: '/pages/index/index' });
           }, 2000);

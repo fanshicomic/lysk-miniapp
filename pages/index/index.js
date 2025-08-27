@@ -1,4 +1,4 @@
-const { apiGet } = require('../../utils/util.js');
+const { apiGet, apiPost } = require('../../utils/util.js');
 
 const app = getApp();
 
@@ -29,15 +29,23 @@ Page({
   },
 
   onShow() {
+    const token = wx.getStorageSync('token');
+    if (!token) {
+      this.setData({ showLoginPanel: true });
+      return;
+    }
+
     apiGet('user')
       .then((user) => {
-        if (user) {
-          this.setData({ showLoginPanel: false });
+        if (!user) {
+            this.setData({ showLoginPanel: true });
+            return;
         }
       })
       .catch((err) => {
         if (err.statusCode === 401 || err.statusCode === 404) {
           this.setData({ showLoginPanel: true });
+          return;
         } else {
           console.error('An unexpected error occurred:', err);
           // Optionally, show a generic error toast to the user
@@ -45,6 +53,8 @@ Page({
             title: '发生未知错误',
             icon: 'none',
           });
+          this.setData({ showLoginPanel: true });
+          return;
         }
       });
   },
