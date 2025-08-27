@@ -287,3 +287,22 @@
 .cp-right-row:first-child {
   padding-bottom: 10px;
 }
+
+.cp-evaluation-label {
+    padding: 1px 5px;
+    border-radius: 12px;
+    font-size: 10px;
+    color: white;
+}
+
+.cp-eval-high {
+  background-color: #42a366;
+}
+
+.cp-eval-mid {
+  background-color: #5e9fca;
+}
+
+.cp-eval-low {
+  background-color: #ad2e3e;
+}

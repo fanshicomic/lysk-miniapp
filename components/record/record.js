@@ -174,6 +174,26 @@ Component({
       const total = data.nonWeakenCP + data.weakenCP;
       if (total === 0) return '0.0';
       return ((data.weakenCP / total) * 30).toFixed(1);
+    },
+    cpEvaluation(data) {
+        const combatPowerDetails = data.record['战力值'];
+        if (!combatPowerDetails) return "";
+        return combatPowerDetails['Evaluation'];
+    },
+    cpEvaluationClass(data) {
+      if (!data.cpEvaluation) {
+        return '';
+      }
+      switch (data.cpEvaluation) {
+        case '溢出':
+          return 'cp-eval-high';
+        case '标准':
+          return 'cp-eval-mid';
+        case '极限':
+          return 'cp-eval-low';
+        default:
+          return '';
+      }
     }
   },
   methods: {
