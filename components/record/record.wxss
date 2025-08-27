@@ -240,3 +240,50 @@
     margin-left: 5px;
     height: 10px;
 }
+
+.record-cp-label {
+  /* font-family: monospace; */
+  margin-top: -5px;
+  position: relative;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: left;
+  width: 100%;
+}
+
+.record-raw-cp-label-row {
+    font-size: 12px;
+    text-align: left;
+    width: 100%;
+    display: flex;
+    gap: 5px;
+}
+
+.cp-container {
+  align-items: stretch;
+}
+
+.cp-left-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.cp-right-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.cp-right-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.cp-right-row:first-child {
+  padding-bottom: 10px;
+}

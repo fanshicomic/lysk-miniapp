@@ -158,12 +158,12 @@ Component({
     nonWeakenCPPercentage(data) {
       const total = data.nonWeakenCP + data.weakenCP;
       if (total === 0) return '0.0';
-      return ((data.nonWeakenCP / total) * 100).toFixed(1);
+      return ((data.nonWeakenCP / total) * 100).toFixed(0);
     },
     weakenCPPercentage(data) {
       const total = data.nonWeakenCP + data.weakenCP;
       if (total === 0) return '0.0';
-      return ((data.weakenCP / total) * 100).toFixed(1);
+      return ((data.weakenCP / total) * 100).toFixed(0);
     },
     nonWeakenCPProgressBarWidth(data) {
       const total = data.nonWeakenCP + data.weakenCP;
@@ -183,6 +183,33 @@ Component({
     },
     onDelete: function () {
       this.triggerEvent('delete', { recordId: this.data.recordId });
+    },
+    onCPSectionTap: function () {
+      const info = this.selectComponent('#cp_info');
+      const title = '战力值说明';
+      const body = `这里的数值是战力值。
+
+      大的数字代表实际战斗战力，由面板战力算上加成（对谱加成与赛季加成）得出。
+      小的数字代表纯面板战力。
+
+      战力值基于用户面板数值、使用搭档及日卡推算得出，用于评估面板强度。
+      以四次共鸣期（顺谱两虚弱或逆谱一虚弱）为单位，基于该搭档推荐排轴推算各技能施放次数并计算得出以该面板对“单个敌人”进行战斗时的战斗强度。
+      
+      考虑的因素及对应模拟精确度：
+      面板所有基础数值对技能伤害、技能次数的影响（精确）
+      卡面等级带来的等级压制影响（精确）
+      搭档<>日卡<>武器并非常规组合（搭档使用其对应日卡及专武）时的影响（精确）
+
+      搭档非全程的机制buff，如施放特定技能后带来的增益效果（普通）
+      *由于当前计算逻辑并不通过模拟实际技能循环，这类的buff无法精确模拟。
+      计算这类增益的方式通过计算其生效时间权重折算成全时长平均增益。
+      
+      聚怪机制，群伤机制（无）
+      *CP值的计算纯基于面板及搭档推荐排轴，不考虑实际战斗场景，因此不会对有聚怪机制、群伤机制的搭档或技能进行额外调参增强。用户可自行根据关卡怪物数量等战斗场景对面板进行进一步调整。
+      
+      强化协助（无）
+      *不考虑额外操作`;
+      info.show(title, body);
     },
   },
 });

@@ -1,14 +1,16 @@
 Component({
   data: {
     isVisible: false,
+    title: '系统公告',
     body: '',
     updates: '',
   },
 
   methods: {
-    show(body, updates) {
+    show(title, body, updates) {
       this.setData({
         isVisible: true,
+        title: title,
         body: body,
         updates: updates,
       });
@@ -31,8 +33,7 @@ Component({
       return `猎人小姐你好!
     
             欢迎使用深空面板助手 :)
-            库中的面板会用于正在开发的分析功能，感谢你的每一条记录分享~
-            更多功能也在开发进程中，敬请期待
+            感谢你的每一条记录分享~
             公告可前往本助手首页小喇叭重新查看`;
     },
 
@@ -58,13 +59,13 @@ Component({
       wx.setStorageSync(announcementKey, '1');
 
       const data = this._prepareAnnouncementData();
-      this.show(data.body, data.updates);
+      this.show(data.title, data.body, data.updates);
       return data;
     },
 
     forceDisplayAnnouncement() {
       const data = this._prepareAnnouncementData();
-      this.show(data.body, data.updates);
+      this.show(data.title, data.body, data.updates);
       return data;
     },
   },

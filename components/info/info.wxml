@@ -1,14 +1,11 @@
-<view class="toast announcement" wx:if="{{isVisible}}">
+<view class="toast info" wx:if="{{isVisible}}">
   <view class="toast-header">
     <text class="toast-title">{{title}}</text>
     <view class="btn-close" bind:tap="hide"></view>
   </view>
   <view class="toast-body">
-    <view class="announcement-text">
+    <view class="info-text">
       <text>{{body}}</text>
-    </view>
-    <view class="announcement-text">
-      <text class="announcement-text">{{updates}}</text>
     </view>
   </view>
 </view>
