@@ -70,7 +70,8 @@
   fill: #bd4e4b;
 }
 
-.record-matching-detail {
+.record-matching-detail,
+.record-cp-detail {
   padding-bottom: 10px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -233,4 +234,9 @@
 .star-icon {
   transform: rotate(-45deg);
   /* opacity: 0.7; */
+}
+
+.record-cp-progress-bar {
+    margin-left: 5px;
+    height: 10px;
 }

@@ -54,6 +54,34 @@
         <view>{{getLevelDisplay}}</view>
       </view>
     </view>
+    <block wx:if="{{noBuffedCP !== 0}}">
+      <view class="row">
+        <view class="w-50 record-grid record-flex-row record-grid-padding-right">
+          <label class="record-text-label">CP附加成:</label>
+          <label class="record-value-label">{{buffedCPDividedBy100}}</label>
+        </view>
+        <view class="w-50 record-grid record-flex-row record-grid-padding-left">
+          <label class="record-text-label">暴击期: {{nonWeakenCPPercentage}}%</label>
+          <view class="record-cp-progress-bar record-value-label" style="background: linear-gradient(to right, #f4d266 0%, #f6cd63 100%); width: {{nonWeakenCPProgressBarWidth}}%;"></view>
+        </view>
+      </view>
+      <view class="row">
+        <view class="w-50 record-grid record-flex-row record-grid-padding-right record-cp-detail">
+          <label class="record-text-label">CP纯面板:</label>
+          <label class="record-value-label">{{noBuffedCPDividedBy100}}</label>
+        </view>
+        <view class="w-50 record-grid record-flex-row record-grid-padding-left record-cp-detail">
+          <label class="record-text-label">虚弱期: {{weakenCPPercentage}}%</label>
+          <view class="record-cp-progress-bar record-value-label" style="background: linear-gradient(to right, #b0dee9 0%, #87c4d2 100%); width: {{weakenCPProgressBarWidth}}%;"></view>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="row">
+        <view class="w-50 record-grid record-cp-detail">未支持的搭档</view>
+        <view class="w-50 record-grid record-cp-detail"></view>
+      </view>
+    </block>
     <view class="row">
       <view class="w-50 record-grid record-grid-padding-right">
         <view class="record-partner {{getPartnerColorMap}}"

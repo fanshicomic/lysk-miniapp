@@ -126,6 +126,54 @@ Component({
             default:
                 return 0;
         }
+    },
+    noBuffedCP(data) {
+      const combatPowerDetails = data.record['战力值'];
+      if (!combatPowerDetails) return 0;
+      return Number(combatPowerDetails['Score']) || 0;
+    },
+    buffedCP(data) {
+      const combatPowerDetails = data.record['战力值'];
+      if (!combatPowerDetails) return 0;
+      return Number(combatPowerDetails['BuffedScore']) || 0;
+    },
+    nonWeakenCP(data) {
+      const combatPowerDetails = data.record['战力值'];
+      if (!combatPowerDetails) return 0;
+      return Number(combatPowerDetails['NonWeakenScore']) || 0;
+    },
+    weakenCP(data) {
+      const combatPowerDetails = data.record['战力值'];
+      if (!combatPowerDetails) return 0;
+      return Number(combatPowerDetails['WeakenScore']) || 0;
+    },
+    buffedCPDividedBy100(data) {
+      if (!data.buffedCP) return 0;
+      return (data.buffedCP / 100).toFixed(0);
+    },
+    noBuffedCPDividedBy100(data) {
+      if (!data.noBuffedCP) return 0;
+      return (data.noBuffedCP / 100).toFixed(0);
+    },
+    nonWeakenCPPercentage(data) {
+      const total = data.nonWeakenCP + data.weakenCP;
+      if (total === 0) return '0.0';
+      return ((data.nonWeakenCP / total) * 100).toFixed(1);
+    },
+    weakenCPPercentage(data) {
+      const total = data.nonWeakenCP + data.weakenCP;
+      if (total === 0) return '0.0';
+      return ((data.weakenCP / total) * 100).toFixed(1);
+    },
+    nonWeakenCPProgressBarWidth(data) {
+      const total = data.nonWeakenCP + data.weakenCP;
+      if (total === 0) return '0.0';
+      return ((data.nonWeakenCP / total) * 30).toFixed(1);
+    },
+    weakenCPProgressBarWidth(data) {
+      const total = data.nonWeakenCP + data.weakenCP;
+      if (total === 0) return '0.0';
+      return ((data.weakenCP / total) * 30).toFixed(1);
     }
   },
   methods: {
