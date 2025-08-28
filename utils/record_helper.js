@@ -67,6 +67,12 @@ function mapRecordData(inputData, recordDetails, battleType) {
       关卡: levelType,
       加成: inputData['championships-buff'],
     };
+  } else if (battleType === 'analyze') {
+    const { levelType } = recordDetails;
+    return {
+      ...baseData,
+      加成: inputData['championships-buff'],
+    };
   }
 
   return baseData;

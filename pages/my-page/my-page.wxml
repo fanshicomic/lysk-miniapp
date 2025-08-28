@@ -50,7 +50,7 @@
       <view class="section-header">
         <text class="h2">轨道记录</text>
         <view class="record-summary">
-            <text>查看全部{{orbitRecordsCount}}条记录></text>
+          <text>查看全部{{orbitRecordsCount}}条记录></text>
         </view>
       </view>
       <record
@@ -63,7 +63,7 @@
       <view class="section-header">
         <text class="h2">锦标赛记录</text>
         <view class="record-summary">
-            <text>查看全部{{championshipRecordsCount}}条记录></text>
+          <text>查看全部{{championshipRecordsCount}}条记录></text>
         </view>
       </view>
       <record

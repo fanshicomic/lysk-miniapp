@@ -38,8 +38,8 @@ Page({
     apiGet('user')
       .then((user) => {
         if (!user) {
-            this.setData({ showLoginPanel: true });
-            return;
+          this.setData({ showLoginPanel: true });
+          return;
         }
       })
       .catch((err) => {

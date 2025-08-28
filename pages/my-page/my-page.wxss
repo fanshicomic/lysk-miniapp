@@ -11,8 +11,8 @@ page {
 }
 
 .h2 {
-    text-align: left;
-    margin: 16px 0 8px 0;
+  text-align: left;
+  margin: 16px 0 8px 0;
 }
 
 .main-content {
@@ -91,7 +91,7 @@ page {
 }
 
 .section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 }

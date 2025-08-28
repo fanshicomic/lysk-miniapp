@@ -1,7 +1,7 @@
 <view class="record-container">
   <info class="cp-info" id="cp_info"></info>
   <view class="star-rank display-row" wx:if="{{record['模式']=='波动'}}">
-    <block  wx:for="{{[0,1,2]}}" wx:key="*this">
+    <block wx:for="{{[0,1,2]}}" wx:key="*this">
       <svg
         class="star-icon"
         src="/assets/star-fill.svg"
@@ -67,20 +67,41 @@
             </view>
         </view> -->
         <label class="record-cp-label">{{buffedCP}}</label>
-        <view class="record-raw-cp-label-row">            
-            {{noBuffedCP}}
-            <view wx:if="{{cpEvaluation}}" class="cp-evaluation-label {{cpEvaluationClass}}">{{cpEvaluation}}</view>
-            <svg class="info" src="/assets/question.svg" width="11px" height="11px" color="#ffffffbd" bind:tap="onCPSectionTap"></svg>
-        </view>            
+        <view class="record-raw-cp-label-row">
+          {{noBuffedCP}}
+          <view
+            wx:if="{{cpEvaluation}}"
+            class="cp-evaluation-label {{cpEvaluationClass}}"
+            >{{cpEvaluation}}</view
+          >
+          <svg
+            class="info"
+            src="/assets/question.svg"
+            width="11px"
+            height="11px"
+            color="#ffffffbd"
+            bind:tap="onCPSectionTap"
+          ></svg>
+        </view>
       </view>
       <view class="w-50 cp-right-column">
         <view class="cp-right-row record-grid-padding-left">
-          <label class="record-text-label">暴击期: {{nonWeakenCPPercentage}}%</label>
-          <view class="record-cp-progress-bar record-value-label" style="background: linear-gradient(to right, #f4d266 0%, #f6cd63 100%); width: {{nonWeakenCPProgressBarWidth}}%"></view>
+          <label class="record-text-label"
+            >暴击期: {{nonWeakenCPPercentage}}%</label
+          >
+          <view
+            class="record-cp-progress-bar record-value-label"
+            style="background: linear-gradient(to right, #f4d266 0%, #f6cd63 100%); width: {{nonWeakenCPProgressBarWidth}}%"
+          ></view>
         </view>
         <view class="cp-right-row record-grid-padding-left record-cp-detail">
-          <label class="record-text-label">虚弱期: {{weakenCPPercentage}}%</label>
-          <view class="record-cp-progress-bar record-value-label" style="background: linear-gradient(to right, #b0dee9 0%, #87c4d2 100%); width: {{weakenCPProgressBarWidth}}%"></view>
+          <label class="record-text-label"
+            >虚弱期: {{weakenCPPercentage}}%</label
+          >
+          <view
+            class="record-cp-progress-bar record-value-label"
+            style="background: linear-gradient(to right, #b0dee9 0%, #87c4d2 100%); width: {{weakenCPProgressBarWidth}}%"
+          ></view>
         </view>
       </view>
     </view>

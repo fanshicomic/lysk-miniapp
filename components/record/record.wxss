@@ -237,8 +237,8 @@
 }
 
 .record-cp-progress-bar {
-    margin-left: 5px;
-    height: 10px;
+  margin-left: 5px;
+  height: 10px;
 }
 
 .record-cp-label {
@@ -252,11 +252,11 @@
 }
 
 .record-raw-cp-label-row {
-    font-size: 12px;
-    text-align: left;
-    width: 100%;
-    display: flex;
-    gap: 5px;
+  font-size: 12px;
+  text-align: left;
+  width: 100%;
+  display: flex;
+  gap: 5px;
 }
 
 .cp-container {
@@ -289,10 +289,10 @@
 }
 
 .cp-evaluation-label {
-    padding: 2px 5px 1px 5px;
-    border-radius: 12px;
-    font-size: 9px;
-    color: white;
+  padding: 2px 5px 1px 5px;
+  border-radius: 12px;
+  font-size: 9px;
+  color: white;
 }
 
 .cp-eval-high {

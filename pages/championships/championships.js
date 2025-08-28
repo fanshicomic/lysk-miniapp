@@ -29,10 +29,9 @@ Page({
   },
 
   onShow() {
-    if (typeof this.getTabBar === 'function' &&
-        this.getTabBar()) {
-        this.getTabBar().updateSelected();
-      }
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().updateSelected();
+    }
   },
   onBack() {
     wx.reLaunch({

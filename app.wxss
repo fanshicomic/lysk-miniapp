@@ -379,12 +379,12 @@ page {
 }
 
 .content-wrapper {
-    margin: 0 auto;
-    margin-top: 15vh;
-    width: 80vw;
-    max-width: 350px;
-    min-width: 250px;
-    min-height: 85vh;
+  margin: 0 auto;
+  margin-top: 15vh;
+  width: 80vw;
+  max-width: 350px;
+  min-width: 250px;
+  min-height: 85vh;
 }
 
 .footer {

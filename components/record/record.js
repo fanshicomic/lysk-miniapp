@@ -115,17 +115,17 @@ Component({
       return Math.round(Math.min(matchingBonus, 30) / 5);
     },
     getStarRank(data) {
-        const starLevel = data.record['星级'];
-        switch (starLevel) {
-            case '三星':
-                return 3;
-            case '二星':
-                return 2;
-            case '一星':
-                return 1;
-            default:
-                return 0;
-        }
+      const starLevel = data.record['星级'];
+      switch (starLevel) {
+        case '三星':
+          return 3;
+        case '二星':
+          return 2;
+        case '一星':
+          return 1;
+        default:
+          return 0;
+      }
     },
     noBuffedCP(data) {
       const combatPowerDetails = data.record['战力值'];
@@ -146,14 +146,6 @@ Component({
       const combatPowerDetails = data.record['战力值'];
       if (!combatPowerDetails) return 0;
       return Number(combatPowerDetails['WeakenScore']) || 0;
-    },
-    buffedCPDividedBy100(data) {
-      if (!data.buffedCP) return 0;
-      return (data.buffedCP / 100).toFixed(0);
-    },
-    noBuffedCPDividedBy100(data) {
-      if (!data.noBuffedCP) return 0;
-      return (data.noBuffedCP / 100).toFixed(0);
     },
     nonWeakenCPPercentage(data) {
       const total = data.nonWeakenCP + data.weakenCP;
@@ -176,9 +168,9 @@ Component({
       return ((data.weakenCP / total) * 30).toFixed(1);
     },
     cpEvaluation(data) {
-        const combatPowerDetails = data.record['战力值'];
-        if (!combatPowerDetails) return "";
-        return combatPowerDetails['Evaluation'];
+      const combatPowerDetails = data.record['战力值'];
+      if (!combatPowerDetails) return '';
+      return combatPowerDetails['Evaluation'];
     },
     cpEvaluationClass(data) {
       if (!data.cpEvaluation) {
@@ -194,7 +186,7 @@ Component({
         default:
           return '';
       }
-    }
+    },
   },
   methods: {
     onEdit: function () {
