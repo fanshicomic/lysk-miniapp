@@ -289,9 +289,9 @@
 }
 
 .cp-evaluation-label {
-    padding: 1px 5px;
+    padding: 2px 5px 1px 5px;
     border-radius: 12px;
-    font-size: 10px;
+    font-size: 9px;
     color: white;
 }
 
