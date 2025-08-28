@@ -3,10 +3,28 @@
     "pages/index/index",
     "pages/orbit/orbit",
     "pages/championships/championships",
+    "pages/analyze/analyze",
     "pages/my-page/my-page",
     "pages/my-page-orbit/my-page-orbit",
     "pages/my-page-championships/my-page-championships"
   ],
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/orbit/orbit",
+        "text": "轨道"
+      },
+      {
+        "pagePath": "pages/championships/championships",
+        "text": "锦标赛"
+      },
+      {
+        "pagePath": "pages/analyze/analyze",
+        "text": "分析我的"
+      }
+    ]
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#000",

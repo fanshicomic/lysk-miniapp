@@ -33,7 +33,7 @@
       <text id="sub-title">{{subTitle}}</text>
     </view>
 
-    <navigator url="/pages/orbit/orbit" class="button-section">
+    <navigator open-type="switchTab" url="/pages/orbit/orbit" class="button-section">
       <view class="btn hologram">
         <image
           class="icon"
@@ -44,7 +44,7 @@
       </view>
     </navigator>
 
-    <navigator url="/pages/championships/championships" class="button-section">
+    <navigator open-type="switchTab" url="/pages/championships/championships" class="button-section">
       <view class="btn hologram">
         <image
           class="icon"

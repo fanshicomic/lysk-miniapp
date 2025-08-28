@@ -34,9 +34,16 @@ Page({
 
     this.selectComponent('#announcement').showAnnouncement();
   },
+
+  onShow() {
+    if (typeof this.getTabBar === 'function' &&
+        this.getTabBar()) {
+        this.getTabBar().updateSelected();
+      }
+  },
   onBack() {
-    wx.navigateBack({
-      delta: 1,
+    wx.reLaunch({
+      url: '/pages/index/index',
     });
   },
 
