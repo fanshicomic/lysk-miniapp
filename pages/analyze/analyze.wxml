@@ -1,1 +1,28 @@
-<view>analyze page</view>
+<view class="main-content">
+  <view class="back-button" bindtap="onBack">
+    <svg src="/assets/back.svg" color="white" width="13px" height="13px"></svg>
+  </view>
+  <view class="content-wrapper">
+    <text class="h1">面板分析</text>
+    <view class="hr" />
+    <view id="panel-inputs">
+      <upload-form
+        id="upload-form"
+        is-analyze="true"
+      ></upload-form>
+      <button id="submit" class="btn submit-btn w-100" bindtap="onSubmit">
+        提交分析
+      </button>
+    </view>
+    <!-- Display analysis results -->
+    <view id="analyze-results-wrapper" wx:if="{{analyzeResultsVisible}}">
+      <text id="analyze-results-title" class="mt-5 h2">分析结果</text>
+      <view id="analyze-results">
+        <!-- Analysis results will be displayed here -->
+        <text>{{analyzeResults}}</text>
+      </view>
+    </view>
+    <toast id="toast"></toast>
+  </view>
+  <footer />
+</view>

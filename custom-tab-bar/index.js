@@ -4,17 +4,17 @@ Component({
     color: "rgba(255, 255, 255, 0.6)",
     selectedColor: "white",
     list: [
+        {
+          "pagePath": "/pages/championships/championships",
+          "text": "锦标赛",
+          // "iconPath": "/assets/championships.png",
+          // "selectedIconPath": "/assets/championships.png"
+        },
       {
         "pagePath": "/pages/orbit/orbit",
         "text": "轨道",
         // "iconPath": "/assets/orbit.png",
         // "selectedIconPath": "/assets/orbit.png"
-      },
-      {
-        "pagePath": "/pages/championships/championships",
-        "text": "锦标赛",
-        // "iconPath": "/assets/championships.png",
-        // "selectedIconPath": "/assets/championships.png"
       },
       {
         "pagePath": "/pages/analyze/analyze",

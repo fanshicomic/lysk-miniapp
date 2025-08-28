@@ -57,6 +57,9 @@ Component({
     },
   },
   properties: {
+    isAnalyze: {
+      type: Boolean,
+    },
     battleType: {
       type: String,
     },

@@ -37,10 +37,10 @@
       <view class="btn hologram">
         <image
           class="icon"
-          src="https://uygnim.com/lysk/assets/orbit.gif"
+          src="https://uygnim.com/lysk/assets/sword.gif"
           mode="widthFix"
         />
-        <text class="hologram-text hologram-orbit" data-text="轨道">轨道</text>
+        <text class="hologram-text hologram-orbit" data-text="战斗">战斗</text>
       </view>
     </navigator>
 
@@ -48,11 +48,11 @@
       <view class="btn hologram">
         <image
           class="icon"
-          src="https://uygnim.com/lysk/assets/championships.gif"
+          src="https://uygnim.com/lysk/assets/news.gif"
           mode="widthFix"
         />
-        <text class="hologram-text hologram-championships" data-text="锦标赛"
-          >锦标赛</text
+        <text class="hologram-text hologram-championships" data-text="趣闻报"
+          >趣闻报</text
         >
       </view>
     </navigator>
@@ -61,7 +61,7 @@
       <view class="btn hologram">
         <image
           class="icon"
-          src="https://uygnim.com/lysk/assets/sword.gif"
+          src="https://uygnim.com/lysk/assets/archive.gif"
           mode="widthFix"
         />
         <text class="hologram-text hologram-my-page" data-text="档案室"

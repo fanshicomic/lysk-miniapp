@@ -102,7 +102,6 @@
     </view>
     <!-- 展示记录 -->
     <view id="records-wrapper" wx:if="{{recordsVisible}}">
-      <text id="records-title" class="mt-5 h2">关卡面板记录</text>
       <view id="records">
         <view class="record-wrapper" wx:for="{{records}}" wx:key="index">
           <record record="{{item}}"></record>

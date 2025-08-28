@@ -200,7 +200,7 @@
     </view>
     <view class="w-50">
       <custom-select
-        wx:if="{{battleType === 'championships'}}"
+        wx:if="{{battleType === 'championships' || isAnalyze}}"
         options="{{getChampionshipsBuffOptions}}"
         title="赛季加成"
         selected="{{inputValues['championships-buff']}}"
@@ -217,7 +217,7 @@
       ></custom-select>
     </view>
   </view>
-  <view class="display-row">
+  <view wx:if="{{!isAnalyze}}" class="display-row">
     <view class="w-100">
       <input
         value="{{inputValues['note']}}"
