@@ -47,25 +47,29 @@
     </view>
     <view class="section-orbit" bindtap="navigateToOrbit">
       <view class="hr" />
-      <text class="h2">轨道记录</text>
+      <view class="section-header">
+        <text class="h2">轨道记录</text>
+        <view class="record-summary">
+            <text>查看全部{{orbitRecordsCount}}条记录></text>
+        </view>
+      </view>
       <record
         record="{{latestOrbitRecord}}"
         wx:if="{{latestOrbitRecord}}"
       ></record>
-      <view class="record-summary">
-        <text>查看全部{{orbitRecordsCount}}条记录></text>
-      </view>
     </view>
     <view class="section-championships" bindtap="navigateToChampionships">
       <view class="hr" />
-      <text class="h2">锦标赛记录</text>
+      <view class="section-header">
+        <text class="h2">锦标赛记录</text>
+        <view class="record-summary">
+            <text>查看全部{{championshipRecordsCount}}条记录></text>
+        </view>
+      </view>
       <record
         record="{{latestChampionshipRecord}}"
         wx:if="{{latestChampionshipRecord}}"
       ></record>
-      <view class="record-summary">
-        <text>查看全部{{championshipRecordsCount}}条记录></text>
-      </view>
     </view>
   </view>
   <toast id="toast"></toast>

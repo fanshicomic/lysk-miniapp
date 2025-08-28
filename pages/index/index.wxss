@@ -1,5 +1,12 @@
 /**index.wxss**/
 
+.content-wrapper {
+    width: 60vw;
+    max-width: 300px;
+    min-width: 250px;
+    margin: 0 auto;
+}
+
 #hr-section {
   text-align: right;
 }

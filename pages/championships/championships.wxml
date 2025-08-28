@@ -3,7 +3,7 @@
     <svg src="/assets/back.svg" color="white" width="13px" height="13px"></svg>
   </view>
   <view class="content-wrapper">
-    <text class="h1">锦标赛满星面板</text>
+    <text class="h1">锦标赛满星</text>
     <view class="hr" />
     <!-- 基础输入 -->
     <view class="display-row">
@@ -17,7 +17,7 @@
       </view>
     </view>
     <!-- 动作按钮 -->
-    <view id="action-buttons" class="display-row">
+    <view wx:if="{{levelType}}" id="action-buttons" class="display-row">
       <button
         id="fetch-records"
         class="btn upload-fetch-btn w-33"
@@ -55,11 +55,11 @@
     </view>
     <!-- 展示最新记录 -->
     <view id="latest-records-wrapper" wx:if="{{latestRecordsVisible}}">
-      <text id="latest-records-title" class="mt-5 h2">最新上传面板</text>
+      <text id="latest-records-title" class="mt-5 h2">最新上传</text>
       <view class="total-cnt-row">
-        当期锦标赛满星数据总量：<text id="total-db-records-cnt"
+        pi当期满星数据总量：<text id="total-db-records-cnt"
           >{{totalDbRecordsCnt > 0 ? totalDbRecordsCnt : '加载中'}}</text
-        >。感谢您的分享！
+        >
       </view>
       <view id="latest-records">
         <view class="record-wrapper" wx:for="{{latestRecords}}" wx:key="index">
