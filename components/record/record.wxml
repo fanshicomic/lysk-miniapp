@@ -10,14 +10,6 @@
         color="#f7b257"
         wx:if="{{index < getStarRank}}"
       ></svg>
-      <svg
-        class="star-icon"
-        src="/assets/star.svg"
-        width="20px"
-        height="20px"
-        color="#f7b257"
-        wx:if="{{index >= getStarRank}}"
-      ></svg>
     </block>
   </view>
   <view class="w-100 record" data-id="{{recordId}}">

@@ -71,14 +71,61 @@ page {
 
 .submit-btn {
   border: 0;
-  background-color: darkslateblue;
+  background-color: palevioletred;
 }
 .submit-btn:hover,
 .submit-btn:focus {
-  background-color: darkslateblue;
+  background-color: palevioletred;
   color: inherit;
 }
 
 .button-row {
   margin-top: 20px;
+}
+
+.analyze-results {
+  margin-top: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.sub-title-row {
+  display: flex;
+  align-items: flex-end;
+}
+
+.info {
+  margin-bottom: 9px;
+  margin-left: 8px;
+}
+
+.cp-text-label {
+  font-size: 12px;
+}
+
+.cp-number-label {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.record-cp-bar {
+  height: 16px;
+}
+
+.percentage-row {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  gap: 10px;
+}
+
+.h2 {
+  margin-top: 10px;
+  margin-bottom: 5px;
 }

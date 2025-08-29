@@ -1,4 +1,10 @@
-<view class="main-content">
+<scroll-view
+  class="main-content"
+  scroll-y="true"
+  scroll-into-view="{{scrollToView}}"
+  scroll-with-animation="true"
+>
+  <info class="cp-info" id="cp_info"></info>
   <view class="back-button" bindtap="onBack">
     <svg src="/assets/back.svg" color="white" width="13px" height="13px"></svg>
   </view>
@@ -9,23 +15,63 @@
       <upload-form id="upload-form" is-analyze="true"></upload-form>
       <view class="button-row display-row">
         <button class="btn ocr-action-btn w-50" bindtap="onOCR">
-            识图
+          识图输入
         </button>
-        <button class="btn submit-btn w-50" bindtap="onSubmit">
-            分析
-        </button>
+        <button class="btn submit-btn w-50" bindtap="onSubmit">上传分析</button>
       </view>
     </view>
     <view class="hr" />
     <!-- Display analysis results -->
-    <view id="analyze-results-wrapper" wx:if="{{analyzeResultsVisible}}">
-      <text id="analyze-results-title" class="mt-5 h2">分析结果</text>
-      <view id="analyze-results"> 
-        面板战力：{{noBuffedCP}}
-        加成后战力：{{buffedCP}}
+    <view id="analysis-results-section" wx:if="{{analyzeResultsVisible}}">
+      <view class="sub-title-row">
+        <text class="mt-5 h2">分析结果</text>
+        <svg
+          class="info"
+          src="/assets/question.svg"
+          width="18px"
+          height="18px"
+          color="#ffffffbd"
+          bind:tap="onResultInfoTap"
+        ></svg>
+      </view>
+      <view class="analyze-results">
+        <view class="display-row">
+          <text class="cp-text-label"
+            >加成后战力：<text class="cp-number-label"
+              >{{formattedBuffedCP}}</text
+            ></text
+          >
+          <text class="cp-text-label"
+            >纯面板战力：<text class="cp-number-label"
+              >{{formattedNoBuffedCP}}</text
+            ></text
+          >
+        </view>
+        <view class="display-row">
+          <view class="cp-text-label w-50">
+            暴击期：
+            <view class="percentage-row">
+              <view
+                class="record-cp-bar"
+                style="background: linear-gradient(to right, #f4d266 0%, #ffe4a0 100%); width: {{nonWeakenCPPercentage*0.7}}%"
+              ></view>
+              {{nonWeakenCPPercentage}}%
+            </view>
+          </view>
+          <view class="cp-text-label w-50">
+            虚弱期：
+            <view class="percentage-row">
+              <view
+                class="record-cp-bar"
+                style="background: linear-gradient(to right, #87c4d2 0%, #b0dee9 100%); width: {{weakenCPPercentage*0.7}}%"
+              ></view>
+              {{weakenCPPercentage}}%
+            </view>
+          </view>
+        </view>
       </view>
     </view>
     <toast id="toast"></toast>
   </view>
   <footer />
-</view>
+</scroll-view>

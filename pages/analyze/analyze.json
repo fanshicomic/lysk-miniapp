@@ -2,6 +2,7 @@
   "usingComponents": {
     "upload-form": "/components/upload_form/upload_form",
     "svg": "/components/svg/svg",
+    "info": "/components/info/info",
     "toast": "/components/toast/toast"
   }
 }
