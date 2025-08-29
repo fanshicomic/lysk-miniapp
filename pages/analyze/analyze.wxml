@@ -14,9 +14,7 @@
     <view id="panel-inputs" wx:if="{{uploadVisible}}">
       <upload-form id="upload-form" is-analyze="true"></upload-form>
       <view class="button-row display-row">
-        <button class="btn ocr-action-btn w-50" bindtap="onOCR">
-          识图输入
-        </button>
+        <button class="btn ocr-action-btn w-50" bindtap="onOCR">识图输入</button>
         <button class="btn submit-btn w-50" bindtap="onSubmit">上传分析</button>
       </view>
     </view>
@@ -36,16 +34,20 @@
       </view>
       <view class="analyze-results">
         <view class="display-row">
+        <view class="w-50">
           <text class="cp-text-label"
             >加成后战力：<text class="cp-number-label"
               >{{formattedBuffedCP}}</text
             ></text
           >
+        </view>
+        <view class="w-50">
           <text class="cp-text-label"
             >纯面板战力：<text class="cp-number-label"
               >{{formattedNoBuffedCP}}</text
             ></text
           >
+        </view>
         </view>
         <view class="display-row">
           <view class="cp-text-label w-50">
