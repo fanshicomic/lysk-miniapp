@@ -49,7 +49,7 @@
     <view id="latest-records-wrapper" wx:if="{{latestRecordsVisible}}">
       <view class="total-cnt-row">
         我的锦标赛数据总量：<text id="total-db-records-cnt"
-          >{{totalDbRecordsCnt > 0 ? totalDbRecordsCnt : '加载中'}}</text
+          >{{totalDbRecordsCnt}}</text
         >。
       </view>
       <view id="latest-records">

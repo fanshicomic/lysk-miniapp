@@ -58,7 +58,7 @@
       <text id="latest-records-title" class="mt-5 h2">最新上传</text>
       <view class="total-cnt-row">
         当期满星数据总量：<text id="total-db-records-cnt"
-          >{{totalDbRecordsCnt > 0 ? totalDbRecordsCnt : '加载中'}}</text
+          >{{totalDbRecordsCnt}}</text
         >
       </view>
       <view id="latest-records">

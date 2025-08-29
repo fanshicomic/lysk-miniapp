@@ -142,11 +142,17 @@ Page({
                   .then(() => videoAd.show())
                   .catch(err => {
                     console.log('激励视频 广告显示失败');
-                    this.showToast('提示', '广告显示失败，请稍后重试。', 3000);
+                    this.showToast('提示', '广告显示失败，请稍后重试。奖励一次分析次数', 3000);
+                    const newTries = this.data.analysisTries + 1;
+                    wx.setStorageSync('analysisTries', newTries);
+                    this.setData({ analysisTries: newTries });
                   });
               });
             } else {
-              this.showToast('提示', '广告加载失败，请稍后重试。', 3000);
+              this.showToast('提示', '广告加载失败，请稍后重试。奖励一次分析次数', 3000);
+              const newTries = this.data.analysisTries + 1;
+              wx.setStorageSync('analysisTries', newTries);
+              this.setData({ analysisTries: newTries });
             }
           }
         }

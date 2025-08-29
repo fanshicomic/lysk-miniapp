@@ -78,7 +78,7 @@
     <view id="all-records-wrapper" wx:if="{{allRecordsVisible}}">
       <view class="total-cnt-row">
         我的轨道通关数据总量：<text id="total-db-records-cnt"
-          >{{totalDbRecordsCnt > 0 ? totalDbRecordsCnt : '加载中'}}</text
+          >{{totalDbRecordsCnt}}</text
         >。
       </view>
       <view id="all-records">
