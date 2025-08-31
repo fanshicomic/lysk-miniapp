@@ -18,6 +18,7 @@ page {
 .main-content {
   overflow: scroll;
   scrollbar-width: none;
+  max-height: 100vh;
 }
 .main-content::-webkit-scrollbar {
   display: none; /* Chrome/Safari */

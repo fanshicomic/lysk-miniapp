@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "companion-label": "/components/companion-label/companion-label",
+    "set-card-label": "/components/set-card-label/set-card-label"
+  }
+}
+  

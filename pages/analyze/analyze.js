@@ -1,14 +1,7 @@
 const { apiPost, apiUploadFile } = require('../../utils/util.js');
-const { mapRecordData } = require('../../utils/record_helper.js');
+const { mapRecordData, formatNumberWithCommas } = require('../../utils/record_helper.js');
 
 const computedBehavior = require('miniprogram-computed').behavior;
-
-const formatNumberWithCommas = (number) => {
-  if (number === undefined || number === null) {
-    return '0';
-  }
-  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-};
 let videoAd = null
 
 Page({
@@ -19,16 +12,17 @@ Page({
     combatPowerScore: '',
     combatPowerBuffedScore: '',
     combatPowerWeakenScore: '',
-    combatPowerNonWeakenScore: '',
+    combatPowerCritScore: '',
     scrollToView: '',
-    analysisTries: 1,
+    remainingFreeAnalyses: 1,
+    rewardedAnalyses: 0,
   },
   computed: {
     noBuffedCP(data) {
-      return (Number(data.combatPowerScore) / 100).toFixed(0) || 0;
+      return Number(data.combatPowerScore) || 0;
     },
     buffedCP(data) {
-      return (Number(data.combatPowerBuffedScore) / 100).toFixed(0) || 0;
+      return Number(data.combatPowerBuffedScore) || 0;
     },
     formattedNoBuffedCP(data) {
       return formatNumberWithCommas(data.noBuffedCP);
@@ -36,22 +30,25 @@ Page({
     formattedBuffedCP(data) {
       return formatNumberWithCommas(data.buffedCP);
     },
-    nonWeakenCP(data) {
+    critCP(data) {
       return Number(data.combatPowerWeakenScore) || 0;
     },
     weakenCP(data) {
-      return Number(data.combatPowerNonWeakenScore) || 0;
+      return Number(data.combatPowerCritScore) || 0;
     },
-    nonWeakenCPPercentage(data) {
-      const total = data.nonWeakenCP + data.weakenCP;
+    critCPPercentage(data) {
+      const total = data.critCP + data.weakenCP;
       if (total === 0) return '0.0';
-      return ((data.nonWeakenCP / total) * 100).toFixed(0);
+      return ((data.critCP / total) * 100).toFixed(0);
     },
     weakenCPPercentage(data) {
-      const total = data.nonWeakenCP + data.weakenCP;
+      const total = data.critCP + data.weakenCP;
       if (total === 0) return '0.0';
       return ((data.weakenCP / total) * 100).toFixed(0);
     },
+    analysisTries(data) {
+        return data.remainingFreeAnalyses + data.rewardedAnalyses;
+    }
   },
   onLoad(options) {
     // 在页面onLoad回调事件中创建激励视频广告实例
@@ -64,13 +61,14 @@ Page({
             console.error('激励视频光告加载失败', err)
         })
         videoAd.onClose((res) => {
+          videoAd.offClose();
           // 用户点击了【关闭广告】按钮
           if (res && res.isEnded) {
             // 正常播放结束，可以下发游戏奖励
-            const newTries = (wx.getStorageSync('analysisTries') || 0) + 3;
-            wx.setStorageSync('analysisTries', newTries);
+            const newTries = (wx.getStorageSync('rewardedAnalyses') || 0) + 3;
+            wx.setStorageSync('rewardedAnalyses', newTries);
             this.setData({
-              analysisTries: newTries,
+              rewardedAnalyses: newTries,
             });
             this.showToast('恭喜', '获得3次额外分析次数！', 3000);
           } else {
@@ -91,16 +89,21 @@ Page({
     const lastAnalysisDate = wx.getStorageSync('lastAnalysisDate');
     
     if (lastAnalysisDate === today) {
-      const analysisTries = wx.getStorageSync('analysisTries') || 0;
+      const freeAnalysesUsed = wx.getStorageSync('freeAnalysesUsed') || 0;
+      const rewardedAnalyses = wx.getStorageSync('rewardedAnalyses') || 0;
       this.setData({
-        analysisTries: analysisTries,
+        remainingFreeAnalyses: Math.max(0, 1 - freeAnalysesUsed),
+        rewardedAnalyses: rewardedAnalyses,
       });
     } else {
       // New day, reset counts
       wx.setStorageSync('lastAnalysisDate', today);
-      wx.setStorageSync('analysisTries', 1);
+      wx.setStorageSync('freeAnalysesUsed', 0);
+      // Keep rewarded analyses
+      const rewardedAnalyses = wx.getStorageSync('rewardedAnalyses') || 0;
       this.setData({
-        analysisTries: 1,
+        remainingFreeAnalyses: 1,
+        rewardedAnalyses: rewardedAnalyses,
       });
     }
   },
@@ -122,16 +125,26 @@ Page({
   },
 
   onSubmit() {
-    if (this.data.analysisTries > 0) {
-      const newTries = this.data.analysisTries - 1;
-      wx.setStorageSync('analysisTries', newTries);
-      this.setData({ analysisTries: newTries });
-      this.runAnalysis();
+    let tryType = null;
+    if (this.data.remainingFreeAnalyses > 0) {
+      const freeAnalysesUsed = (wx.getStorageSync('freeAnalysesUsed') || 0) + 1;
+      wx.setStorageSync('freeAnalysesUsed', freeAnalysesUsed);
+      this.updateAnalysisCounts();
+      tryType = 'free';
+    } else if (this.data.rewardedAnalyses > 0) {
+      const newTries = this.data.rewardedAnalyses - 1;
+      wx.setStorageSync('rewardedAnalyses', newTries);
+      this.setData({ rewardedAnalyses: newTries });
+      tryType = 'rewarded';
+    }
+
+    if (tryType) {
+      this.runAnalysis(tryType);
     } else {
       // Ask the user if they want to watch an ad
       wx.showModal({
         title: '提示',
-        content: '今日免费次数已用完，是否观看广告以获取3次额外分析次数？',
+        content: '分析次数已用完，是否观看广告以获取3次额外分析次数？',
         success: (res) => {
           if (res.confirm) {
             // Show ad
@@ -142,17 +155,17 @@ Page({
                   .then(() => videoAd.show())
                   .catch(err => {
                     console.log('激励视频 广告显示失败');
-                    this.showToast('提示', '广告显示失败，请稍后重试。奖励一次分析次数', 3000);
-                    const newTries = this.data.analysisTries + 1;
-                    wx.setStorageSync('analysisTries', newTries);
-                    this.setData({ analysisTries: newTries });
+                    this.showToast('提示', '广告显示失败。增加一次分析次数。', 3000);
+                    const newTries = this.data.rewardedAnalyses + 1;
+                    wx.setStorageSync('rewardedAnalyses', newTries);
+                    this.setData({ rewardedAnalyses: newTries });
                   });
               });
             } else {
-              this.showToast('提示', '广告加载失败，请稍后重试。奖励一次分析次数', 3000);
-              const newTries = this.data.analysisTries + 1;
-              wx.setStorageSync('analysisTries', newTries);
-              this.setData({ analysisTries: newTries });
+              this.showToast('提示', '广告加载失败。增加一次分析次数。', 3000);
+              const newTries = this.data.rewardedAnalyses + 1;
+              wx.setStorageSync('rewardedAnalyses', newTries);
+              this.setData({ rewardedAnalyses: newTries });
             }
           }
         }
@@ -160,38 +173,38 @@ Page({
     }
   },
 
-  runAnalysis() {
+  runAnalysis(tryType) {
     const uploadForm = this.selectComponent('#upload-form');
     if (uploadForm) {
       const inputData = uploadForm.getInputData();
       // For analyze page, battle-type is 'analyze'
       const data = mapRecordData(inputData, this.data, 'analyze');
 
-      // Placeholder for actual analysis API call
-      // In a real scenario, you would call an API here and then display results
-      console.log('Submitting data for analysis:', data);
-
       // Simulate an API call and display results
       apiPost('analyze', data)
         .then((result) => {
-          this.showToast('分析成功', '战绩分析完成！', 3000);
           const { combat_power } = result;
           this.setData({
             analyzeResultsVisible: true,
             combatPowerScore: combat_power.Score,
             combatPowerBuffedScore: combat_power.BuffedScore,
             combatPowerWeakenScore: combat_power.WeakenScore,
-            combatPowerNonWeakenScore: combat_power.NonWeakenScore,
+            combatPowerCritScore: combat_power.CritScore,
             scrollToView: 'analysis-results-section',
           });
         })
         .catch((err) => {
           console.error('Analysis error:', err);
           this.showToast('分析失败', err.data.error || '未知错误', 5000);
-          // Refund the try
-          const newTries = (wx.getStorageSync('analysisTries') || 0) + 1;
-          wx.setStorageSync('analysisTries', newTries);
-          this.setData({ analysisTries: newTries });
+          // Refund a free try
+          if (tryType === 'free') {
+            const freeAnalysesUsed = (wx.getStorageSync('freeAnalysesUsed') || 1) - 1;
+            wx.setStorageSync('freeAnalysesUsed', freeAnalysesUsed);
+          } else if (tryType === 'rewarded') {
+            const newTries = (wx.getStorageSync('rewardedAnalyses') || 0) + 1;
+            wx.setStorageSync('rewardedAnalyses', newTries);
+          }
+          this.updateAnalysisCounts();
         });
     }
   },
@@ -243,7 +256,7 @@ Page({
   onResultInfoTap: function () {
     const info = this.selectComponent('#cp_info');
     const title = '战力值说明';
-    const body = `这里的数值是战力值。\n\n    加成后战力: 实际战斗战力，由面板战力算上加成（对谱加成与赛季加成）得出。\n    纯面板战力: 纯面板战力。\n\n    战力值基于用户面板数值、使用搭档及日卡推算得出，用于评估面板强度。\n    以四次共鸣期（顺谱两虚弱或逆谱一虚弱）为单位，基于该搭档推荐排轴推算各技能施放次数来计算得出以该面板对“单个敌人”进行战斗时的战斗强度。\n\n    暴击期与虚弱期百分比代表该面板在对应时期造成的伤害占比。\n    \n    考虑的因素及对应模拟精确度：\n    面板所有基础数值对技能伤害、技能次数的影响（精确）\n    卡面等级带来的等级压制影响（精确）\n    *无数据则以480计算\n    搭档<>日卡<>武器非常规组合（搭档未使用其对应日卡或专武）时的影响（精确）\n\n    搭档非全程的机制buff，如施放特定技能后带来的增益效果（普通）\n    *由于当前计算逻辑并不通过模拟实际技能循环，这类的buff无法精确模拟。\n    计算这类增益的方式通过计算其生效时间权重折算成全时长平均增益。\n    \n    聚怪机制，群伤机制（无）\n    *战力值的计算纯基于面板及搭档推荐排轴，不考虑实际战斗场景，因此不会对有聚怪机制、群伤机制的搭档或技能进行额外调参增强。用户可自行根据关卡怪物数量等战斗场景对面板进行进一步调整。\n    \n    强化协助（无）\n    *不考虑额外操作`;
+    const body = `这里的数值是战力值.\n\n    加成后战力: 实际战斗战力，由面板战力算上加成（对谱加成与赛季加成）得出.\n    纯面板战力: 纯面板战力.\n\n    战力值基于用户面板数值、使用搭档及日卡推算得出，用于评估面板强度.\n    以四次共鸣期（顺谱两虚弱或逆谱一虚弱）为单位，基于该搭档推荐排轴推算各技能施放次数来计算得出以该面板对“单个敌人”进行战斗时的战斗强度.\n\n    暴击期与虚弱期百分比代表该面板在对应时期造成的伤害占比.\n    \n    考虑的因素及对应模拟精确度：\n    面板所有基础数值对技能伤害、技能次数的影响（精确）\n    卡面等级带来的等级压制影响（精确）\n    *无数据则以480计算\n    搭档<>日卡<>武器非常规组合（搭档未使用其对应日卡或专武）时的影响（精确）\n\n    搭档非全程的机制buff，如施放特定技能后带来的增益效果（普通）\n    *由于当前计算逻辑并不通过模拟实际技能循环，这类的buff无法精确模拟.\n    计算这类增益的方式通过计算其生效时间权重折算成全时长平均增益.\n    \n    聚怪机制，群伤机制（无）\n    *战力值的计算纯基于面板及搭档推荐排轴，不考虑实际战斗场景，因此不会对有聚怪机制、群伤机制的搭档或技能进行额外调参增强。用户可自行根据关卡怪物数量等战斗场景对面板进行进一步调整.\n    \n    强化协助（无）\n    *不考虑额外操作`;
     info.show(title, body);
   },
 });

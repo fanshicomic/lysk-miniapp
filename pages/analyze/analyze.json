@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "upload-form": "/components/upload_form/upload_form",
+    "upload-form": "/components/upload-form/upload-form",
     "svg": "/components/svg/svg",
     "info": "/components/info/info",
     "toast": "/components/toast/toast"

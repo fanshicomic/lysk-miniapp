@@ -85,6 +85,9 @@
           {{item}}
         </button>
       </view>
+      <view wx:if="{{records.length === 0}}">
+        无所选关卡记录。
+      </view>
     </view>
     <toast id="toast"></toast>
     <announcement id="announcement"></announcement>

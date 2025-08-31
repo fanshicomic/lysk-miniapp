@@ -102,6 +102,7 @@
     </view>
     <!-- 展示记录 -->
     <view id="records-wrapper" wx:if="{{recordsVisible}}">
+      <battle-suggestion wx:if="{{levelSuggestions}}" suggestions="{{levelSuggestions}}"></battle-suggestion>
       <view id="records">
         <view class="record-wrapper" wx:for="{{records}}" wx:key="index">
           <record record="{{item}}"></record>

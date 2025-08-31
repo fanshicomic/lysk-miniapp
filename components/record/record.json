@@ -3,6 +3,9 @@
   "styleIsolation": "shared",
   "usingComponents": {
     "svg": "/components/svg/svg",
-    "info": "/components/info/info"
+    "info": "/components/info/info",
+    "companion-label": "/components/companion-label/companion-label",
+    "set-card-label": "/components/set-card-label/set-card-label",
+    "weapon-label": "/components/weapon-label/weapon-label"
   }
 }

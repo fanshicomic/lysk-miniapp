@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "miniprogram-computed": "^7.0.0"
+    "miniprogram-computed": "^7.0.0",
+    "wx-charts": "^0.5.11"
   },
   "devDependencies": {
     "@babel/parser": "^7.28.0",

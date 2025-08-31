@@ -1,5 +1,6 @@
 const { apiGet, apiPost, apiUploadFile } = require('../../utils/util.js');
 const { mapRecordData } = require('../../utils/record_helper.js');
+const { increaseReward } = require('../../utils/analysis_reward');
 
 Page({
   data: {
@@ -216,7 +217,8 @@ Page({
       apiPost('championships-record', data)
         .then((result) => {
           if (result.status === 'OK') {
-            this.showToast('上传成功', 'Thanks♪(･ω･)ﾉ感谢您的使用！', 3000);
+            increaseReward();
+            this.showToast('上传成功', 'Thanks♪(･ω･)ﾉ奖励分析次数+1', 3000);
             this.setData({ uploadVisible: false });
             this.getRecords();
           } else {
@@ -224,7 +226,6 @@ Page({
           }
         })
         .catch((err) => {
-          console.error('Post error:', err);
           this.showToast('上传失败', err.data.error || '未知错误', 5000);
         });
     }

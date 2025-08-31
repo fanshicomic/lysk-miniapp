@@ -1,5 +1,6 @@
 const { apiGet, apiPost, apiUploadFile } = require('../../utils/util.js');
 const { mapRecordData } = require('../../utils/record_helper.js');
+const { increaseReward } = require('../../utils/analysis_reward');
 
 const { LEVEL_TYPES } = require('../../utils/constants.js');
 
@@ -27,6 +28,7 @@ Page({
     latestRecordsVisible: true,
     latestRecords: [],
     totalDbRecordsCnt: 0,
+    levelSuggestions: null,
   },
 
   onLoad(options) {
@@ -90,9 +92,24 @@ Page({
           records: list,
         });
         this.generatePageNumbers();
+
+        // After fetching records, fetch level suggestions
+        return apiGet('level-suggestion', {
+          type,
+          mode,
+          level,
+        });
+      })
+      .then((suggestionResult) => {
+        this.setData({
+          levelSuggestions: suggestionResult,
+        });
       })
       .catch((err) => {
         this.showToast('获取失败', err, 5000);
+        this.setData({
+          levelSuggestions: null, // Clear suggestions on error
+        });
       });
   },
 
@@ -297,7 +314,8 @@ Page({
       apiPost('orbit-record', data)
         .then((result) => {
           if (result.status === 'OK') {
-            this.showToast('上传成功', 'Thanks♪(･ω･)ﾉ感谢您的使用！', 3000);
+            increaseReward();
+            this.showToast('上传成功', 'Thanks♪(･ω･)ﾉ奖励分析次数+1', 3000);
             this.setData({ uploadVisible: false });
             this.getRecords(1);
           } else {
@@ -305,7 +323,6 @@ Page({
           }
         })
         .catch((err) => {
-          console.error('Post error:', err);
           this.showToast('上传失败', err.data.error, 5000);
         });
     }

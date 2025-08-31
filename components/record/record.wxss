@@ -31,27 +31,6 @@
   padding-right: 10px;
 }
 
-.record-partner {
-  background: rgba(255, 255, 255, 0.15);
-  /*border: 1px solid rgba(255, 255, 255, 0.2);*/
-  border-radius: 12px;
-  width: 100%;
-  height: 100%;
-}
-
-.record-weapon {
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.record-set-card {
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-}
-
 .record-level-detail {
   text-align: right;
   margin-top: -1px;
@@ -101,102 +80,6 @@
 
 .note {
   text-align: left;
-}
-
-/* Partner styles */
-
-.partner-normal {
-  background: dimgray;
-}
-
-.partner-king-of-darknight {
-  background: linear-gradient(135deg, #010000, #ae9b7e);
-}
-
-.partner-lumiere {
-  background: linear-gradient(135deg, #e3c939, #7edbff);
-}
-
-.partner-light-seeker {
-  background: linear-gradient(135deg, #5da668, #ddd7c6);
-}
-
-.partner-foreseer {
-  background: linear-gradient(135deg, #2a355d, #4e6c91);
-}
-
-.partner-master-of-fate {
-  background: linear-gradient(135deg, #152444, #3b7e6b);
-}
-
-.partner-abyss-walker {
-  background: linear-gradient(135deg, #3b2942, #593076);
-}
-
-.partner-lemurian-sea-god {
-  background: linear-gradient(135deg, #694b7c, #5b759d);
-}
-
-.partner-god-of-the-tides {
-  background: linear-gradient(135deg, #f1ade0, #6fbde7);
-}
-
-.partner-relentless-conqueror {
-  background: linear-gradient(135deg, #250c0c, #ab6565);
-}
-
-.partner-abysm-sovereign {
-  background: linear-gradient(135deg, #000000, #6f0e0e);
-}
-
-.partner-farspace-colonel {
-  background: linear-gradient(135deg, #251332, #630000);
-}
-
-.partner-ultimate-weapon-X-02 {
-  background: linear-gradient(135deg, #22053b, #97562b);
-}
-
-/* Set card styles */
-
-.set-card-purple {
-  background-color: #785d90;
-}
-
-.set-card-pink {
-  background-color: #d78a8e;
-}
-
-.set-card-red {
-  background-color: #ad2e3e;
-}
-
-.set-card-blue {
-  background-color: #5e9fca;
-}
-
-.set-card-green {
-  background-color: #42a366;
-}
-
-.set-card-yellow {
-  background-color: #d4b83a;
-}
-
-.set-card-none {
-  background-color: dimgray;
-}
-
-/* Weapon styles */
-
-.weapon-rare {
-  border-color: #e6c639;
-  color: #e6c639;
-}
-
-.weapon-normal {
-  border-color: #785d90;
-  color: #785d90;
 }
 
 .record-container {

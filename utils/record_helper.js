@@ -78,4 +78,11 @@ function mapRecordData(inputData, recordDetails, battleType) {
   return baseData;
 }
 
-export { getChampionshipStartDate, mapRecordData };
+function formatNumberWithCommas(number) {
+  if (number === undefined || number === null) {
+    return '0';
+  }
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};
+
+export { getChampionshipStartDate, mapRecordData, formatNumberWithCommas };

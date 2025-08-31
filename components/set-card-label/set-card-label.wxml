@@ -1,0 +1,3 @@
+<view class="record-set-card {{getSetCardColorMap}}">
+  <text>{{card}} {{stage}}</text>
+</view>

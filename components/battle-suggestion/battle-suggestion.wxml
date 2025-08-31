@@ -1,0 +1,29 @@
+
+<view class="container">
+    <view wx:if="{{lowestCP === 0}}">
+        <view>当前关卡无通关数据</view>
+        <view>欢迎上传━(*｀∀´*)ノ亻!</view>
+    </view>
+    <view wx:else="">
+        <text class="h2">通关建议</text>
+        <view class="suggestion-container">
+            <view>当前库中通关最低战力值为：{{lowestCP}}</view>
+            <view>建议猎人小姐调整战力值至：{{suggestedCP}} 以上</view>
+            <view class="hr"></view>
+            <view class="row w-100" style="justify-content: space-between;">
+              <view>伤害流派选择多为：{{getAttackPattern}}</view>
+              <view class="percentage-label">{{getAttackPatternPercentage}}%</view>
+            </view>
+            <view>
+              大家常用的搭档日卡组合为：
+              <view class="combi-section">
+                <view class="row" wx:for="{{getTop3PairsWithPercentage}}"  wx:key="index">
+                  <view class="w-50"><companion-label companion="{{item.companion}}"></companion-label></view>
+                  <view class="w-25"><set-card-label companion="{{item.companion}}" card="{{item.set_card}}"></set-card-label></view>
+                  <view class="w-25 percentage-label">{{item.percentage}}%</view>
+                </view>
+              </view>
+            </view>
+        </view>
+    </view>
+</view>

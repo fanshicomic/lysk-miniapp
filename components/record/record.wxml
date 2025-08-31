@@ -48,16 +48,6 @@
     </view>
     <view wx:if="{{noBuffedCP !== 0}}" class="row cp-container">
       <view class="w-50 cp-left-column record-cp-detail">
-        <!-- <view class="cp-score-row">
-            <view class="battle-icon"><image src="/assets/battle.png" style="width:40px;height: 40px;"></image></view>
-            <view class="cp-left-column">                
-                <label class="record-cp-label">{{buffedCP}}</label>
-                <view class="record-raw-cp-label-row">            
-                    {{noBuffedCP}}
-                    <svg class="info" src="/assets/question.svg" width="11px" height="11px" color="#ffffffbd" bind:tap="onCPSectionTap"></svg>
-                </view>
-            </view>
-        </view> -->
         <label class="record-cp-label">{{buffedCP}}</label>
         <view class="record-raw-cp-label-row">
           {{noBuffedCP}}
@@ -79,11 +69,11 @@
       <view class="w-50 cp-right-column">
         <view class="cp-right-row record-grid-padding-left">
           <label class="record-text-label"
-            >暴击期: {{nonWeakenCPPercentage}}%</label
+            >暴击期: {{critCPPercentage}}%</label
           >
           <view
             class="record-cp-progress-bar record-value-label"
-            style="background: linear-gradient(to right, #f4d266 0%, #f6cd63 100%); width: {{nonWeakenCPProgressBarWidth}}%"
+            style="background: linear-gradient(to right, #f4d266 0%, #f6cd63 100%); width: {{critCPProgressBarWidth}}%"
           ></view>
         </view>
         <view class="cp-right-row record-grid-padding-left record-cp-detail">
@@ -105,22 +95,13 @@
     </block>
     <view class="row">
       <view class="w-50 record-grid record-grid-padding-right">
-        <view class="record-partner {{getPartnerColorMap}}"
-          >{{record['搭档身份'] || '—'}}</view
-        >
+        <companion-label companion="{{record['搭档身份']}}"></companion-label>
       </view>
       <view class="w-25 record-grid record-grid-padding-left-right">
-        <view class="record-set-card {{getSetCardColorMap}}">
-          {{record['日卡'] || '—'}}
-          <text wx:if="{{record['日卡'] !== '无套装'}}"
-            >{{record['阶数']}}</text
-          >
-        </view>
+        <set-card-label companion="{{record['搭档身份']}}" card="{{record['日卡']}}" stage="{{record['阶数']}}"></set-card-label>
       </view>
       <view class="w-25 record-grid record-grid-padding-left">
-        <view class="record-weapon {{getWeaponClass}}"
-          >{{record['武器'] || '—'}}</view
-        >
+        <weapon-label weapon="{{record['武器']}}"></weapon-label>
       </view>
     </view>
     <view class="row">

@@ -15,7 +15,7 @@
       <upload-form id="upload-form" is-analyze="true"></upload-form>
       <view class="button-row display-row">
         <button class="btn ocr-action-btn w-50" bindtap="onOCR">识图输入</button>
-        <button class="btn submit-btn w-50" bindtap="onSubmit">上传分析</button>
+        <button class="btn submit-btn w-50" bindtap="onSubmit">上传分析 (剩{{analysisTries}}次)</button>
       </view>
     </view>
     <view class="hr" />
@@ -55,9 +55,9 @@
             <view class="percentage-row">
               <view
                 class="record-cp-bar"
-                style="background: linear-gradient(to right, #f4d266 0%, #ffe4a0 100%); width: {{nonWeakenCPPercentage*0.7}}%"
+                style="background: linear-gradient(to right, #f4d266 0%, #ffe4a0 100%); width: {{critCPPercentage*0.7}}%"
               ></view>
-              {{nonWeakenCPPercentage}}%
+              {{critCPPercentage}}%
             </view>
           </view>
           <view class="cp-text-label w-50">
