@@ -38,7 +38,7 @@ Component({
       const sortedPairs = [...pairs].sort((a, b) => b.count - a.count);
       const top3 = sortedPairs.slice(0, 3);    
       const result = top3.map(item => {
-        const percentage = parseFloat(((item.count / totalCount) * 100).toFixed(2));        
+        const percentage = parseFloat(((item.count / totalCount) * 100).toFixed(0));        
         return {
           ...item,
           percentage: percentage

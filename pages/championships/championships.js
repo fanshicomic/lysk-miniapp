@@ -21,6 +21,7 @@ Page({
     latestRecordsVisible: true,
     latestRecords: [],
     totalDbRecordsCnt: 0,
+    levelSuggestions: null,
   },
 
   onLoad(options) {
@@ -79,9 +80,23 @@ Page({
           records: list,
         });
         this.generatePageNumbers();
+        
+        // After fetching records, fetch level suggestions
+        return apiGet(
+          'level-suggestion', {
+          level,
+        });
+      })
+      .then((suggestionResult) => {
+        this.setData({
+          levelSuggestions: suggestionResult,
+        });
       })
       .catch((err) => {
         this.showToast('获取失败', err, 5000);
+        this.setData({
+          levelSuggestions: null, // Clear suggestions on error
+        });
       });
   },
 
