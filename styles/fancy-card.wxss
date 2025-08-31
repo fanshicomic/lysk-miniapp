@@ -105,6 +105,7 @@
 /* --- All original .box-hover .float-before/after rules are deleted --- */
 
 /* Create two animations for opposite diagonal movement */
+/* Create two animations for opposite diagonal movement */
 @keyframes animate {
   0%, 100% {
     /* Starts/ends at bottom-right */
@@ -128,7 +129,7 @@
   color: #fff;
   /* --- Hover styles are now the default --- */
   /* left: -50rpx; */
-  padding: 20rpx 80rpx;
+  padding: 80rpx 80rpx;
 }
 
 /* The rest of the file remains the same */
