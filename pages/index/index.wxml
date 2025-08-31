@@ -49,8 +49,7 @@
     </navigator>
 
     <navigator
-      open-type="switchTab"
-      url="/pages/championships/championships"
+      url="/pages/news/news"
       class="button-section"
     >
       <view class="btn hologram">

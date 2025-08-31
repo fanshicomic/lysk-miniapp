@@ -1,0 +1,30 @@
+<!--pages/news/news.wxml-->
+<view class="back-button" bindtap="onBack">
+  <svg
+    src="/assets/back.svg"
+    color="lightgrey"
+    width="13px"
+    height="13px"
+  ></svg>
+</view>
+<view class="main-content">
+  <view class="content-wrapper">
+    <text class="h1">临空猎人日报</text>
+    <text class="sub-text">Linkon City Hunter Daily News</text>
+    <view class="report-page">
+      <view class="row">
+        <svg
+          class="date-icon"
+          src="/assets/square-fill.svg"
+          color="#554e42"
+          width="13px"
+          height="13px"
+        ></svg>
+        <text class="date">{{today}}</text>
+      </view>
+      <view class="hr"></view>
+      <image src="/assets/orbit.png" class="title-image"></image>
+    </view>
+  </view>
+  <footer />
+</view>
