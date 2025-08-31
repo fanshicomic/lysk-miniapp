@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "svg": "/components/svg/svg",
-    "footer": "/components/footer/footer"
+    "footer": "/components/footer/footer",
+    "fancy-card": "/components/fancy-card/fancy-card"
   }
 }

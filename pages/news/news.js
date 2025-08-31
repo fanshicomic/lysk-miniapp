@@ -1,11 +1,73 @@
-// pages/news/news.js
-Page({
+import { apiGet } from '../../utils/util.js';
 
-  /**
-   * 页面的初始数据
-   */
+const computedBehavior = require('miniprogram-computed').behavior;
+
+const partnerColors = {
+  '黎深': '60, 110, 160', // blue
+  '沈星回': '255, 255, 0', // yellow
+  '祁煜': '60, 10, 100', // purple
+  '秦彻': '170, 0, 40', // red
+  '夏以昼': '255, 130, 0' // orange
+};
+
+function getTopItems(counts, topN) {
+  if (!counts || Object.keys(counts).length === 0) {
+    return [];
+  }
+  return Object.entries(counts)
+    .map(([name, count]) => {
+      const rgb = partnerColors[name];
+      const gradient = rgb
+        ? `linear-gradient(to right, rgba(${rgb}, 0.4), rgba(${rgb}, 0))`
+        : 'none';
+      const img = mapPartnerToPng(name);
+      return { name, count, gradient, img };
+    })
+    .sort((a, b) => b.count - a.count)
+    .slice(0, topN);
+}
+
+function mapPartnerToPng(name) {
+  let partnerMap = {
+    '沈星回': 'xavier',
+    '黎深': 'zayne',
+    '祁煜': 'rafayle',
+    '秦彻': 'sylus',
+    '夏以昼': 'caleb',
+  }
+  return partnerMap[name];
+}
+
+Page({
+  behaviors: [computedBehavior],
   data: {
-    today: ''
+    today: '',
+    orbit_record_companion_counts: {},
+    championships_record_companion_counts: {},
+    orbit_record_partner_counts: {},
+    championships_record_partner_counts: {},
+  },
+
+  computed: {
+    getTopOrbitCompanions(data) {
+      return getTopItems(data.orbit_record_companion_counts, 3);
+    },
+    getTopOrbitPartners(data) {
+      return getTopItems(data.orbit_record_partner_counts, 5);
+    },
+    getTopChampionshipsCompanions(data) {
+      return getTopItems(data.championships_record_companion_counts, 3);
+    },
+    getTopChampionshipsPartners(data) {
+      return getTopItems(data.championships_record_partner_counts, 5);
+    },
+  },
+
+  onLoad(options) {
+    this.setData({
+      today: this.getTodayDate()
+    });
+    this.fetchCounts();
   },
 
   onBack() {
@@ -24,61 +86,12 @@ Page({
     return `${year}-${formattedMonth}-${formattedDay}`;
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-    this.setData({
-      today: this.getTodayDate()
-    });
+  async fetchCounts() {
+    try {
+      const data = await apiGet('news');
+      this.setData(data);
+    } catch (err) {
+      console.error('Failed to fetch news data:', err);
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
 })

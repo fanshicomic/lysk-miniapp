@@ -10,21 +10,63 @@
 <view class="main-content">
   <view class="content-wrapper">
     <text class="h1">临空猎人日报</text>
-    <text class="sub-text">Linkon City Hunter Daily News</text>
-    <view class="report-page">
+    <text class="sub-text">- Linkon City Hunter Daily News -</text>
+    <view class="card-container">
+      <!-- <fancy-card title="Card One" gradientType="one"></fancy-card> -->
+      <view class="box gradient-one">
+        <view class="bg-before"></view>
+        <view class="bg-after"></view>
+
+        <view class="span-effects">
+          <view class="float-before"></view>
+          <view class="float-after"></view>
+        </view>
+
+        <view class="content">
+          <text class="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</text>
+          <navigator class="a" url="/pages/details/details">Next >></navigator>
+        </view>
+      </view>
+    </view>
+    <!-- <view class="report-page">
       <view class="row">
         <svg
           class="date-icon"
           src="/assets/square-fill.svg"
-          color="#554e42"
+          color="#ffffffde"
           width="13px"
           height="13px"
         ></svg>
         <text class="date">{{today}}</text>
       </view>
       <view class="hr"></view>
+      <view class="report-content">
+        <text>截至今日，\n轨道关卡中最活跃的角色是: </text>
+        <view class="top-content">
+          <view class="top-list">
+            <block wx:for="{{getTopOrbitPartners}}" wx:key="name">
+              <view class="top-list-item {{index === 0 ? 'top-one' : ''}}" 
+                style="background: {{index === 0 ? item.gradient : 'none'}}">
+                <text>{{item.name}}, 一共{{item.count}}次</text>
+              </view>
+            </block>
+          </view>
+        </view>
+        <view class="character">
+          <view class="character-image-container">
+            <image wx:if="{{getTopOrbitPartners.length > 0}}" src="/assets/characters/{{getTopOrbitPartners[0].img}}.png" class="character-image" mode="aspectFit"></image>
+            <view class="corner corner-tl"></view>
+            <view class="corner corner-tr"></view>
+            <view class="corner corner-bl"></view>
+            <view class="corner corner-br"></view>
+          </view>
+          <view class="speech-bubble">
+            <text class="speech-bubble-text">打不完的轨道……</text>
+          </view>
+        </view>
+      </view>
       <image src="/assets/orbit.png" class="title-image"></image>
-    </view>
+    </view> -->
   </view>
   <footer />
 </view>
