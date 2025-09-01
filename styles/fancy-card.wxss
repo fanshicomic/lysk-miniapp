@@ -53,10 +53,6 @@
 .gradient-three .bg-after {
   background: linear-gradient(315deg, #4dff03, #00d0ff);
 }
-.gradient-zayne .bg-before,
-.gradient-zayne .bg-after {
-  background: linear-gradient(315deg, #4a965b, #102f67);
-}
 
 .span-effects {
   display: block;

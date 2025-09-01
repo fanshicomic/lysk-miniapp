@@ -1,14 +1,30 @@
 import { apiGet } from '../../utils/util.js';
+import { DROPDOWN_VALUES } from '../../utils/constants.js';
 
 const computedBehavior = require('miniprogram-computed').behavior;
 
 const partnerColors = {
   '黎深': '60, 110, 160', // blue
-  // '黎深': '0, 0, 0', // blue
-  '沈星回': '255, 255, 0', // yellow
+  '沈星回': '255, 205, 70', // yellow
   '祁煜': '60, 10, 100', // purple
   '秦彻': '170, 0, 40', // red
   '夏以昼': '255, 130, 0' // orange
+};
+
+const partnerPhrase = {
+  '黎深': '不算加班，毕竟是和你一起',
+  '沈星回': '下班了还要打流浪体吗？',
+  '祁煜': '给流浪体看看我们的默契',
+  '秦彻': '小意思，热身都不够',
+  '夏以昼': '休息时就打这个放松？陪你'
+};
+
+const partnerMap = {
+  '沈星回': 'xavier',
+  '黎深': 'zayne',
+  '祁煜': 'rafayle',
+  '秦彻': 'sylus',
+  '夏以昼': 'caleb',
 };
 
 function getTopItems(counts, topN) {
@@ -17,26 +33,31 @@ function getTopItems(counts, topN) {
   }
   return Object.entries(counts)
     .map(([name, count]) => {
-      const rgb = partnerColors[name];
+      const partner = mapCompanionToPartner(name) || name;
+      const rgb = partnerColors[partner];
+      const phrase = partnerPhrase[partner];
       const gradient = rgb
         ? `linear-gradient(to right, rgba(${rgb}, 1), rgba(${rgb}, 0))`
         : 'none';
-      const img = mapPartnerToPng(name);
-      return { name, count, gradient, img };
+      const img = mapPartnerToEng(partner);
+      return { name, count, gradient, img, phrase };
     })
     .sort((a, b) => b.count - a.count)
     .slice(0, topN);
 }
 
-function mapPartnerToPng(name) {
-  let partnerMap = {
-    '沈星回': 'xavier',
-    '黎深': 'zayne',
-    '祁煜': 'rafayle',
-    '秦彻': 'sylus',
-    '夏以昼': 'caleb',
-  }
+function mapPartnerToEng(name) {
   return partnerMap[name];
+}
+
+function mapCompanionToPartner(companionName) {
+  for (const partner in partnerMap) {
+    const companionList = DROPDOWN_VALUES[partner + '搭档'];
+    if (companionList && companionList.includes(companionName)) {
+      return partner;
+    }
+  }
+  return null;
 }
 
 Page({
@@ -53,13 +74,13 @@ Page({
 
   computed: {
     getTopOrbitCompanions(data) {
-      return getTopItems(data.orbit_record_companion_counts, 3);
+      return getTopItems(data.orbit_record_companion_counts, 5);
     },
     getTopOrbitPartners(data) {
       return getTopItems(data.orbit_record_partner_counts, 5);
     },
     getTopChampionshipsCompanions(data) {
-      return getTopItems(data.championships_record_companion_counts, 3);
+      return getTopItems(data.championships_record_companion_counts, 5);
     },
     getTopChampionshipsPartners(data) {
       return getTopItems(data.championships_record_partner_counts, 5);

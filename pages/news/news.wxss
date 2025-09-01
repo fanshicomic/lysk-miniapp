@@ -223,3 +223,18 @@ footer {
 .prev-button {
   left: 5vw;
 }
+
+.gradient-xavier .bg-before,
+.gradient-xavier .bg-after {
+  background: linear-gradient(315deg, #ffcd46, #2f9edf);
+}
+
+.gradient-zayne .bg-before,
+.gradient-zayne .bg-after {
+  background: linear-gradient(315deg, #4a965b, #102f67);
+}
+
+.gradient-rafayle .bg-before,
+.gradient-rafayle .bg-after {
+  background: linear-gradient(315deg, #ff9f9f, #3f0f7e);
+}
