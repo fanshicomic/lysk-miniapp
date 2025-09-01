@@ -1,5 +1,5 @@
-function increaseReward() {
-    const newTries = (wx.getStorageSync('rewardedAnalyses') || 0) + 1;
+function increaseReward(num) {
+    const newTries = (wx.getStorageSync('rewardedAnalyses') || 0) + num;
     wx.setStorageSync('rewardedAnalyses', newTries);
 }
 

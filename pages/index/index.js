@@ -1,6 +1,8 @@
 const { apiGet, apiPost } = require('../../utils/util.js');
+const { increaseReward } = require('../../utils/analysis_reward');
 
 const app = getApp();
+let videoAd = null;
 
 Page({
   data: {
@@ -8,12 +10,30 @@ Page({
     subTitle: 'Deepspace Battle Helper V2.4.0',
     blobs: [],
     showToast: false,
-    userInfo: null, // We can keep this for potential future use
-    showLoginPanel: false, // Controls the visibility of the login panel
+    userInfo: null,
+    showLoginPanel: false,
+    rewardPending: false
   },
 
   onLoad(options) {
-    apiGet('ping', {});
+    if (wx.createRewardedVideoAd) {
+      this.videoAd = wx.createRewardedVideoAd({ // Store ad instance on `this`
+        adUnitId: 'adunit-5467103453353e5d'
+      });
+      this.videoAd.onLoad(() => {});
+      this.videoAd.onError((err) => {
+        console.error('激励视频广告加载失败', err);
+      });
+      this.videoAd.onClose((res) => {
+        if (res && res.isEnded) {
+          // 1. Set the flag instead of calling the function directly
+          this.setData({
+            rewardPending: true
+          });
+        }
+      });
+    }
+    // apiGet('ping', {});
 
     const blobCount = 10;
     const blobArray = [];
@@ -57,6 +77,20 @@ Page({
           return;
         }
       });
+
+    if (this.data.rewardPending) {
+      // 3. Grant the reward now that the page is fully active
+      increaseReward(3);
+      wx.showToast({
+        title: '感谢您的支持！分析次数+3',
+        icon: 'success'
+      });
+      
+      // 4. Reset the flag
+      this.setData({
+        rewardPending: false
+      });
+    }
   },
 
   handleLogin() {
@@ -123,6 +157,35 @@ Page({
 
   handleShowAnnouncement() {
     this.selectComponent('#announcement').forceDisplayAnnouncement();
+  },
+
+  handleShowAds() {
+    wx.showModal({
+      title: '支持一下',
+      content: '看个广告支持一下开发者吧！',
+      success: (res) => {
+        if (res.confirm) {
+          if (videoAd) {
+            videoAd.show().catch(() => {
+              videoAd.load()
+                .then(() => videoAd.show())
+                .catch(err => {
+                  console.log('激励视频 广告显示失败');
+                  wx.showToast({
+                    title: '广告显示失败',
+                    icon: 'none'
+                  });
+                });
+            });
+          } else {
+            wx.showToast({
+              title: '广告加载失败',
+              icon: 'none'
+            });
+          }
+        }
+      }
+    });
   },
 
   onShareAppMessage: function (res) {

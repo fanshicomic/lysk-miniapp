@@ -25,6 +25,14 @@
       height="12px"
     ></svg>
   </view>
+  <view class="ads-button" bind:tap="handleShowAds">
+    <svg
+      src="/assets/heart.svg"
+      color="rgba(255, 255, 255, 0.5)"
+      width="12px"
+      height="12px"
+    ></svg>
+  </view>
 
   <view class="content-wrapper">
     <view id="title">{{title}}</view>

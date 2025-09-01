@@ -73,7 +73,7 @@
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20rpx);
   transition: 0.1s;
-  animation: animate 2s ease-in-out infinite;
+  animation: animate 4s ease-in-out infinite;
   box-shadow: 0 10rpx 30rpx rgba(0,0,0,0.08);
   /* --- Hover styles are now the default --- */
   top: -100rpx;
@@ -91,7 +91,7 @@
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20rpx);
   transition: 0.5s;
-  animation: animate 2s ease-in-out infinite;
+  animation: animate 4s ease-in-out infinite;
   box-shadow: 0 10rpx 30rpx rgba(0,0,0,0.08);
   animation-delay: -1s;
   /* --- Hover styles are now the default --- */

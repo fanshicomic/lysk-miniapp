@@ -68,8 +68,21 @@ page {
 
 .announcement-button {
   position: absolute;
-  top: 7vh;
-  left: 12vw;
+  top: 6.5vh;
+  left: 8vw;
+  background-color: rgba(255, 255, 255, 0.1);
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ads-button {
+  position: absolute;
+  top: 6.5vh;
+  left: 18vw;
   background-color: rgba(255, 255, 255, 0.1);
   height: 30px;
   width: 30px;

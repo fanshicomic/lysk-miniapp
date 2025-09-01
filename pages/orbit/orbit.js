@@ -314,7 +314,7 @@ Page({
       apiPost('orbit-record', data)
         .then((result) => {
           if (result.status === 'OK') {
-            increaseReward();
+            increaseReward(1);
             this.showToast('上传成功', 'Thanks♪(･ω･)ﾉ奖励分析次数+1', 3000);
             this.setData({ uploadVisible: false });
             this.getRecords(1);

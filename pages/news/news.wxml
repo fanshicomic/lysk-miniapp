@@ -116,7 +116,7 @@
             <text class="date">{{today}}</text>
           </view>
           <view class="hr"></view>
-          <text>截至今日，\n轨道中大杀四方的搭档是: </text>
+          <text>截至今日，\n轨道中最被依赖的搭档是: </text>
           <view class="top-content">
             <view class="top-list">
               <block wx:for="{{getTopOrbitCompanions}}" wx:key="name">
@@ -177,6 +177,49 @@
             </view>
             <view class="character-image-container">
               <image wx:if="{{getTopChampionshipsCompanions.length > 0}}" src="/assets/characters/{{getTopChampionshipsCompanions[0].img}}.png" class="character-image" mode="aspectFit"></image>
+              <view class="corner corner-tl"></view>
+              <view class="corner corner-tr"></view>
+              <view class="corner corner-bl"></view>
+              <view class="corner corner-br"></view>
+            </view>
+          </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{currentCard === 4}}">
+      <view class="card-container">
+        <view class="box gradient-two">
+          <view class="bg-before"></view>
+          <view class="bg-after"></view>
+
+          <view class="span-effects">
+            <view class="float-before"></view>
+            <view class="float-after"></view>
+          </view>
+
+          <view class="content">
+            <view class="row">
+            <text class="date">{{today}}</text>
+          </view>
+          <view class="hr"></view>
+          <text>截至今日，\n猎人们通过最多的试炼是: </text>
+          <view class="top-content">
+            <view class="top-list">
+              <block wx:for="{{top_most_records_levels}}" wx:key="level">
+                <view class="top-list-item {{index === 0 ? 'top-one' : ''}}" >
+                  <text>{{item.level}}, 一共{{item.count}}次</text>
+                </view>
+              </block>
+            </view>
+          </view>
+          <view class="character">
+            <view class="speech-bubble">
+              <text class="speech-bubble-text">什么都难不倒你zZzZ</text>
+            </view>
+            <view class="character-image-container">
+              <image src="/assets/characters/huhu.png" class="monster-image" mode="aspectFit"></image>
               <view class="corner corner-tl"></view>
               <view class="corner corner-tr"></view>
               <view class="corner corner-bl"></view>

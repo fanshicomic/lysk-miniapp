@@ -68,8 +68,9 @@ Page({
     championships_record_companion_counts: {},
     orbit_record_partner_counts: {},
     championships_record_partner_counts: {},
+    top_most_records_levels: {},
     currentCard: 0,
-    totalCards: 4
+    totalCards: 5
   },
 
   computed: {
