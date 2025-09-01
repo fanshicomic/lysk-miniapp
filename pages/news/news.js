@@ -4,6 +4,7 @@ const computedBehavior = require('miniprogram-computed').behavior;
 
 const partnerColors = {
   '黎深': '60, 110, 160', // blue
+  // '黎深': '0, 0, 0', // blue
   '沈星回': '255, 255, 0', // yellow
   '祁煜': '60, 10, 100', // purple
   '秦彻': '170, 0, 40', // red
@@ -18,7 +19,7 @@ function getTopItems(counts, topN) {
     .map(([name, count]) => {
       const rgb = partnerColors[name];
       const gradient = rgb
-        ? `linear-gradient(to right, rgba(${rgb}, 0.4), rgba(${rgb}, 0))`
+        ? `linear-gradient(to right, rgba(${rgb}, 1), rgba(${rgb}, 0))`
         : 'none';
       const img = mapPartnerToPng(name);
       return { name, count, gradient, img };
@@ -46,6 +47,8 @@ Page({
     championships_record_companion_counts: {},
     orbit_record_partner_counts: {},
     championships_record_partner_counts: {},
+    currentCard: 0,
+    totalCards: 4
   },
 
   computed: {
@@ -73,6 +76,18 @@ Page({
   onBack() {
     wx.navigateBack({
       delta: 1,
+    });
+  },
+
+  onNext() {
+    this.setData({
+      currentCard: (this.data.currentCard + 1) % this.data.totalCards
+    });
+  },
+
+  onPrev() {
+    this.setData({
+      currentCard: (this.data.currentCard - 1 + this.data.totalCards) % this.data.totalCards
     });
   },
 

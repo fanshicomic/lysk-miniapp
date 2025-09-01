@@ -11,22 +11,188 @@
   <view class="content-wrapper">
     <text class="h1">临空猎人日报</text>
     <text class="sub-text">- Linkon City Hunter Daily News -</text>
-    <view class="card-container">
-      <!-- <fancy-card title="Card One" gradientType="one"></fancy-card> -->
-      <view class="box gradient-one">
-        <view class="bg-before"></view>
-        <view class="bg-after"></view>
 
-        <view class="span-effects">
-          <view class="float-before"></view>
-          <view class="float-after"></view>
-        </view>
+    <view wx:if="{{currentCard === 0}}">
+      <view class="card-container">
+        <view class="box gradient-zayne">
+          <view class="bg-before"></view>
+          <view class="bg-after"></view>
 
-        <view class="content">
-          <text class="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</text>
-          <navigator class="a" url="/pages/details/details">Next >></navigator>
+          <view class="span-effects">
+            <view class="float-before"></view>
+            <view class="float-after"></view>
+          </view>
+
+          <view class="content">
+            <view class="row">
+            <text class="date">{{today}}</text>
+          </view>
+          <view class="hr"></view>
+          <text>截至今日，<br/>轨道关卡中最活跃的角色是: </text>
+          <view class="top-content">
+            <view class="top-list">
+              <block wx:for="{{getTopOrbitPartners}}" wx:key="name">
+                <view class="top-list-item {{index === 0 ? 'top-one' : ''}}" 
+                  style="background: {{index === 0 ? item.gradient : 'none'}}">
+                  <text>{{item.name}}, 一共{{item.count}}次</text>
+                </view>
+              </block>
+            </view>
+          </view>
+          <view class="character">
+            <view class="speech-bubble">
+              <text class="speech-bubble-text">打不完的轨道……</text>
+            </view>
+            <view class="character-image-container">
+              <image wx:if="{{getTopOrbitPartners.length > 0}}" src="/assets/characters/{{getTopOrbitPartners[0].img}}.png" class="character-image" mode="aspectFit"></image>
+              <view class="corner corner-tl"></view>
+              <view class="corner corner-tr"></view>
+              <view class="corner corner-bl"></view>
+              <view class="corner corner-br"></view>
+            </view>
+          </view>
+          </view>
         </view>
       </view>
+    </view>
+
+    <view wx:if="{{currentCard === 1}}">
+      <view class="card-container">
+        <view class="box gradient-caleb">
+          <view class="bg-before"></view>
+          <view class="bg-after"></view>
+
+          <view class="span-effects">
+            <view class="float-before"></view>
+            <view class="float-after"></view>
+          </view>
+
+          <view class="content">
+            <view class="row">
+            <text class="date">{{today}}</text>
+          </view>
+          <view class="hr"></view>
+          <text>截至今日，<br/>轨道关卡中最活跃的助力是: </text>
+          <view class="top-content">
+            <view class="top-list">
+              <block wx:for="{{getTopOrbitCompanions}}" wx:key="name">
+                <view class="top-list-item {{index === 0 ? 'top-one' : ''}}" 
+                  style="background: {{index === 0 ? item.gradient : 'none'}}">
+                  <text>{{item.name}}, 一共{{item.count}}次</text>
+                </view>
+              </block>
+            </view>
+          </view>
+          <view class="character">
+            <view class="speech-bubble">
+              <text class="speech-bubble-text">什么时候我才能上场？</text>
+            </view>
+            <view class="character-image-container">
+              <image wx:if="{{getTopOrbitCompanions.length > 0}}" src="/assets/characters/{{getTopOrbitCompanions[0].img}}.png" class="character-image" mode="aspectFit"></image>
+              <view class="corner corner-tl"></view>
+              <view class="corner corner-tr"></view>
+              <view class="corner corner-bl"></view>
+              <view class="corner corner-br"></view>
+            </view>
+          </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{currentCard === 2}}">
+      <view class="card-container">
+        <view class="box gradient-rafayle">
+          <view class="bg-before"></view>
+          <view class="bg-after"></view>
+
+          <view class="span-effects">
+            <view class="float-before"></view>
+            <view class="float-after"></view>
+          </view>
+
+          <view class="content">
+            <view class="row">
+            <text class="date">{{today}}</text>
+          </view>
+          <view class="hr"></view>
+          <text>截至今日，<br/>深空挑战中最活跃的角色是: </text>
+          <view class="top-content">
+            <view class="top-list">
+              <block wx:for="{{getTopChampionshipsPartners}}" wx:key="name">
+                <view class="top-list-item {{index === 0 ? 'top-one' : ''}}" 
+                  style="background: {{index === 0 ? item.gradient : 'none'}}">
+                  <text>{{item.name}}, 一共{{item.count}}次</text>
+                </view>
+              </block>
+            </view>
+          </view>
+          <view class="character">
+            <view class="speech-bubble">
+              <text class="speech-bubble-text">终于轮到我了！</text>
+            </view>
+            <view class="character-image-container">
+              <image wx:if="{{getTopChampionshipsPartners.length > 0}}" src="/assets/characters/{{getTopChampionshipsPartners[0].img}}.png" class="character-image" mode="aspectFit"></image>
+              <view class="corner corner-tl"></view>
+              <view class="corner corner-tr"></view>
+              <view class="corner corner-bl"></view>
+              <view class="corner corner-br"></view>
+            </view>
+          </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{currentCard === 3}}">
+      <view class="card-container">
+        <view class="box gradient-sylus">
+          <view class="bg-before"></view>
+          <view class="bg-after"></view>
+
+          <view class="span-effects">
+            <view class="float-before"></view>
+            <view class="float-after"></view>
+          </view>
+
+          <view class="content">
+            <view class="row">
+            <text class="date">{{today}}</text>
+          </view>
+          <view class="hr"></view>
+          <text>截至今日，<br/>深空挑战中最活跃的助力是: </text>
+          <view class="top-content">
+            <view class="top-list">
+              <block wx:for="{{getTopChampionshipsCompanions}}" wx:key="name">
+                <view class="top-list-item {{index === 0 ? 'top-one' : ''}}" 
+                  style="background: {{index === 0 ? item.gradient : 'none'}}">
+                  <text>{{item.name}}, 一共{{item.count}}次</text>
+                </view>
+              </block>
+            </view>
+          </view>
+          <view class="character">
+            <view class="speech-bubble">
+              <text class="speech-bubble-text">快让我上场！</text>
+            </view>
+            <view class="character-image-container">
+              <image wx:if="{{getTopChampionshipsCompanions.length > 0}}" src="/assets/characters/{{getTopChampionshipsCompanions[0].img}}.png" class="character-image" mode="aspectFit"></image>
+              <view class="corner corner-tl"></view>
+              <view class="corner corner-tr"></view>
+              <view class="corner corner-bl"></view>
+              <view class="corner corner-br"></view>
+            </view>
+          </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="prev-button" bindtap="onPrev">
+      <svg src="/assets/back.svg" color="lightgrey" width="13px" height="13px" style="transform: rotate(0deg);"></svg>
+    </view>
+    <view class="next-button" bindtap="onNext">
+      <svg src="/assets/back.svg" color="lightgrey" width="13px" height="13px" style="transform: rotate(180deg);"></svg>
     </view>
     <!-- <view class="report-page">
       <view class="row">

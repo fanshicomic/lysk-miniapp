@@ -1,11 +1,5 @@
 /* pages/news/news.wxss */
 @import "/styles/fancy-card.wxss";
-page {
-  height: 100vh;
-  color: white;
-  background: linear-gradient(0deg, #23314c, #45324c);
-  overflow: hidden;
-}
 
 .main-content {
     overflow: scroll;
@@ -17,6 +11,11 @@ page {
   align-items: center;
   min-height: 100vh;
   box-sizing: border-box;
+}
+
+.content {
+  font-size: 16px;
+  width: 300px;
 }
 
 .report-page {
@@ -79,7 +78,8 @@ page {
 }
 
 .hr {
-  background-color: #554e42;
+  /* background-color: #554e42; */
+  background-color: white;
 }
 
 .top-content {
@@ -92,7 +92,19 @@ page {
   flex: 1 0 auto;
   align-items: center;
   width: 100%;
-  margin-top: 10vh;
+  margin-top: 8vh;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .character {
@@ -103,37 +115,40 @@ page {
 
 .speech-bubble {
   position: relative;
+  /* background-color: #ffffffde;
+  color: #131214; */
   background-color: #ffffffde;
   color: #131214;
   padding: 10px;
   border-radius: 10px;
-  margin-left: 20px;
+  margin-right: 20px;
   width: 40%;
+  font-size: 14px;
 }
 
 .speech-bubble::before {
   content: '';
   position: absolute;
   top: 50%;
-  left: -10px;
+  right: -10px;
   transform: translateY(-50%);
   width: 0;
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-right: 10px solid #ffffffde;
+  border-left: 10px solid #ffffffde;
 }
 
 .character-image {
   width: 100%;
   height: 100%;
-  transform: rotate(-10deg);
+  transform: rotate(10deg) scale(-1, 1);
 }
 
 .character-image-container {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   /* transform: rotate(-10deg); */
 }
 .corner {
@@ -184,4 +199,27 @@ page {
 
 footer {
   position: fixed !important;
+}
+
+.next-button, .prev-button {
+  position: fixed;
+  top: 55%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.1);
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  backdrop-filter: blur(30px);
+}
+
+.next-button {
+  right: 5vw;
+}
+
+.prev-button {
+  left: 5vw;
 }

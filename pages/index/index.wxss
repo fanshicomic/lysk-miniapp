@@ -1,4 +1,7 @@
 /**index.wxss**/
+page {
+  background: rgb(17, 34, 51);
+}
 
 .content-wrapper {
   width: 60vw;

@@ -2,8 +2,10 @@
 
 /* bubble background */
 page {
-  height: 100%;
-  background: rgb(17, 34, 51);
+  height: 100vh;
+  color: white;
+  background: linear-gradient(0deg, #1a273e, #2d252f);
+  overflow: hidden;
 }
 
 .h1 {
