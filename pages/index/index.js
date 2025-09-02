@@ -17,28 +17,12 @@ Page({
   },
 
   onLoad(options) {
+    // this.loadAds();
     const menuButtonInfo = wx.getMenuButtonBoundingClientRect();
     this.setData({
       menuButtonInfo: menuButtonInfo
     });
     
-    if (wx.createRewardedVideoAd) {
-      this.videoAd = wx.createRewardedVideoAd({ // Store ad instance on `this`
-        adUnitId: 'adunit-5467103453353e5d'
-      });
-      this.videoAd.onLoad(() => {});
-      this.videoAd.onError((err) => {
-        console.error('激励视频广告加载失败', err);
-      });
-      this.videoAd.onClose((res) => {
-        if (res && res.isEnded) {
-          // 1. Set the flag instead of calling the function directly
-          this.setData({
-            rewardPending: true
-          });
-        }
-      });
-    }
     // apiGet('ping', {});
 
     const blobCount = 10;
@@ -95,6 +79,27 @@ Page({
       // 4. Reset the flag
       this.setData({
         rewardPending: false
+      });
+    }
+  },
+
+  loadAds() {
+    if (wx.createRewardedVideoAd) {
+      videoAd = wx.createRewardedVideoAd({ // Store ad instance on `this`
+        adUnitId: 'adunit-25d825977b94b06a'
+      });
+      videoAd.onLoad(() => {});
+      console.log(1);
+      videoAd.onError((err) => {
+        console.error('激励视频广告加载失败', err);
+      });
+      videoAd.onClose((res) => {
+        if (res && res.isEnded) {
+          // 1. Set the flag instead of calling the function directly
+          this.setData({
+            rewardPending: true
+          });
+        }
       });
     }
   },

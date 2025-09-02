@@ -55,7 +55,7 @@
       <view class="btn hologram">
         <image
           class="icon"
-          src="https://uygnim.com/lysk/assets/sword.gif"
+          src="https://uygnim.com/lysk/assets/sword-s.gif"
           mode="widthFix"
         />
         <text class="hologram-text hologram-orbit" data-text="战斗">战斗</text>
@@ -69,7 +69,7 @@
       <view class="btn hologram">
         <image
           class="icon"
-          src="https://uygnim.com/lysk/assets/news.gif"
+          src="https://uygnim.com/lysk/assets/news-s.gif"
           mode="widthFix"
         />
         <text class="hologram-text hologram-championships" data-text="趣闻报"
@@ -82,7 +82,7 @@
       <view class="btn hologram">
         <image
           class="icon"
-          src="https://uygnim.com/lysk/assets/archive.gif"
+          src="https://uygnim.com/lysk/assets/archive-s.gif"
           mode="widthFix"
         />
         <text class="hologram-text hologram-my-page" data-text="档案室"
