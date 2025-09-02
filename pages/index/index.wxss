@@ -77,8 +77,8 @@ page {
   /* top: 6.6vh; */
   left: 3vw;
   background-color: rgba(255, 255, 255, 0.1);
-  height: 30px;
-  width: 30px;
+  height: 100%;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -90,7 +90,7 @@ page {
   /* top: 6.6vh; */
   left: 13vw;
   background-color: rgba(255, 255, 255, 0.1);
-  height: 30px;
+  /* height: 30px; */
   /* width: 30px; */
   padding: 0 10px 0 10px;
   border-radius: 8px;

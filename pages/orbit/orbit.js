@@ -250,6 +250,7 @@ Page({
     this.setData({
       uploadVisible: true,
       latestRecordsVisible: false,
+      recordsVisible: false,
     });
   },
 

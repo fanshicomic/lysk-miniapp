@@ -24,7 +24,11 @@ Page({
     apiGet('user')
       .then((user) => {
         if (user) {
-          this.fetchUserNickname();
+          if (user && user.nickname) {
+            this.setData({
+              nickname: user.nickname,
+            });
+          }
           this.fetchOrbitRecords();
           this.fetchChampionshipRecords();
         }
@@ -54,22 +58,6 @@ Page({
     wx.navigateBack({
       delta: 1,
     });
-  },
-
-  fetchUserNickname: function () {
-    apiGet('user')
-      .then((user) => {
-        if (user && user.nickname) {
-          this.setData({
-            nickname: user.nickname,
-          });
-        }
-      })
-      .catch((err) => {
-        // If the user is not found, or there is any other error,
-        // the default nickname will be used.
-        console.error('Failed to fetch user nickname:', err);
-      });
   },
 
   fetchOrbitRecords: function () {

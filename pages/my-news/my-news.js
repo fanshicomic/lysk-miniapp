@@ -40,14 +40,18 @@ Page({
   behaviors: [computedBehavior],
   data: {
     today: '',
+    nickname: '猎人小姐',
     orbit_record_companion_counts: {},
-    championships_record_companion_counts: {},
     orbit_record_partner_counts: {},
+    orbit_top_cp_records: {},
+    championships_record_companion_counts: {},
     championships_record_partner_counts: {},
+    championships_top_cp_records: {},
     top_most_records_levels: {},
     orbit_level_counts: 0,
+    championships_level_counts: 0,
     currentCard: 0,
-    totalCards: 6
+    totalCards: 8
   },
 
   computed: {
@@ -70,6 +74,7 @@ Page({
       today: this.getTodayDate()
     });
     this.fetchNews();
+    this.fetchNickname();
   },
 
   onBack() {
@@ -102,10 +107,40 @@ Page({
 
   async fetchNews() {
     try {
-      const data = await apiGet('news');
+      const data = await apiGet('user-news');
       this.setData(data);
     } catch (err) {
       console.error('Failed to fetch news data:', err);
     }
+  },
+
+  fetchNickname() {
+    apiGet('user')
+      .then((user) => {
+        if (user && user.nickname) {
+          this.setData({
+            nickname: user.nickname,
+          });
+        }
+      })
+      .catch((err) => {
+        if (err.statusCode === 401 || err.statusCode === 404) {
+          this.showToast('无效访问', 'session已过期，请重新登录', 2000);
+          setTimeout(() => {
+            wx.redirectTo({ url: '/pages/index/index' });
+          }, 2000);
+          return;
+        } else {
+          console.error('An unexpected error occurred:', err);
+          wx.showToast({
+            title: '发生未知错误',
+            icon: 'none',
+          });
+        }
+      });
+  },
+
+  showToast(header, body, delay) {
+    this.selectComponent('#toast').show(header, body, delay);
   },
 })

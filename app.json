@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/news/news",
+    "pages/my-news/my-news",
     "pages/orbit/orbit",
     "pages/championships/championships",
     "pages/analyze/analyze",

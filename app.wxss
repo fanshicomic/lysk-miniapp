@@ -4,7 +4,7 @@
 page {
   height: 100vh;
   color: white;
-  background: linear-gradient(0deg, #1a273e, #2d252f);
+  background: linear-gradient(0deg, #212f47, #443249);
   overflow: hidden;
 }
 

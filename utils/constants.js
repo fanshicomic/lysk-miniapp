@@ -73,4 +73,28 @@ const DROPDOWN_VALUES = {
   夏以昼日卡: ['寂路', '远空', '长昼', '离途', '无套装'],
 };
 
-export { LEVEL_TYPES, DROPDOWN_VALUES };
+const partnerColors = {
+  '黎深': '60, 110, 160', // blue
+  '沈星回': '255, 205, 70', // yellow
+  '祁煜': '60, 10, 100', // purple
+  '秦彻': '170, 0, 40', // red
+  '夏以昼': '255, 130, 0' // orange
+};
+
+const partnerPhrase = {
+  '黎深': '不算加班，毕竟是和你一起',
+  '沈星回': '下班了还要打流浪体吗？',
+  '祁煜': '给流浪体看看我们的默契',
+  '秦彻': '小意思，热身都不够',
+  '夏以昼': '休息时就打这个放松？陪你'
+};
+
+const partnerMap = {
+  '沈星回': 'xavier',
+  '黎深': 'zayne',
+  '祁煜': 'rafayle',
+  '秦彻': 'sylus',
+  '夏以昼': 'caleb',
+};
+
+export { LEVEL_TYPES, DROPDOWN_VALUES, partnerColors, partnerPhrase, partnerMap };

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "svg": "/components/svg/svg",
+    "footer": "/components/footer/footer",
+    "toast": "/components/toast/toast"
+  }
+}

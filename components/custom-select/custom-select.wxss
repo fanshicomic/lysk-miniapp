@@ -28,7 +28,7 @@
   z-index: 10;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
-  max-height: 200px;
+  max-height: 235px;
   overflow-y: auto;
 }
 .options view {
