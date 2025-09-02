@@ -264,6 +264,11 @@ footer {
   background: linear-gradient(315deg, #ff8838, #3c1272);
 }
 
+.gradient-unknown .bg-before,
+.gradient-unknown .bg-after {
+  background: linear-gradient(315deg, #fff344, #ff5faa);
+}
+
 .common-gradient {
   background: linear-gradient(to right, rgb(0, 0, 0), rgba(255, 205, 70, 0));
 }

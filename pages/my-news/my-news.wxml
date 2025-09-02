@@ -13,7 +13,7 @@
     <text class="sub-text">- Hunter Accociation Battle Report -</text>
 
     <view wx:if="{{currentCard === 0}}">
-      <view class="card-container">
+      <view wx:if="{{getTopOrbitPartners.length > 0}}" class="card-container">
         <view class="box gradient-{{getTopOrbitPartners[0].img}}">
           <view class="bg-before"></view>
           <view class="bg-after"></view>
@@ -56,7 +56,7 @@
       </view>
     </view>
 
-    <view wx:if="{{currentCard === 1}}">
+    <view wx:if="{{currentCard === 1 && getTopChampionshipsPartners.length > 0}}">
       <view class="card-container">
         <view class="box gradient-{{getTopChampionshipsPartners[0].img}}">
           <view class="bg-before"></view>
@@ -100,7 +100,7 @@
       </view>
     </view>
 
-    <view wx:if="{{currentCard === 2}}">
+    <view wx:if="{{currentCard === 2 && getTopOrbitCompanions.length > 0}}">
       <view class="card-container">
         <view class="box gradient-{{getTopOrbitCompanions[0].img}}">
           <view class="bg-before"></view>
@@ -144,7 +144,7 @@
       </view>
     </view>
 
-    <view wx:if="{{currentCard === 3}}">
+    <view wx:if="{{currentCard === 3 && getTopChampionshipsCompanions.length > 0}}">
       <view class="card-container">
         <view class="box gradient-{{getTopChampionshipsCompanions[0].img}}">
           <view class="bg-before"></view>
@@ -211,7 +211,7 @@
           <view class="top-list-item">没有什么能拦住你</view>
           <view class="character">
             <view class="speech-bubble">
-              <text class="speech-bubble-text">猎人们还真是停不下来</text>
+              <text class="speech-bubble-text">你的努力让我酸了</text>
             </view>
             <view class="character-image-container">
               <image src="/assets/characters/lemon.png" class="monster-image" mode="aspectFit"></image>
@@ -264,7 +264,7 @@
       </view>
     </view>
 
-    <view wx:if="{{currentCard === 6}}">
+    <view wx:if="{{currentCard === 6 && orbit_top_cp_records.length > 0}}">
       <view class="card-container">
         <view class="box gradient-two">
           <view class="bg-before"></view>
@@ -307,7 +307,7 @@
       </view>
     </view>
 
-    <view wx:if="{{currentCard === 7}}">
+    <view wx:if="{{currentCard === 7 && championships_top_cp_records.length > 0}}">
       <view class="card-container">
         <view class="box gradient-three">
           <view class="bg-before"></view>

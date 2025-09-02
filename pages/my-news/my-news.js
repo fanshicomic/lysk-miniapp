@@ -41,13 +41,12 @@ Page({
   data: {
     today: '',
     nickname: '猎人小姐',
-    orbit_record_companion_counts: {},
-    orbit_record_partner_counts: {},
-    orbit_top_cp_records: {},
-    championships_record_companion_counts: {},
-    championships_record_partner_counts: {},
-    championships_top_cp_records: {},
-    top_most_records_levels: {},
+    orbit_record_companion_counts: {"传说中的他": 0},
+    orbit_record_partner_counts: {"传说中的他": 0},
+    orbit_top_cp_records: [{"level": "传说中的那关", "cp": 0}],
+    championships_record_companion_counts: {"传说中的他": 0},
+    championships_record_partner_counts: {"传说中的他": 0},
+    championships_top_cp_records: [{"level": "传说中的那关", "cp": 0}],
     orbit_level_counts: 0,
     championships_level_counts: 0,
     currentCard: 0,
@@ -125,7 +124,7 @@ Page({
       })
       .catch((err) => {
         if (err.statusCode === 401 || err.statusCode === 404) {
-          this.showToast('无效访问', 'session已过期，请重新登录', 2000);
+          this.showToast('无效访问', '请先登录再查看个人战斗报告哦', 2000);
           setTimeout(() => {
             wx.redirectTo({ url: '/pages/index/index' });
           }, 2000);

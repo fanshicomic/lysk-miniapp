@@ -78,7 +78,8 @@ const partnerColors = {
   '沈星回': '255, 205, 70', // yellow
   '祁煜': '60, 10, 100', // purple
   '秦彻': '170, 0, 40', // red
-  '夏以昼': '255, 130, 0' // orange
+  '夏以昼': '255, 130, 0', // orange
+  '传说中的他': '66, 135, 245'
 };
 
 const partnerPhrase = {
@@ -86,7 +87,8 @@ const partnerPhrase = {
   '沈星回': '下班了还要打流浪体吗？',
   '祁煜': '给流浪体看看我们的默契',
   '秦彻': '小意思，热身都不够',
-  '夏以昼': '休息时就打这个放松？陪你'
+  '夏以昼': '休息时就打这个放松？陪你',
+  '传说中的他': '我是谁？'
 };
 
 const partnerMap = {
@@ -95,6 +97,7 @@ const partnerMap = {
   '祁煜': 'rafayle',
   '秦彻': 'sylus',
   '夏以昼': 'caleb',
+  '传说中的他': 'unknown'
 };
 
 export { LEVEL_TYPES, DROPDOWN_VALUES, partnerColors, partnerPhrase, partnerMap };
