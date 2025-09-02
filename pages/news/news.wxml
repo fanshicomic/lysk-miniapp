@@ -44,7 +44,7 @@
               <text class="speech-bubble-text">{{getTopOrbitPartners[0].phrase}}</text>
             </view>
             <view class="character-image-container">
-              <image wx:if="{{getTopOrbitPartners.length > 0}}" src="/assets/characters/{{getTopOrbitPartners[0].img}}.png" class="character-image" mode="aspectFit"></image>
+              <image wx:if="{{getTopOrbitPartners.length > 0}}" src="https://uygnim.com/lysk/assets/characters/{{getTopOrbitPartners[0].img}}.png" class="character-image" mode="aspectFit"></image>
               <view class="corner corner-tl"></view>
               <view class="corner corner-tr"></view>
               <view class="corner corner-bl"></view>
@@ -88,7 +88,7 @@
               <text class="speech-bubble-text">{{getTopChampionshipsPartners[0].phrase}}</text>
             </view>
             <view class="character-image-container">
-              <image wx:if="{{getTopChampionshipsPartners.length > 0}}" src="/assets/characters/{{getTopChampionshipsPartners[0].img}}.png" class="character-image" mode="aspectFit"></image>
+              <image wx:if="{{getTopChampionshipsPartners.length > 0}}" src="https://uygnim.com/lysk/assets/characters/{{getTopChampionshipsPartners[0].img}}.png" class="character-image" mode="aspectFit"></image>
               <view class="corner corner-tl"></view>
               <view class="corner corner-tr"></view>
               <view class="corner corner-bl"></view>
@@ -132,7 +132,7 @@
               <text class="speech-bubble-text">{{getTopOrbitCompanions[0].phrase}}</text>
             </view>
             <view class="character-image-container">
-              <image wx:if="{{getTopOrbitCompanions.length > 0}}" src="/assets/characters/{{getTopOrbitCompanions[0].img}}.png" class="character-image" mode="aspectFit"></image>
+              <image wx:if="{{getTopOrbitCompanions.length > 0}}" src="https://uygnim.com/lysk/assets/characters/{{getTopOrbitCompanions[0].img}}.png" class="character-image" mode="aspectFit"></image>
               <view class="corner corner-tl"></view>
               <view class="corner corner-tr"></view>
               <view class="corner corner-bl"></view>
@@ -176,7 +176,7 @@
               <text class="speech-bubble-text">{{getTopChampionshipsCompanions[0].phrase}}</text>
             </view>
             <view class="character-image-container">
-              <image wx:if="{{getTopChampionshipsCompanions.length > 0}}" src="/assets/characters/{{getTopChampionshipsCompanions[0].img}}.png" class="character-image" mode="aspectFit"></image>
+              <image wx:if="{{getTopChampionshipsCompanions.length > 0}}" src="https://uygnim.com/lysk/assets/characters/{{getTopChampionshipsCompanions[0].img}}.png" class="character-image" mode="aspectFit"></image>
               <view class="corner corner-tl"></view>
               <view class="corner corner-tr"></view>
               <view class="corner corner-bl"></view>
@@ -214,7 +214,7 @@
               <text class="speech-bubble-text">猎人们还真是停不下来</text>
             </view>
             <view class="character-image-container">
-              <image src="/assets/characters/lemon.png" class="monster-image" mode="aspectFit"></image>
+              <image src="https://uygnim.com/lysk/assets/characters/lemon.png" class="monster-image" mode="aspectFit"></image>
               <view class="corner corner-tl"></view>
               <view class="corner corner-tr"></view>
               <view class="corner corner-bl"></view>
@@ -257,7 +257,7 @@
               <text class="speech-bubble-text">猎人都不睡觉吗zZzZ</text>
             </view>
             <view class="character-image-container">
-              <image src="/assets/characters/huhu.png" class="monster-image" mode="aspectFit"></image>
+              <image src="https://uygnim.com/lysk/assets/characters/huhu.png" class="monster-image" mode="aspectFit"></image>
               <view class="corner corner-tl"></view>
               <view class="corner corner-tr"></view>
               <view class="corner corner-bl"></view>
