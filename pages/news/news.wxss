@@ -152,8 +152,9 @@
 
 .character-image-container {
   position: relative;
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
+  padding: 5px;
   /* transform: rotate(-10deg); */
 }
 .corner {
@@ -252,4 +253,8 @@ footer {
 .gradient-caleb .bg-before,
 .gradient-caleb .bg-after {
   background: linear-gradient(315deg, #ff8838, #3c1272);
+}
+
+.common-gradient {
+  background: linear-gradient(to right, rgb(0, 0, 0), rgba(255, 205, 70, 0));
 }

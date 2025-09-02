@@ -66,10 +66,16 @@ page {
   opacity: 0.8;
 }
 
+.my-custom-button {
+  position: absolute;
+  width: 100%;
+  z-index: 999;
+}
+
 .announcement-button {
   position: absolute;
-  top: 6.5vh;
-  left: 8vw;
+  /* top: 6.6vh; */
+  left: 3vw;
   background-color: rgba(255, 255, 255, 0.1);
   height: 30px;
   width: 30px;
@@ -81,15 +87,17 @@ page {
 
 .ads-button {
   position: absolute;
-  top: 6.5vh;
-  left: 18vw;
+  /* top: 6.6vh; */
+  left: 13vw;
   background-color: rgba(255, 255, 255, 0.1);
   height: 30px;
-  width: 30px;
-  border-radius: 50%;
+  /* width: 30px; */
+  padding: 0 10px 0 10px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .megaphone {

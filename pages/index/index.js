@@ -12,10 +12,16 @@ Page({
     showToast: false,
     userInfo: null,
     showLoginPanel: false,
-    rewardPending: false
+    rewardPending: false,
+    menuButtonInfo: {}
   },
 
   onLoad(options) {
+    const menuButtonInfo = wx.getMenuButtonBoundingClientRect();
+    this.setData({
+      menuButtonInfo: menuButtonInfo
+    });
+    
     if (wx.createRewardedVideoAd) {
       this.videoAd = wx.createRewardedVideoAd({ // Store ad instance on `this`
         adUnitId: 'adunit-5467103453353e5d'

@@ -190,6 +190,44 @@
 
     <view wx:if="{{currentCard === 4}}">
       <view class="card-container">
+        <view class="box gradient-three">
+          <view class="bg-before"></view>
+          <view class="bg-after"></view>
+
+          <view class="span-effects">
+            <view class="float-before"></view>
+            <view class="float-after"></view>
+          </view>
+
+          <view class="content">
+            <view class="row">
+            <text class="date">{{today}}</text>
+          </view>
+          <view class="hr"></view>
+          <text>截至今日，\n猎人们已经攻克了：</text>
+          <view class="top-one">{{orbit_level_counts}}场不同的试炼</view>
+          <view class="top-list-item">一关又一关</view>
+          <view class="top-list-item">猎人们已经越战越强</view>
+          <view class="top-list-item">没有什么能拦住你</view>
+          <view class="character">
+            <view class="speech-bubble">
+              <text class="speech-bubble-text">猎人们还真是停不下来</text>
+            </view>
+            <view class="character-image-container">
+              <image src="/assets/characters/lemon.png" class="monster-image" mode="aspectFit"></image>
+              <view class="corner corner-tl"></view>
+              <view class="corner corner-tr"></view>
+              <view class="corner corner-bl"></view>
+              <view class="corner corner-br"></view>
+            </view>
+          </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{currentCard === 5}}">
+      <view class="card-container">
         <view class="box gradient-two">
           <view class="bg-before"></view>
           <view class="bg-after"></view>

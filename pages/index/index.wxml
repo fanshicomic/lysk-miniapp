@@ -1,22 +1,10 @@
 <view class="blobs">
   <view wx:for="{{blobs}}" wx:key="index" class="blob"></view>
 </view>
-
-<view class="main-content">
-  <!-- Login Panel -->
-  <view class="login-panel" wx:if="{{showLoginPanel}}">
-    <svg
-      src="/assets/user-circle.svg"
-      color="white"
-      width="8vh"
-      height="8vh"
-    ></svg>
-    <view class="login-panel-text">登录以同步个人面板记录</view>
-    <view class="login-panel-buttons">
-      <button class="skip-btn" bind:tap="handleSkipLogin">暂不登录</button>
-      <button class="login-btn" bind:tap="handleLogin">一键登录</button>
-    </view>
-  </view>
+<view 
+  class="my-custom-button"
+  style="top: {{menuButtonInfo.top}}px; height: {{menuButtonInfo.height}}px; line-height: {{menuButtonInfo.height}}px;"
+>
   <view class="announcement-button" bind:tap="handleShowAnnouncement">
     <svg
       src="/assets/megaphone.svg"
@@ -32,6 +20,24 @@
       width="12px"
       height="12px"
     ></svg>
+    <text style="margin-left: 5px;">支持一下</text>
+  </view>
+</view>
+
+<view class="main-content">
+  <!-- Login Panel -->
+  <view class="login-panel" wx:if="{{showLoginPanel}}">
+    <svg
+      src="/assets/user-circle.svg"
+      color="white"
+      width="8vh"
+      height="8vh"
+    ></svg>
+    <view class="login-panel-text">登录以同步个人面板记录</view>
+    <view class="login-panel-buttons">
+      <button class="skip-btn" bind:tap="handleSkipLogin">暂不登录</button>
+      <button class="login-btn" bind:tap="handleLogin">一键登录</button>
+    </view>
   </view>
 
   <view class="content-wrapper">
