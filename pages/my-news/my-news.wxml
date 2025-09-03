@@ -10,7 +10,7 @@
 <view class="main-content">
   <view class="content-wrapper">
     <text class="h1">「猎人战斗报告」</text>
-    <text class="sub-text">- Hunter Accociation Battle Report -</text>
+    <text class="sub-text">- Hunter Association Battle Report -</text>
 
     <view wx:if="{{currentCard === 0}}">
       <view wx:if="{{getTopOrbitPartners.length > 0}}" class="card-container">
@@ -116,7 +116,7 @@
             <text class="date">{{today}}</text>
           </view>
           <view class="hr"></view>
-          <text>截至今日，{{nickname}}\n轨道中最依赖的伙伴是: </text>
+          <text>截至今日，{{nickname}}\n轨道试炼中最依赖的伙伴是: </text>
           <view class="top-content">
             <view class="top-list">
               <block wx:for="{{getTopOrbitCompanions}}" wx:key="name">
@@ -205,7 +205,7 @@
           </view>
           <view class="hr"></view>
           <text>截至今日，\n{{nickname}}已经攻克了：</text>
-          <view class="top-one">{{orbit_level_counts}}场不同的试炼</view>
+          <view class="top-one">{{orbit_level_counts}}场不同的轨道试炼</view>
           <view class="top-list-item">一关又一关</view>
           <view class="top-list-item">越战越强的猎人</view>
           <view class="top-list-item">没有什么能拦住你</view>
@@ -280,7 +280,7 @@
             <text class="date">{{today}}</text>
           </view>
           <view class="hr"></view>
-          <text>截至今日，{{nickname}}\n的最强战力用在了轨道：</text>
+          <text>截至今日，{{nickname}}\n的最强战力用在了轨道试炼：</text>
           <view class="top-content">
             <view class="top-list">
               <block wx:for="{{orbit_top_cp_records}}" wx:key="name">
@@ -292,7 +292,7 @@
           </view>
           <view class="character">
             <view class="speech-bubble">
-              <text class="speech-bubble-text">我睡觉的时候偷偷变强了？</text>
+              <text class="speech-bubble-text">在我睡觉时偷偷变强了？</text>
             </view>
             <view class="character-image-container">
               <image src="https://uygnim.com/lysk/assets/characters/huhu.png" class="monster-image" mode="aspectFit"></image>
@@ -323,7 +323,7 @@
             <text class="date">{{today}}</text>
           </view>
           <view class="hr"></view>
-          <text>截至今日，{{nickname}}\n的锦标赛最强战力用在了：</text>
+          <text>截至今日，{{nickname}}\n的最强战力用在了锦标赛：</text>
           <view class="top-content">
             <view class="top-list">
               <block wx:for="{{championships_top_cp_records}}" wx:key="name">

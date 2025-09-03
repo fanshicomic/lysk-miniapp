@@ -28,7 +28,7 @@
             <text class="date">{{today}}</text>
           </view>
           <view class="hr"></view>
-          <text>截至今日，\n轨道关卡中最活跃的身影是: </text>
+          <text>截至今日，\n轨道试炼中最活跃的身影是: </text>
           <view class="top-content">
             <view class="top-list">
               <block wx:for="{{getTopOrbitPartners}}" wx:key="name">
@@ -116,7 +116,7 @@
             <text class="date">{{today}}</text>
           </view>
           <view class="hr"></view>
-          <text>截至今日，\n轨道中最被依赖的搭档是: </text>
+          <text>截至今日，\n轨道试炼中最被依赖的搭档是: </text>
           <view class="top-content">
             <view class="top-list">
               <block wx:for="{{getTopOrbitCompanions}}" wx:key="name">
@@ -205,10 +205,11 @@
           </view>
           <view class="hr"></view>
           <text>截至今日，\n猎人们已经攻克了：</text>
-          <view class="top-one">{{orbit_level_counts}}场不同的试炼</view>
+          <view class="top-one">{{orbit_level_counts}}场不同的轨道试炼</view>
           <view class="top-list-item">一关又一关</view>
           <view class="top-list-item">越战越强的猎人</view>
-          <view class="top-list-item">没有什么能拦住你</view>
+          <view class="top-list-item">什么都拦不住</view>
+          <view class="top-list-item">全猎人的解放就在眼前？</view>
           <view class="character">
             <view class="speech-bubble">
               <text class="speech-bubble-text">猎人们还真是停不下来</text>
@@ -242,7 +243,7 @@
             <text class="date">{{today}}</text>
           </view>
           <view class="hr"></view>
-          <text>截至今日，\n猎人们通过最多的试炼是: </text>
+          <text>截至今日，\n猎人们通过最多的轨道试炼是: </text>
           <view class="top-content">
             <view class="top-list">
               <block wx:for="{{top_most_records_levels}}" wx:key="level">

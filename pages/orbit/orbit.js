@@ -76,6 +76,7 @@ Page({
     this.setData({
       recordsVisible: true,
       latestRecordsVisible: false,
+      uploadVisible: false,
       currentPage: page,
     });
     apiGet('orbit-records', {
@@ -259,6 +260,7 @@ Page({
       this.setData({
         uploadVisible: true,
         latestRecordsVisible: false,
+        recordsVisible: false,
       });
     }
 

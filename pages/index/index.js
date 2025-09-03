@@ -17,7 +17,6 @@ Page({
   },
 
   onLoad(options) {
-    // this.loadAds();
     const menuButtonInfo = wx.getMenuButtonBoundingClientRect();
     this.setData({
       menuButtonInfo: menuButtonInfo
@@ -89,7 +88,6 @@ Page({
         adUnitId: 'adunit-25d825977b94b06a'
       });
       videoAd.onLoad(() => {});
-      console.log(1);
       videoAd.onError((err) => {
         console.error('激励视频广告加载失败', err);
       });
@@ -171,6 +169,9 @@ Page({
   },
 
   handleShowAds() {
+    if (videoAd == undefined) {
+      this.loadAds();
+    }
     wx.showModal({
       title: '支持一下',
       content: '看个广告支持一下开发者吧！',

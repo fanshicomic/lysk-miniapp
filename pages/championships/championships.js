@@ -66,6 +66,7 @@ Page({
     this.setData({
       recordsVisible: true,
       latestRecordsVisible: false,
+      uploadVisible: false,
       currentPage: page,
     });
     apiGet('championships-records', {
@@ -177,6 +178,7 @@ Page({
       this.setData({
         uploadVisible: true,
         latestRecordsVisible: false,
+        recordsVisible: false,
       });
     }
 
