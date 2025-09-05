@@ -31,10 +31,10 @@ Page({
       return formatNumberWithCommas(data.buffedCP);
     },
     critCP(data) {
-      return Number(data.combatPowerWeakenScore) || 0;
+      return Number(data.combatPowerCritScore) || 0;
     },
     weakenCP(data) {
-      return Number(data.combatPowerCritScore) || 0;
+      return Number(data.combatPowerWeakenScore) || 0;
     },
     critCPPercentage(data) {
       const total = data.critCP + data.weakenCP;
