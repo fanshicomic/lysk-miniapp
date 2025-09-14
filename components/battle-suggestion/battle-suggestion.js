@@ -26,7 +26,7 @@ Component({
         return 0;
     },
     getTop3PairsWithPercentage(data) {
-      if (data.suggestions === null || data.suggestions.companion_setcard_pairs.length === 0) {
+      if (data.suggestions === null || data.suggestions.companion_setcard_pairs === null || data.suggestions.companion_setcard_pairs.length === 0) {
         return 0;
       }
 

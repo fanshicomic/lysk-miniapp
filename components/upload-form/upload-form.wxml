@@ -119,7 +119,7 @@
     <view class="w-50">
       <input
         value="{{inputValues['card-total-level']}}"
-        placeholder="卡总等级"
+        placeholder="卡面等级之和"
         type="digit"
         id="input-card-total-level"
         class="form-control"

@@ -52,7 +52,16 @@ function mapRecordData(inputData, recordDetails, battleType) {
   };
 
   if (battleType === 'orbit') {
-    const { levelType, levelMode, levelNumber, levelPart } = recordDetails;
+    let { levelType, levelMode, levelNumber, levelPart } = recordDetails;
+    if (levelMode === '波动') {
+      if (parseInt(levelNumber) % 5 !== 0) {
+        levelPart = ''
+      }
+    } else {
+      if (parseInt(levelNumber) % 10 !== 0) {
+        levelPart = ''
+      }
+    }
     const level = levelPart ? `${levelNumber}_${levelPart}` : levelNumber;
     return {
       ...baseData,
@@ -68,7 +77,6 @@ function mapRecordData(inputData, recordDetails, battleType) {
       加成: inputData['championships-buff'],
     };
   } else if (battleType === 'analyze') {
-    const { levelType } = recordDetails;
     return {
       ...baseData,
       加成: inputData['championships-buff'],

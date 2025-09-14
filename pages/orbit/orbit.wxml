@@ -83,7 +83,7 @@
         level-mode="{{levelMode}}"
       ></upload-form>
       <button id="submit" class="btn submit-btn w-100" bindtap="onSubmit">
-        提交通关记录
+        提交【通关】记录
       </button>
     </view>
     <!-- 展示最新记录 -->

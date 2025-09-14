@@ -212,8 +212,8 @@ Page({
 
   // 校验是否显示上下段
   validatePartDropdown() {
-    const { levelNumber } = this.data;
-    const show = levelNumber && levelNumber % 10 === 0;
+    const { levelNumber, levelMode } = this.data;
+    const show = levelNumber && (levelNumber % 10 === 0 || (levelMode === "波动" && levelNumber % 5 === 0));
     this.setData({
       partVisible: show,
     });

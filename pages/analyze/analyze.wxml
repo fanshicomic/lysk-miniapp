@@ -15,7 +15,11 @@
       <upload-form id="upload-form" is-analyze="true"></upload-form>
       <view class="button-row display-row">
         <button class="btn ocr-action-btn w-50" bindtap="onOCR">识图输入</button>
-        <button class="btn submit-btn w-50" bindtap="onSubmit">上传分析 (剩{{analysisTries}}次)</button>
+        <button class="btn submit-btn w-50" bindtap="onSubmit">
+          上传分析
+          <text wx:if="{{analysisTries > 0}}"> (剩{{analysisTries}}次)</text>
+          <text wx:else> (看个广告)</text>
+          </button>
       </view>
     </view>
     <view class="hr" />

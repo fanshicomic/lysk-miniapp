@@ -50,7 +50,7 @@
         battle-type="championships"
       ></upload-form>
       <button id="submit" class="btn submit-btn w-100" bindtap="onSubmit">
-        提交记录
+        提交【满星】记录
       </button>
     </view>
     <!-- 展示最新记录 -->
@@ -85,9 +85,6 @@
         >
           {{item}}
         </button>
-      </view>
-      <view wx:if="{{records.length === 0}}">
-        无所选关卡记录。
       </view>
     </view>
     <toast id="toast"></toast>
