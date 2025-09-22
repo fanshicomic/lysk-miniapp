@@ -34,16 +34,15 @@ Component({
     
             欢迎使用深空面板助手 :)
             感谢你的每一条记录分享~
-            公告可前往本助手首页小喇叭重新查看`;
+            公告可前往首页小喇叭重新查看`;
     },
 
     _getAnnouncementLatestUpdates() {
       return `最新更新
+            - 2025-09-22：支持黎深新搭档与日卡
             - 2025-09-02：
-              - 增加战力显示
-              - 增加通关推荐
-              - 增加面板分析功能
-              - 增加趣闻报，用户可以查看基于库中面板的数据统计
+              - 增加战力显示、通关推荐、面板分析
+              - 增加趣闻报页面，可以查看基于库中面板的数据统计
             - 2025-08-17：
               - 支持编辑与删除个人面板记录
               - 波动模式支持选择星级
@@ -56,7 +55,7 @@ Component({
     },
 
     showAnnouncement() {
-      const announcementKey = '3.0.0';
+      const announcementKey = '3.1.0';
       if (wx.getStorageSync(announcementKey)) {
         return null;
       }
