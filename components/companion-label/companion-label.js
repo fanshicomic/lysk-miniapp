@@ -17,6 +17,7 @@ Component({
       if (data.companion === '暗蚀国王') return 'companion-king-of-darknight';
       if (data.companion === '永恒先知') return 'companion-foreseer';
       if (data.companion === '九黎司命') return 'companion-master-of-fate';
+      if (data.companion === '终末之神') return 'companion-god-of-annihilation';
       if (data.companion === '利莫里亚海神') return 'companion-lemurian-sea-god';
       if (data.companion === '潮汐之神') return 'companion-god-of-the-tides';
       if (data.companion === '深海潜行者') return 'companion-abyss-walker';

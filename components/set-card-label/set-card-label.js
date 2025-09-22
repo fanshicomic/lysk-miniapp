@@ -22,9 +22,9 @@ Component({
     getSetCardColorMap(data) {
       let card = data.card
       let companion = data.companion
-      const pinkCards = ['匿光', '神殿', '点染', '掠心', '锋尖'];
+      const pinkCards = ['匿光', '神殿', '点染', '掠心', '锋尖', '神谕'];
       if (pinkCards.includes(card)) return 'set-card-pink';
-      const purpleCards = ['深海', '斑斓', '寂路'];
+      const purpleCards = ['深海', '斑斓', '寂路', '终序'];
       if (purpleCards.includes(card)) return 'set-card-purple';
       const redCards = ['夜誓', '拥雪', '夜色', '碧海', '远空', '长昼'];
       if (redCards.includes(card)) return 'set-card-red';

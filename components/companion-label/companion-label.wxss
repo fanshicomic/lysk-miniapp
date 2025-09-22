@@ -62,3 +62,7 @@
 .companion-ultimate-weapon-X-02 {
   background: linear-gradient(135deg, #22053b, #97562b);
 }
+
+.companion-god-of-annihilation {
+  background: linear-gradient(135deg, #2b211b, #4d4a58, #8a7e6f, #d1bda6, #f0e5d7);
+}
