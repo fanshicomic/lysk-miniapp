@@ -102,6 +102,7 @@
     </view>
     <!-- 展示记录 -->
     <view id="records-wrapper" wx:if="{{recordsVisible}}">
+      <filter position="bottom: 150rpx; right: 30rpx;" companionOptions="{{filterCompanionOptions}}" setcardOptions="{{filterSetcardOptions}}" bind:applyfilter="onApplyFilterFromComponent"></filter>
       <battle-suggestion wx:if="{{levelSuggestions}}" suggestions="{{levelSuggestions}}"></battle-suggestion>
       <view id="records">
         <view class="record-wrapper" wx:for="{{records}}" wx:key="index">
@@ -123,6 +124,5 @@
     <toast id="toast"></toast>
     <announcement id="announcement"></announcement>
   </view>
-  <filter position="bottom: 150rpx; right: 30rpx;" options1="{{filterCompanionOptions}}" options2="{{filterSetcardOptions}}" bind:close="onFilterClose"></filter>
   <footer />
 </view>

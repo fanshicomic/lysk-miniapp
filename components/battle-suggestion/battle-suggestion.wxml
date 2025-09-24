@@ -1,6 +1,6 @@
 <view class="container">
     <view wx:if="{{lowestCP === 0}}">
-        <view>当前关卡无通关数据</view>
+        <view>无对应通关数据</view>
         <view>欢迎上传━(*｀∀´*)ノ亻!</view>
     </view>
     <view wx:else="">

@@ -1,6 +1,7 @@
 const { apiGet, apiPost, apiUploadFile } = require('../../utils/util.js');
 const { mapRecordData } = require('../../utils/record_helper.js');
 const { increaseReward } = require('../../utils/analysis_reward');
+const { DROPDOWN_VALUES } = require('../../utils/constants.js');
 
 Page({
   data: {
@@ -22,6 +23,36 @@ Page({
     latestRecords: [],
     totalDbRecordsCnt: 0,
     levelSuggestions: null,
+
+    filterCompanionOptions: {
+      '所有搭档': [],
+      '沈星回': DROPDOWN_VALUES['沈星回搭档'],
+      '黎深': DROPDOWN_VALUES['黎深搭档'],
+      '祁煜': DROPDOWN_VALUES['祁煜搭档'],
+      '秦彻': DROPDOWN_VALUES['秦彻搭档'],
+      '夏以昼': DROPDOWN_VALUES['夏以昼搭档'],
+    },
+    filterSetcardOptions: {
+      '所有日卡': [],
+      '沈星回': DROPDOWN_VALUES['沈星回日卡'],
+      '黎深': DROPDOWN_VALUES['黎深日卡'],
+      '祁煜': DROPDOWN_VALUES['祁煜日卡'],
+      '秦彻': DROPDOWN_VALUES['秦彻日卡'],
+      '夏以昼': DROPDOWN_VALUES['夏以昼日卡'],
+    },
+    filteredCompanion: null,
+    filteredSetCard: null,
+  },
+
+  onApplyFilterFromComponent(e) {
+    this.setData({
+      filteredCompanion: e.detail.selection1.secondLevel ? 
+        e.detail.selection1.secondLevel : e.detail.selection1,
+      filteredSetCard: e.detail.selection2.secondLevel ? 
+        e.detail.selection2.secondLevel : e.detail.selection2,
+    });
+    // Now call getRecords with the new filters
+    this.getRecords(1); // Assuming we want to reset to page 1 with new filters
   },
 
   onLoad(options) {
@@ -57,7 +88,7 @@ Page({
   },
 
   getRecords(page = 1) {
-    const { levelType, pageSize } = this.data;
+    const { levelType, pageSize, filteredCompanion, filteredSetCard } = this.data;
     if (!Number.isInteger(page)) {
       page = 1;
     }
@@ -72,6 +103,8 @@ Page({
     apiGet('championships-records', {
       level,
       offset,
+      filteredCompanion,
+      filteredSetCard
     })
       .then((result) => {
         const cnt = result.total || 0;
@@ -86,6 +119,8 @@ Page({
         return apiGet(
           'level-suggestion', {
           level,
+          filteredCompanion,
+          filteredSetCard
         });
       })
       .then((suggestionResult) => {

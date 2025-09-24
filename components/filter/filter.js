@@ -1,10 +1,10 @@
 Component({
   properties: {
-    options1: {
+    companionOptions: {
       type: Object,
       value: {},
     },
-    options2: {
+    setcardOptions: {
       type: Object,
       value: {},
     },
@@ -15,25 +15,34 @@ Component({
   },
   data: {
     isExpanded: false,
-    selection1: null,
-    selection2: null,
+    selection1: '所有搭档',
+    selection2: '所有日卡',
   },
   methods: {
-    toggleExpansion() {
+    onCloseButtonClick() {
       this.setData({
-        isExpanded: !this.data.isExpanded,
+        isExpanded: false,
       });
-      if (!this.data.isExpanded) {
-        this.triggerEvent('close', { selection1: this.data.selection1, selection2: this.data.selection2 });
+    },
+    onFabClick() {
+      if (this.data.isExpanded) {
+        // If expanded, clicking FAB means apply filter
+        this.setData({
+          isExpanded: false,
+        });
+        this.triggerEvent('applyfilter', { selection1: this.data.selection1, selection2: this.data.selection2 });
+      } else {
+        // If collapsed, clicking FAB means open filter
+        this.setData({
+          isExpanded: true,
+        });
       }
     },
-    onSelect1(e) {
+    onSelectCompanion(e) {
       this.setData({ selection1: e.detail });
-      this.triggerEvent('select', { selection1: e.detail, selection2: this.data.selection2 });
     },
-    onSelect2(e) {
+    onSelectSetcard(e) {
       this.setData({ selection2: e.detail });
-      this.triggerEvent('select', { selection1: this.data.selection1, selection2: e.detail });
     },
   },
 });

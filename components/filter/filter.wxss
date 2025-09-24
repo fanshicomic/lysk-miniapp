@@ -8,8 +8,8 @@
 }
 
 .search-fab {
-  width: 70rpx;
-  height: 70rpx;
+  width: 80rpx;
+  height: 80rpx;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
@@ -19,6 +19,7 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   z-index: 2; /* Keep FAB on top of items during transition */
   position: relative; /* Needed for z-index */
+  transition: background-color 0.3s ease;
 }
 
 .filter-item, .close-button {
@@ -33,7 +34,7 @@
   width: 60rpx;
   height: 60rpx;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   display: flex;
   justify-content: center;
@@ -68,4 +69,8 @@
 }
 .filter-fab-container:not(.is-expanded) .close-button {
   transition-delay: 0s;
+}
+
+.filter-fab-container.is-expanded .search-fab {
+  background-color: rgba(125, 237, 255, 0.5);
 }
