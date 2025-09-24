@@ -46,10 +46,10 @@ Page({
 
   onApplyFilterFromComponent(e) {
     this.setData({
-      filteredCompanion: e.detail.selection1.secondLevel ? 
-        e.detail.selection1.secondLevel : e.detail.selection1,
-      filteredSetCard: e.detail.selection2.secondLevel ? 
-        e.detail.selection2.secondLevel : e.detail.selection2,
+      filteredCompanion: e.detail.selectedCompanion.secondLevel ? 
+        e.detail.selectedCompanion.secondLevel : e.detail.selectedCompanion,
+      filteredSetCard: e.detail.selectedSetcard.secondLevel ? 
+        e.detail.selectedSetcard.secondLevel : e.detail.selectedSetcard,
     });
     // Now call getRecords with the new filters
     this.getRecords(1); // Assuming we want to reset to page 1 with new filters

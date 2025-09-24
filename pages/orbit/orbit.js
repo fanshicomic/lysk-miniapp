@@ -30,7 +30,7 @@ Page({
     totalDbRecordsCnt: 0,
     levelSuggestions: null,
     
-    filterCompanionOptions: {
+    _allFilterCompanionOptions: {
       '所有搭档': [],
       '沈星回': DROPDOWN_VALUES['沈星回搭档'],
       '黎深': DROPDOWN_VALUES['黎深搭档'],
@@ -38,7 +38,7 @@ Page({
       '秦彻': DROPDOWN_VALUES['秦彻搭档'],
       '夏以昼': DROPDOWN_VALUES['夏以昼搭档'],
     },
-    filterSetcardOptions: {
+    _allFilterSetcardOptions: {
       '所有日卡': [],
       '沈星回': DROPDOWN_VALUES['沈星回日卡'],
       '黎深': DROPDOWN_VALUES['黎深日卡'],
@@ -46,22 +46,26 @@ Page({
       '秦彻': DROPDOWN_VALUES['秦彻日卡'],
       '夏以昼': DROPDOWN_VALUES['夏以昼日卡'],
     },
+    filterCompanionOptions: {},
+    filterSetcardOptions: {},
     filteredCompanion: null,
     filteredSetCard: null,
   },
 
   onApplyFilterFromComponent(e) {
     this.setData({
-      filteredCompanion: e.detail.selection1.secondLevel ? 
-        e.detail.selection1.secondLevel : e.detail.selection1,
-      filteredSetCard: e.detail.selection2.secondLevel ? 
-        e.detail.selection2.secondLevel : e.detail.selection2,
+      filteredCompanion: e.detail.selectedCompanion ? (e.detail.selectedCompanion.secondLevel ? e.detail.selectedCompanion.secondLevel : e.detail.selectedCompanion.topLevel) : null,
+      filteredSetCard: e.detail.selectedSetcard ? (e.detail.selectedSetcard.secondLevel ? e.detail.selectedSetcard.secondLevel : e.detail.selectedSetcard.topLevel) : null,
     });
     // Now call getRecords with the new filters
     this.getRecords(1); // Assuming we want to reset to page 1 with new filters
   },
 
   onLoad(options) {
+    this.setData({
+      filterCompanionOptions: this.data._allFilterCompanionOptions,
+      filterSetcardOptions: this.data._allFilterSetcardOptions,
+    });
     this.dataInit();
 
     this.selectComponent('#announcement').showAnnouncement();
@@ -210,10 +214,55 @@ Page({
     this.setData({
       levelType: type,
     });
+
+    let companionOptions = this.data._allFilterCompanionOptions;
+    let setcardOptions = this.data._allFilterSetcardOptions;
     if (type !== '开放') {
-      this.setData({ levelMode: '稳定' });
+      let companionList = {};
+      let setcardList = {};
+      companionOptions = {};
+      setcardOptions = {};
+      switch (type) {
+        case "光":
+          companionList = DROPDOWN_VALUES['沈星回搭档'];
+          setcardList = DROPDOWN_VALUES['沈星回日卡'];
+          break;
+        case "冰":
+          companionList = DROPDOWN_VALUES['黎深搭档'];
+          setcardList = DROPDOWN_VALUES['黎深日卡'];
+          break;
+        case "火":
+          companionList = DROPDOWN_VALUES['祁煜搭档'];
+          setcardList = DROPDOWN_VALUES['祁煜日卡'];
+          break;
+        case "能量":
+          companionList = DROPDOWN_VALUES['秦彻搭档'];
+          setcardList = DROPDOWN_VALUES['秦彻日卡'];
+          break;
+        case "引力":
+          companionList = DROPDOWN_VALUES['夏以昼搭档'];
+          setcardList = DROPDOWN_VALUES['夏以昼日卡'];
+          break;
+      }
+
+      companionList.forEach(function(c) {
+        companionOptions[c] = [];
+      });
+      setcardList.forEach(function(c) {
+        setcardOptions[c] = [];
+      });
+
+      this.setData({
+        levelMode: '稳定',
+        filterCompanionOptions: companionOptions,
+        filterSetcardOptions: setcardOptions,
+      });
     } else {
-      this.setData({ levelMode: '' });
+      this.setData({
+        levelMode: '',
+        filterCompanionOptions: companionOptions,
+        filterSetcardOptions: setcardOptions,
+      });
     }
     this.checkIfReady();
   },

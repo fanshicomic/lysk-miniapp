@@ -15,8 +15,8 @@ Component({
   },
   data: {
     isExpanded: false,
-    selection1: '所有搭档',
-    selection2: '所有日卡',
+    selectedCompanion: {topLevel: "所有搭档", secondLevel: ""},
+    selectedSetcard: {topLevel: "所有日卡", secondLevel: ""},
   },
   methods: {
     onCloseButtonClick() {
@@ -30,7 +30,8 @@ Component({
         this.setData({
           isExpanded: false,
         });
-        this.triggerEvent('applyfilter', { selection1: this.data.selection1, selection2: this.data.selection2 });
+        console.log(this.data.selectedCompanion, this.data.selectedSetcard);
+        this.triggerEvent('applyfilter', { selectedCompanion: this.data.selectedCompanion, selectedSetcard: this.data.selectedSetcard });
       } else {
         // If collapsed, clicking FAB means open filter
         this.setData({
@@ -39,10 +40,10 @@ Component({
       }
     },
     onSelectCompanion(e) {
-      this.setData({ selection1: e.detail });
+      this.setData({ selectedCompanion: e.detail });
     },
     onSelectSetcard(e) {
-      this.setData({ selection2: e.detail });
+      this.setData({ selectedSetcard: e.detail });
     },
   },
 });
