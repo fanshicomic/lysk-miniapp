@@ -1,0 +1,62 @@
+.custom-select {
+  position: relative;
+}
+
+.selected {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 10rpx;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: border-radius 0.2s;
+  text-align: center;
+}
+
+.custom-select.open {
+  z-index: 20;
+}
+
+/* Change which corners are sharp when open */
+.custom-select.open .selected {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top: 0;
+}
+
+.options {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%; /* Position above the .selected box */
+
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  z-index: 10;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  max-height: 235px;
+  overflow-y: auto;
+}
+
+.option-item {
+  padding: 15rpx;
+  color: #fff;
+  text-align: center;
+}
+
+.option-item.level-2 {
+  /* padding-left: 40rpx; */
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.option-item.expanded {
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.option-item:active {
+  background: #333;
+}

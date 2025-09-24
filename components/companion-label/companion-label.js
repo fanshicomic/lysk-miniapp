@@ -1,5 +1,3 @@
-import { DROPDOWN_VALUES } from '../../utils/constants.js';
-
 const computedBehavior = require('miniprogram-computed').behavior;
 
 Component({

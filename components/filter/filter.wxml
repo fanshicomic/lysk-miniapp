@@ -1,0 +1,10 @@
+<view class="filter-fab-container {{isExpanded ? 'is-expanded' : ''}}" style="{{position}}">
+  <view class="close-button" bind:tap="toggleExpansion">
+    <svg src="/assets/x.svg" width="18px" height="18px" color="white"></svg>
+  </view>
+  <two-level-select class="filter-item" options="{{options1}}" title="所有搭档" bind:select="onSelect1"></two-level-select>
+  <two-level-select class="filter-item" options="{{options2}}" title="所有日卡" bind:select="onSelect2"></two-level-select>
+  <view class="search-fab" bind:tap="toggleExpansion">
+    <svg src="/assets/search.svg" width="18px" height="18px" color="white"></svg>
+  </view>
+</view>

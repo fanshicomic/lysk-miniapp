@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "two-level-select": "/components/two-level-select/two-level-select",
+    "svg": "/components/svg/svg"
+  }
+}

@@ -2,7 +2,7 @@ const { apiGet, apiPost, apiUploadFile } = require('../../utils/util.js');
 const { mapRecordData } = require('../../utils/record_helper.js');
 const { increaseReward } = require('../../utils/analysis_reward');
 
-const { LEVEL_TYPES } = require('../../utils/constants.js');
+const { LEVEL_TYPES, DROPDOWN_VALUES } = require('../../utils/constants.js');
 
 Page({
   data: {
@@ -29,6 +29,26 @@ Page({
     latestRecords: [],
     totalDbRecordsCnt: 0,
     levelSuggestions: null,
+    filterCompanionOptions: {
+      '全部': [],
+      '沈星回': DROPDOWN_VALUES['沈星回搭档'],
+      '黎深': DROPDOWN_VALUES['黎深搭档'],
+      '祁煜': DROPDOWN_VALUES['祁煜搭档'],
+      '秦彻': DROPDOWN_VALUES['秦彻搭档'],
+      '夏以昼': DROPDOWN_VALUES['夏以昼搭档'],
+    },
+    filterSetcardOptions: {
+      '全部': [],
+      '沈星回': DROPDOWN_VALUES['沈星回日卡'],
+      '黎深': DROPDOWN_VALUES['黎深日卡'],
+      '祁煜': DROPDOWN_VALUES['祁煜日卡'],
+      '秦彻': DROPDOWN_VALUES['秦彻日卡'],
+      '夏以昼': DROPDOWN_VALUES['夏以昼日卡'],
+    },
+  },
+
+  onFilterClose(e) {
+    console.log('Filter closed', e.detail);
   },
 
   onLoad(options) {

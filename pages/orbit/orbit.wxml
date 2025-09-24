@@ -123,5 +123,6 @@
     <toast id="toast"></toast>
     <announcement id="announcement"></announcement>
   </view>
+  <filter position="bottom: 150rpx; right: 30rpx;" options1="{{filterCompanionOptions}}" options2="{{filterSetcardOptions}}" bind:close="onFilterClose"></filter>
   <footer />
 </view>

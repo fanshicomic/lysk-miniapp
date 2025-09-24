@@ -1,0 +1,16 @@
+<view class="custom-select {{open ? 'open' : ''}}">
+  <view class="selected" bindtap="toggleSelect">
+    {{ selectedTopLevel ? (selectedSecondLevel ? selectedSecondLevel : selectedTopLevel) : title}}
+  </view>
+  <view class="options" wx:if="{{open}}">
+    <view
+      wx:for="{{displayOptions}}"
+      wx:key="index"
+      bindtap="selectOption"
+      data-item="{{item}}"
+      class="option-item level-{{item.level}} {{item.isExpanded ? 'expanded' : ''}}"
+    >
+      {{item.value}}
+    </view>
+  </view>
+</view>

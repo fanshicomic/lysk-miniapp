@@ -109,6 +109,17 @@
   color: inherit;
 }
 
+.filter-btn {
+  border: 0;
+  background-color: darkslateblue;
+  width: 33% !important;
+}
+.filter-btn:hover,
+.filter-btn:focus {
+  background-color: darkslateblue;
+  color: inherit;
+}
+
 .total-cnt-row {
   font-size: small;
   text-align: left;
