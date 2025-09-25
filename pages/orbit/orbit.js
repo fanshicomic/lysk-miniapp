@@ -48,14 +48,14 @@ Page({
     },
     filterCompanionOptions: {},
     filterSetcardOptions: {},
-    filteredCompanion: null,
-    filteredSetCard: null,
+    filteredCompanion: "所有搭档",
+    filteredSetCard: "所有日卡",
   },
 
   onApplyFilterFromComponent(e) {
     this.setData({
-      filteredCompanion: e.detail.selectedCompanion ? (e.detail.selectedCompanion.secondLevel ? e.detail.selectedCompanion.secondLevel : e.detail.selectedCompanion.topLevel) : null,
-      filteredSetCard: e.detail.selectedSetcard ? (e.detail.selectedSetcard.secondLevel ? e.detail.selectedSetcard.secondLevel : e.detail.selectedSetcard.topLevel) : null,
+      filteredCompanion: e.detail.selectedCompanion ? (e.detail.selectedCompanion.secondLevel ? e.detail.selectedCompanion.secondLevel : e.detail.selectedCompanion.topLevel) : "所有搭档",
+      filteredSetCard: e.detail.selectedSetcard ? (e.detail.selectedSetcard.secondLevel ? e.detail.selectedSetcard.secondLevel : e.detail.selectedSetcard.topLevel) : "所有日卡",
     });
     // Now call getRecords with the new filters
     this.getRecords(1); // Assuming we want to reset to page 1 with new filters
@@ -100,12 +100,22 @@ Page({
   getRecords(page) {
     const { levelType, levelMode, levelNumber, levelPart, pageSize, filteredCompanion, filteredSetCard } =
       this.data;
+    let localLevelPart = levelPart
     if (!Number.isInteger(page)) {
       page = 1;
     }
     const type = levelType;
     const mode = levelMode;
-    const level = levelPart ? levelNumber + '_' + levelPart : levelNumber;
+    if (levelMode === '波动') {
+      if (parseInt(levelNumber) % 5 !== 0) {
+        localLevelPart = ''
+      }
+    } else {
+      if (parseInt(levelNumber) % 10 !== 0) {
+        localLevelPart = ''
+      }
+    }
+    const level = localLevelPart ? levelNumber + '_' + localLevelPart : levelNumber;
     const offset = (page - 1) * pageSize;
     this.setData({
       recordsVisible: true,
@@ -245,9 +255,11 @@ Page({
           break;
       }
 
+      companionOptions['所有搭档'] = [];
       companionList.forEach(function(c) {
         companionOptions[c] = [];
       });
+      setcardOptions['所有日卡'] = [];
       setcardList.forEach(function(c) {
         setcardOptions[c] = [];
       });

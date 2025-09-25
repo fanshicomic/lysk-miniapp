@@ -59,12 +59,22 @@ Page({
   getRecords(page) {
     const { levelType, levelMode, levelNumber, levelPart, pageSize } =
       this.data;
+    let localLevelPart = levelPart
     if (!Number.isInteger(page)) {
       page = 1;
     }
     const type = levelType;
     const mode = levelMode;
-    const level = levelPart ? levelNumber + '_' + levelPart : levelNumber;
+    if (levelMode === '波动') {
+      if (parseInt(levelNumber) % 5 !== 0) {
+        localLevelPart = ''
+      }
+    } else {
+      if (parseInt(levelNumber) % 10 !== 0) {
+        localLevelPart = ''
+      }
+    }
+    const level = localLevelPart ? levelNumber + '_' + localLevelPart : levelNumber;
     const offset = (page - 1) * pageSize;
     this.setData({
       recordsVisible: true,
@@ -219,8 +229,8 @@ Page({
   },
 
   validatePartDropdown() {
-    const { levelNumber } = this.data;
-    const show = levelNumber && levelNumber % 10 === 0;
+    const { levelNumber, levelMode } = this.data;
+    const show = levelNumber && (levelNumber % 10 === 0 || levelMode === '波动' && levelNumber % 5 === 0);
     this.setData({
       partVisible: show,
     });

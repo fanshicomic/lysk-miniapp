@@ -40,16 +40,14 @@ Page({
       '秦彻': DROPDOWN_VALUES['秦彻日卡'],
       '夏以昼': DROPDOWN_VALUES['夏以昼日卡'],
     },
-    filteredCompanion: null,
-    filteredSetCard: null,
+    filteredCompanion: "所有搭档",
+    filteredSetCard: "所有日卡",
   },
 
   onApplyFilterFromComponent(e) {
     this.setData({
-      filteredCompanion: e.detail.selectedCompanion.secondLevel ? 
-        e.detail.selectedCompanion.secondLevel : e.detail.selectedCompanion,
-      filteredSetCard: e.detail.selectedSetcard.secondLevel ? 
-        e.detail.selectedSetcard.secondLevel : e.detail.selectedSetcard,
+      filteredCompanion: e.detail.selectedCompanion ? (e.detail.selectedCompanion.secondLevel ? e.detail.selectedCompanion.secondLevel : e.detail.selectedCompanion.topLevel) : "所有搭档",
+      filteredSetCard: e.detail.selectedSetcard ? (e.detail.selectedSetcard.secondLevel ? e.detail.selectedSetcard.secondLevel : e.detail.selectedSetcard.topLevel) : "所有日卡",
     });
     // Now call getRecords with the new filters
     this.getRecords(1); // Assuming we want to reset to page 1 with new filters
