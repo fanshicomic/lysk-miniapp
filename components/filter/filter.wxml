@@ -2,8 +2,8 @@
   <view class="close-button" bind:tap="onCloseButtonClick">
     <svg src="/assets/x.svg" width="18px" height="18px" color="white"></svg>
   </view>
-  <two-level-select class="filter-item" options="{{companionOptions}}" title="所有搭档" bind:select="onSelectCompanion"></two-level-select>
-  <two-level-select class="filter-item" options="{{setcardOptions}}" title="所有日卡" bind:select="onSelectSetcard"></two-level-select>
+  <two-level-select id="companionFilter" class="filter-item" options="{{companionOptions}}" selected="{{selectedCompanion}}" title="所有搭档" bind:select="onSelectCompanion"></two-level-select>
+  <two-level-select id="setcardFilter" class="filter-item" options="{{setcardOptions}}" selected="{{selectedSetcard}}" title="所有日卡" bind:select="onSelectSetcard"></two-level-select>
   <view class="search-fab" bind:tap="onFabClick">
     <svg src="/assets/search.svg" width="18px" height="18px" color="white"></svg>
   </view>

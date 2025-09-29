@@ -57,8 +57,18 @@ Page({
       filteredCompanion: e.detail.selectedCompanion ? (e.detail.selectedCompanion.secondLevel ? e.detail.selectedCompanion.secondLevel : e.detail.selectedCompanion.topLevel) : "所有搭档",
       filteredSetCard: e.detail.selectedSetcard ? (e.detail.selectedSetcard.secondLevel ? e.detail.selectedSetcard.secondLevel : e.detail.selectedSetcard.topLevel) : "所有日卡",
     });
-    // Now call getRecords with the new filters
-    this.getRecords(1); // Assuming we want to reset to page 1 with new filters
+    this.getRecords(1);
+  },
+
+  resetFilter() {
+    this.setData({
+      filteredCompanion: "所有搭档",
+      filteredSetCard: "所有日卡",
+    });
+    const filterComponent = this.selectComponent('#orbitFilter');
+    if (filterComponent) {
+      filterComponent.reset();
+    }
   },
 
   onLoad(options) {
@@ -95,6 +105,11 @@ Page({
       .catch((err) => {
         this.showToast('获取失败', err, 5000);
       });
+  },
+
+  onGetRecords() {    
+    this.resetFilter();
+    this.getRecords(1);
   },
 
   getRecords(page) {

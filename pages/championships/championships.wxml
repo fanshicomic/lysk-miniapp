@@ -21,7 +21,7 @@
       <button
         id="fetch-records"
         class="btn upload-fetch-btn w-33"
-        bindtap="getRecords"
+        bindtap="onGetRecords"
       >
         获取记录
       </button>
@@ -69,7 +69,7 @@
     </view>
     <!-- 展示记录 -->
     <view id="records-wrapper" wx:if="{{recordsVisible}}">
-      <filter position="bottom: 150rpx; right: 30rpx;" companionOptions="{{filterCompanionOptions}}" setcardOptions="{{filterSetcardOptions}}" bind:applyfilter="onApplyFilterFromComponent"></filter>
+      <filter id="championshipsFilter" position="bottom: 150rpx; right: 30rpx;" companionOptions="{{filterCompanionOptions}}" setcardOptions="{{filterSetcardOptions}}" bind:applyfilter="onApplyFilterFromComponent"></filter>
       <battle-suggestion wx:if="{{levelSuggestions}}" suggestions="{{levelSuggestions}}"></battle-suggestion>
       <view id="records">
         <view class="record-wrapper" wx:for="{{records}}" wx:key="index">

@@ -45,5 +45,13 @@ Component({
     onSelectSetcard(e) {
       this.setData({ selectedSetcard: e.detail });
     },
+    reset() {
+      this.setData({
+        selectedCompanion: {topLevel: "所有搭档", secondLevel: ""},
+        selectedSetcard: {topLevel: "所有日卡", secondLevel: ""},
+      });
+      this.selectComponent('#companionFilter').reset();
+      this.selectComponent('#setcardFilter').reset();
+    }
   },
 });

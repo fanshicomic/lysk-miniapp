@@ -88,6 +88,13 @@ Component({
     closeAll() {
       this.setData({ open: false });
     },
+    reset() {
+      this.setData({
+        selectedTopLevel: '',
+        selectedSecondLevel: '',
+      });
+      this.buildDisplayOptions(); // Rebuild to ensure no expansion is left
+    }
   },
   lifetimes: {
     attached: function () {

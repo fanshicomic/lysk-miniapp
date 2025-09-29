@@ -39,6 +39,7 @@ Component({
 
     _getAnnouncementLatestUpdates() {
       return `最新更新
+            - 2025-09-25：支持搭档和日卡的筛选
             - 2025-09-22：支持黎深新搭档与日卡
             - 2025-09-02：
               - 增加战力显示、通关推荐、面板分析

@@ -221,7 +221,7 @@
     <view class="w-100">
       <input
         value="{{inputValues['note']}}"
-        placeholder="备注，如：剩x秒等。限20字"
+        placeholder="备注，如：剩x秒等。限40字"
         id="input-note"
         class="form-control"
         data-key="note"

@@ -53,6 +53,17 @@ Page({
     this.getRecords(1); // Assuming we want to reset to page 1 with new filters
   },
 
+  resetFilter() {
+    this.setData({
+      filteredCompanion: "所有搭档",
+      filteredSetCard: "所有日卡",
+    });
+    const filterComponent = this.selectComponent('#championshipsFilter');
+    if (filterComponent) {
+      filterComponent.reset();
+    }
+  },
+
   onLoad(options) {
     this.dataInit();
 
@@ -83,6 +94,11 @@ Page({
       .catch((err) => {
         this.showToast('获取失败', err, 5000);
       });
+  },
+
+  onGetRecords() {    
+    this.resetFilter();
+    this.getRecords(1);
   },
 
   getRecords(page = 1) {
