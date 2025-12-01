@@ -55,6 +55,10 @@
   background: linear-gradient(135deg, #000000, #6f0e0e);
 }
 
+.companion-silverwing-fiend {
+  background: linear-gradient(135deg, #2b0000, #8d4040, #cccccc);
+}
+
 .companion-farspace-colonel {
   background: linear-gradient(135deg, #251332, #630000);
 }

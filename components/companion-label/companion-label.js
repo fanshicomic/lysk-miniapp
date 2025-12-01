@@ -21,6 +21,7 @@ Component({
       if (data.companion === '深海潜行者') return 'companion-abyss-walker';
       if (data.companion === '无尽掠夺者') return 'companion-relentless-conqueror';
       if (data.companion === '深渊主宰') return 'companion-abysm-sovereign';
+      if (data.companion === '银翼恶魔') return 'companion-silverwing-fiend';
       if (data.companion === '远空执舰官') return 'companion-farspace-colonel';
       if (data.companion === '终极兵器X-02') return 'companion-ultimate-weapon-X-02';
       return 'companion-normal';

@@ -39,6 +39,9 @@ Component({
 
     _getAnnouncementLatestUpdates() {
       return `最新更新
+            - 2025-12-01：
+              - 支持秦彻新搭档
+              - 增加能量、引力轨道上限
             - 2025-09-25：支持搭档和日卡的筛选
             - 2025-09-22：支持黎深新搭档与日卡
             - 2025-09-02：
@@ -56,7 +59,7 @@ Component({
     },
 
     showAnnouncement() {
-      const announcementKey = '3.1.0';
+      const announcementKey = '3.3.0';
       if (wx.getStorageSync(announcementKey)) {
         return null;
       }
