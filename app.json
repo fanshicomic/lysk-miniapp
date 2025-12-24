@@ -1,14 +1,16 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/news/news",
+    "pages/hunter-news/hunter-news",
     "pages/my-news/my-news",
     "pages/orbit/orbit",
     "pages/championships/championships",
     "pages/analyze/analyze",
     "pages/my-page/my-page",
     "pages/my-page-orbit/my-page-orbit",
-    "pages/my-page-championships/my-page-championships"
+    "pages/my-page-championships/my-page-championships",
+    "pages/news/news",
+    "pages/battle-news/battle-news"
   ],
   "tabBar": {
     "custom": true,

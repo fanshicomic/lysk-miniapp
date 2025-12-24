@@ -9,280 +9,51 @@
 </view>
 <view class="main-content">
   <view class="content-wrapper">
-    <text class="h1">「临空猎人日报」</text>
-    <text class="sub-text">- Linkon City Hunter Daily News -</text>
+    <text class="h1">「深空趣闻报」</text>
+    <text class="sub-text">- Deepspace Times -</text>
 
-    <view wx:if="{{currentCard === 0}}">
-      <view class="card-container">
-        <view class="box gradient-{{getTopOrbitPartners[0].img}}">
-          <view class="bg-before"></view>
-          <view class="bg-after"></view>
-
-          <view class="span-effects">
-            <view class="float-before"></view>
-            <view class="float-after"></view>
-          </view>
-
-          <view class="content">
-            <view class="row">
-            <text class="date">{{today}}</text>
-          </view>
-          <view class="hr"></view>
-          <text>截至今日，\n轨道试炼中最活跃的身影是: </text>
-          <view class="top-content">
-            <view class="top-list">
-              <block wx:for="{{getTopOrbitPartners}}" wx:key="name">
-                <view class="top-list-item {{index === 0 ? 'top-one' : ''}}" 
-                  style="background: {{index === 0 ? item.gradient : 'none'}}">
-                  <text>{{item.name}}, 出场{{item.count}}次</text>
-                </view>
-              </block>
-            </view>
-          </view>
-          <view class="character">
-            <view class="speech-bubble">
-              <text class="speech-bubble-text">{{getTopOrbitPartners[0].phrase}}</text>
-            </view>
-            <view class="character-image-container">
-              <image wx:if="{{getTopOrbitPartners.length > 0}}" src="https://uygnim.com/lysk/assets/characters/{{getTopOrbitPartners[0].img}}.png" class="character-image" mode="aspectFit"></image>
-              <view class="corner corner-tl"></view>
-              <view class="corner corner-tr"></view>
-              <view class="corner corner-bl"></view>
-              <view class="corner corner-br"></view>
-            </view>
-          </view>
-          </view>
-        </view>
+    <navigator
+      url="/pages/hunter-news/hunter-news"
+      class="button-section"
+    >
+      <view class="btn hologram">
+        <image
+          class="icon"
+          src="https://uygnim.com/lysk/assets/sword-s.gif"
+          mode="widthFix"
+        />
+        <text class="hologram-text hologram-orbit" data-text="猎人">猎人</text>
       </view>
-    </view>
-
-    <view wx:if="{{currentCard === 1}}">
-      <view class="card-container">
-        <view class="box gradient-{{getTopChampionshipsPartners[0].img}}">
-          <view class="bg-before"></view>
-          <view class="bg-after"></view>
-
-          <view class="span-effects">
-            <view class="float-before"></view>
-            <view class="float-after"></view>
-          </view>
-
-          <view class="content">
-            <view class="row">
-            <text class="date">{{today}}</text>
-          </view>
-          <view class="hr"></view>
-          <text>截至今日，\n锦标赛关卡中最活跃的身影是: </text>
-          <view class="top-content">
-            <view class="top-list">
-              <block wx:for="{{getTopChampionshipsPartners}}" wx:key="name">
-                <view class="top-list-item {{index === 0 ? 'top-one' : ''}}" 
-                  style="background: {{index === 0 ? item.gradient : 'none'}}">
-                  <text>{{item.name}}, 出场{{item.count}}次</text>
-                </view>
-              </block>
-            </view>
-          </view>
-          <view class="character">
-            <view class="speech-bubble">
-              <text class="speech-bubble-text">{{getTopChampionshipsPartners[0].phrase}}</text>
-            </view>
-            <view class="character-image-container">
-              <image wx:if="{{getTopChampionshipsPartners.length > 0}}" src="https://uygnim.com/lysk/assets/characters/{{getTopChampionshipsPartners[0].img}}.png" class="character-image" mode="aspectFit"></image>
-              <view class="corner corner-tl"></view>
-              <view class="corner corner-tr"></view>
-              <view class="corner corner-bl"></view>
-              <view class="corner corner-br"></view>
-            </view>
-          </view>
-          </view>
-        </view>
-      </view>
-    </view>
-
-    <view wx:if="{{currentCard === 2}}">
-      <view class="card-container">
-        <view class="box gradient-{{getTopOrbitCompanions[0].img}}">
-          <view class="bg-before"></view>
-          <view class="bg-after"></view>
-
-          <view class="span-effects">
-            <view class="float-before"></view>
-            <view class="float-after"></view>
-          </view>
-
-          <view class="content">
-            <view class="row">
-            <text class="date">{{today}}</text>
-          </view>
-          <view class="hr"></view>
-          <text>截至今日，\n轨道试炼中最被依赖的搭档是: </text>
-          <view class="top-content">
-            <view class="top-list">
-              <block wx:for="{{getTopOrbitCompanions}}" wx:key="name">
-                <view class="top-list-item {{index === 0 ? 'top-one' : ''}}" 
-                  style="background: {{index === 0 ? item.gradient : 'none'}}">
-                  <text>{{item.name}}, 出场{{item.count}}次</text>
-                </view>
-              </block>
-            </view>
-          </view>
-          <view class="character">
-            <view class="speech-bubble">
-              <text class="speech-bubble-text">{{getTopOrbitCompanions[0].phrase}}</text>
-            </view>
-            <view class="character-image-container">
-              <image wx:if="{{getTopOrbitCompanions.length > 0}}" src="https://uygnim.com/lysk/assets/characters/{{getTopOrbitCompanions[0].img}}.png" class="character-image" mode="aspectFit"></image>
-              <view class="corner corner-tl"></view>
-              <view class="corner corner-tr"></view>
-              <view class="corner corner-bl"></view>
-              <view class="corner corner-br"></view>
-            </view>
-          </view>
-          </view>
-        </view>
-      </view>
-    </view>
-
-    <view wx:if="{{currentCard === 3}}">
-      <view class="card-container">
-        <view class="box gradient-{{getTopChampionshipsCompanions[0].img}}">
-          <view class="bg-before"></view>
-          <view class="bg-after"></view>
-
-          <view class="span-effects">
-            <view class="float-before"></view>
-            <view class="float-after"></view>
-          </view>
-
-          <view class="content">
-            <view class="row">
-            <text class="date">{{today}}</text>
-          </view>
-          <view class="hr"></view>
-          <text>截至今日，\n锦标赛中最被依赖的搭档是: </text>
-          <view class="top-content">
-            <view class="top-list">
-              <block wx:for="{{getTopChampionshipsCompanions}}" wx:key="name">
-                <view class="top-list-item {{index === 0 ? 'top-one' : ''}}" 
-                  style="background: {{index === 0 ? item.gradient : 'none'}}">
-                  <text>{{item.name}}, 出场{{item.count}}次</text>
-                </view>
-              </block>
-            </view>
-          </view>
-          <view class="character">
-            <view class="speech-bubble">
-              <text class="speech-bubble-text">{{getTopChampionshipsCompanions[0].phrase}}</text>
-            </view>
-            <view class="character-image-container">
-              <image wx:if="{{getTopChampionshipsCompanions.length > 0}}" src="https://uygnim.com/lysk/assets/characters/{{getTopChampionshipsCompanions[0].img}}.png" class="character-image" mode="aspectFit"></image>
-              <view class="corner corner-tl"></view>
-              <view class="corner corner-tr"></view>
-              <view class="corner corner-bl"></view>
-              <view class="corner corner-br"></view>
-            </view>
-          </view>
-          </view>
-        </view>
-      </view>
-    </view>
-
-    <view wx:if="{{currentCard === 4}}">
-      <view class="card-container">
-        <view class="box gradient-three">
-          <view class="bg-before"></view>
-          <view class="bg-after"></view>
-
-          <view class="span-effects">
-            <view class="float-before"></view>
-            <view class="float-after"></view>
-          </view>
-
-          <view class="content">
-            <view class="row">
-            <text class="date">{{today}}</text>
-          </view>
-          <view class="hr"></view>
-          <text>截至今日，\n猎人们已经攻克了：</text>
-          <view class="top-one">{{orbit_level_counts}}场不同的轨道试炼</view>
-          <view class="top-list-item">一关又一关</view>
-          <view class="top-list-item">越战越强的猎人</view>
-          <view class="top-list-item">什么都拦不住</view>
-          <view class="top-list-item">全猎人的解放就在眼前？</view>
-          <view class="character">
-            <view class="speech-bubble">
-              <text class="speech-bubble-text">猎人们还真是停不下来</text>
-            </view>
-            <view class="character-image-container">
-              <image src="https://uygnim.com/lysk/assets/characters/lemon.png" class="monster-image" mode="aspectFit"></image>
-              <view class="corner corner-tl"></view>
-              <view class="corner corner-tr"></view>
-              <view class="corner corner-bl"></view>
-              <view class="corner corner-br"></view>
-            </view>
-          </view>
-          </view>
-        </view>
-      </view>
-    </view>
-
-    <view wx:if="{{currentCard === 5}}">
-      <view class="card-container">
-        <view class="box gradient-two">
-          <view class="bg-before"></view>
-          <view class="bg-after"></view>
-
-          <view class="span-effects">
-            <view class="float-before"></view>
-            <view class="float-after"></view>
-          </view>
-
-          <view class="content">
-            <view class="row">
-            <text class="date">{{today}}</text>
-          </view>
-          <view class="hr"></view>
-          <text>截至今日，\n猎人们通过最多的轨道试炼是: </text>
-          <view class="top-content">
-            <view class="top-list">
-              <block wx:for="{{top_most_records_levels}}" wx:key="level">
-                <view class="top-list-item {{index === 0 ? 'top-one' : ''}}" >
-                  <text>{{item.level}}, 一共{{item.count}}次</text>
-                </view>
-              </block>
-            </view>
-          </view>
-          <view class="character">
-            <view class="speech-bubble">
-              <text class="speech-bubble-text">猎人都不睡觉吗zZzZ</text>
-            </view>
-            <view class="character-image-container">
-              <image src="https://uygnim.com/lysk/assets/characters/huhu.png" class="monster-image" mode="aspectFit"></image>
-              <view class="corner corner-tl"></view>
-              <view class="corner corner-tr"></view>
-              <view class="corner corner-bl"></view>
-              <view class="corner corner-br"></view>
-            </view>
-          </view>
-          </view>
-        </view>
-      </view>
-    </view>
-
-    <view class="prev-button" bindtap="onPrev">
-      <svg src="/assets/back.svg" color="lightgrey" width="13px" height="13px" style="transform: rotate(0deg);"></svg>
-    </view>
-    <view class="next-button" bindtap="onNext">
-      <svg src="/assets/back.svg" color="lightgrey" width="13px" height="13px" style="transform: rotate(180deg);"></svg>
-    </view>
-
-    <navigator url="/pages/my-news/my-news">
-      <view class="my-news-link">
-        <svg class="news-arrow" src="/assets/right-arrow.svg" color="#ffffff7f" width="15px" height="15px"></svg>
-        <text>My Report</text>
-        </view>
     </navigator>
+
+    <navigator
+      url="/pages/my-news/my-news"
+      class="button-section"
+    >
+      <view class="btn hologram">
+        <image
+          class="icon"
+          src="https://uygnim.com/lysk/assets/news-s.gif"
+          mode="widthFix"
+        />
+        <text class="hologram-text hologram-championships" data-text="我的">我的</text>
+      </view>
+    </navigator>
+
+    <navigator
+      url="/pages/battle-news/battle-news"
+      class="button-section"
+    >
+      <view class="btn hologram">
+        <image
+          class="icon"
+          src="https://uygnim.com/lysk/assets/archive-s.gif"
+          mode="widthFix"
+        />
+        <text class="hologram-text hologram-my-page" data-text="战斗">战斗</text>
+      </view>
+    </navigator>
+
   </view>
-  <footer />
 </view>
+<footer style="position: fixed" />

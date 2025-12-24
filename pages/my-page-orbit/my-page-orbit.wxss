@@ -18,11 +18,11 @@
 }
 
 #all-records-wrapper {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 #records-wrapper {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .btn {

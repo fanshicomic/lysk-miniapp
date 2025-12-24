@@ -9,11 +9,11 @@
 </view>
 <view class="main-content">
   <view class="content-wrapper">
-    <text class="h1">「我的战斗报告」</text>
-    <text class="sub-text">- Hunter Association Battle Report -</text>
+    <text class="h1">「临空猎人日报」</text>
+    <text class="sub-text">- Linkon City Hunter Daily News -</text>
 
     <view wx:if="{{currentCard === 0}}">
-      <view wx:if="{{getTopOrbitPartners.length > 0}}" class="card-container">
+      <view class="card-container">
         <view class="box gradient-{{getTopOrbitPartners[0].img}}">
           <view class="bg-before"></view>
           <view class="bg-after"></view>
@@ -28,7 +28,7 @@
             <text class="date">{{today}}</text>
           </view>
           <view class="hr"></view>
-          <text>截至今日，{{nickname}}\n轨道试炼中最信任的搭档是: </text>
+          <text>截至今日，\n轨道试炼中最活跃的身影是: </text>
           <view class="top-content">
             <view class="top-list">
               <block wx:for="{{getTopOrbitPartners}}" wx:key="name">
@@ -56,7 +56,7 @@
       </view>
     </view>
 
-    <view wx:if="{{currentCard === 1 && getTopChampionshipsPartners.length > 0}}">
+    <view wx:if="{{currentCard === 1}}">
       <view class="card-container">
         <view class="box gradient-{{getTopChampionshipsPartners[0].img}}">
           <view class="bg-before"></view>
@@ -72,7 +72,7 @@
             <text class="date">{{today}}</text>
           </view>
           <view class="hr"></view>
-          <text>截至今日，{{nickname}}\n锦标赛关卡中最信任的搭档是: </text>
+          <text>截至今日，\n锦标赛关卡中最活跃的身影是: </text>
           <view class="top-content">
             <view class="top-list">
               <block wx:for="{{getTopChampionshipsPartners}}" wx:key="name">
@@ -100,7 +100,7 @@
       </view>
     </view>
 
-    <view wx:if="{{currentCard === 2 && getTopOrbitCompanions.length > 0}}">
+    <view wx:if="{{currentCard === 2}}">
       <view class="card-container">
         <view class="box gradient-{{getTopOrbitCompanions[0].img}}">
           <view class="bg-before"></view>
@@ -116,7 +116,7 @@
             <text class="date">{{today}}</text>
           </view>
           <view class="hr"></view>
-          <text>截至今日，{{nickname}}\n轨道试炼中最依赖的伙伴是: </text>
+          <text>截至今日，\n轨道试炼中最被依赖的搭档是: </text>
           <view class="top-content">
             <view class="top-list">
               <block wx:for="{{getTopOrbitCompanions}}" wx:key="name">
@@ -144,7 +144,7 @@
       </view>
     </view>
 
-    <view wx:if="{{currentCard === 3 && getTopChampionshipsCompanions.length > 0}}">
+    <view wx:if="{{currentCard === 3}}">
       <view class="card-container">
         <view class="box gradient-{{getTopChampionshipsCompanions[0].img}}">
           <view class="bg-before"></view>
@@ -160,7 +160,7 @@
             <text class="date">{{today}}</text>
           </view>
           <view class="hr"></view>
-          <text>截至今日，{{nickname}}\n锦标赛中最被依赖的伙伴是: </text>
+          <text>截至今日，\n锦标赛中最被依赖的搭档是: </text>
           <view class="top-content">
             <view class="top-list">
               <block wx:for="{{getTopChampionshipsCompanions}}" wx:key="name">
@@ -204,14 +204,15 @@
             <text class="date">{{today}}</text>
           </view>
           <view class="hr"></view>
-          <text>截至今日，\n{{nickname}}已经攻克了：</text>
+          <text>截至今日，\n猎人们已经攻克了：</text>
           <view class="top-one">{{orbit_level_counts}}场不同的轨道试炼</view>
           <view class="top-list-item">一关又一关</view>
           <view class="top-list-item">越战越强的猎人</view>
-          <view class="top-list-item">没有什么能拦住你</view>
+          <view class="top-list-item">什么都拦不住</view>
+          <view class="top-list-item">全猎人的解放就在眼前？</view>
           <view class="character">
             <view class="speech-bubble">
-              <text class="speech-bubble-text">你的努力让我酸了</text>
+              <text class="speech-bubble-text">猎人们还真是停不下来</text>
             </view>
             <view class="character-image-container">
               <image src="https://uygnim.com/lysk/assets/characters/lemon.png" class="monster-image" mode="aspectFit"></image>
@@ -228,44 +229,6 @@
 
     <view wx:if="{{currentCard === 5}}">
       <view class="card-container">
-        <view class="box gradient-one">
-          <view class="bg-before"></view>
-          <view class="bg-after"></view>
-
-          <view class="span-effects">
-            <view class="float-before"></view>
-            <view class="float-after"></view>
-          </view>
-
-          <view class="content">
-            <view class="row">
-            <text class="date">{{today}}</text>
-          </view>
-          <view class="hr"></view>
-          <text>截至今日，\n{{nickname}}已经攻克了：</text>
-          <view class="top-one">{{championships_level_counts}}关不同的锦标赛</view>
-          <view class="top-list-item">两周只有600钻</view>
-          <view class="top-list-item">即使是蚊子腿</view>
-          <view class="top-list-item">也是少有的肉</view>
-          <view class="character">
-            <view class="speech-bubble">
-              <text class="speech-bubble-text">钻石、我的钻石★v★</text>
-            </view>
-            <view class="character-image-container">
-              <image src="https://uygnim.com/lysk/assets/characters/blackhat.png" class="monster-image" mode="aspectFit"></image>
-              <view class="corner corner-tl"></view>
-              <view class="corner corner-tr"></view>
-              <view class="corner corner-bl"></view>
-              <view class="corner corner-br"></view>
-            </view>
-          </view>
-          </view>
-        </view>
-      </view>
-    </view>
-
-    <view wx:if="{{currentCard === 6 && orbit_top_cp_records.length > 0}}">
-      <view class="card-container">
         <view class="box gradient-two">
           <view class="bg-before"></view>
           <view class="bg-after"></view>
@@ -280,65 +243,22 @@
             <text class="date">{{today}}</text>
           </view>
           <view class="hr"></view>
-          <text>截至今日，{{nickname}}\n的最强战力用在了轨道试炼：</text>
+          <text>截至今日，\n猎人们通过最多的轨道试炼是: </text>
           <view class="top-content">
             <view class="top-list">
-              <block wx:for="{{orbit_top_cp_records}}" wx:key="name">
-                <view class="top-list-item {{index === 0 ? 'top-one' : ''}}">
-                  <text>{{item.level}}：战力 {{item.cp}}</text>
+              <block wx:for="{{top_most_records_levels}}" wx:key="level">
+                <view class="top-list-item {{index === 0 ? 'top-one' : ''}}" >
+                  <text>{{item.level}}, 一共{{item.count}}次</text>
                 </view>
               </block>
             </view>
           </view>
           <view class="character">
             <view class="speech-bubble">
-              <text class="speech-bubble-text">在我睡觉时偷偷变强了？</text>
+              <text class="speech-bubble-text">猎人都不睡觉吗zZzZ</text>
             </view>
             <view class="character-image-container">
               <image src="https://uygnim.com/lysk/assets/characters/huhu.png" class="monster-image" mode="aspectFit"></image>
-              <view class="corner corner-tl"></view>
-              <view class="corner corner-tr"></view>
-              <view class="corner corner-bl"></view>
-              <view class="corner corner-br"></view>
-            </view>
-          </view>
-          </view>
-        </view>
-      </view>
-    </view>
-
-    <view wx:if="{{currentCard === 7 && championships_top_cp_records.length > 0}}">
-      <view class="card-container">
-        <view class="box gradient-three">
-          <view class="bg-before"></view>
-          <view class="bg-after"></view>
-
-          <view class="span-effects">
-            <view class="float-before"></view>
-            <view class="float-after"></view>
-          </view>
-
-          <view class="content">
-            <view class="row">
-            <text class="date">{{today}}</text>
-          </view>
-          <view class="hr"></view>
-          <text>截至今日，{{nickname}}\n的最强战力用在了锦标赛：</text>
-          <view class="top-content">
-            <view class="top-list">
-              <block wx:for="{{championships_top_cp_records}}" wx:key="name">
-                <view class="top-list-item {{index === 0 ? 'top-one' : ''}}">
-                  <text>{{item.level}}：战力 {{item.cp}}</text>
-                </view>
-              </block>
-            </view>
-          </view>
-          <view class="character">
-            <view class="speech-bubble">
-              <text class="speech-bubble-text">我要把力气留着写情书T^T</text>
-            </view>
-            <view class="character-image-container">
-              <image src="https://uygnim.com/lysk/assets/characters/heart.png" class="monster-image" mode="aspectFit"></image>
               <view class="corner corner-tl"></view>
               <view class="corner corner-tr"></view>
               <view class="corner corner-bl"></view>
@@ -357,13 +277,12 @@
       <svg src="/assets/back.svg" color="lightgrey" width="13px" height="13px" style="transform: rotate(180deg);"></svg>
     </view>
 
-    <!-- <navigator url="/pages/news/news">
+    <navigator url="/pages/my-news/my-news">
       <view class="my-news-link">
         <svg class="news-arrow" src="/assets/right-arrow.svg" color="#ffffff7f" width="15px" height="15px"></svg>
-        <text>Daily News</text>
+        <text>My Report</text>
         </view>
-    </navigator> -->
+    </navigator>
   </view>
   <footer />
-  <toast id="toast"></toast>
 </view>

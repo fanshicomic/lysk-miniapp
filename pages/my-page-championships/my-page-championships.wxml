@@ -46,14 +46,14 @@
 
     <view class="hr" />
     <!-- 展示最新记录 -->
-    <view id="latest-records-wrapper" wx:if="{{latestRecordsVisible}}">
+    <view id="all-records-wrapper" wx:if="{{allRecordsVisible}}">
       <view class="total-cnt-row">
         我的锦标赛数据总量：<text id="total-db-records-cnt"
           >{{totalDbRecordsCnt}}</text
         >。
       </view>
-      <view id="latest-records">
-        <view class="record-wrapper" wx:for="{{latestRecords}}" wx:key="index">
+      <view id="all-records">
+        <view class="record-wrapper" wx:for="{{allRecords}}" wx:key="index">
           <record
             record="{{item}}"
             record-id="{{item.id}}"
@@ -62,6 +62,17 @@
             bind:edit="handleEditRecord"
           ></record>
         </view>
+      </view>
+      <view id="all-records-pagination" wx:if="{{allRecordsTotalPage > 0}}">
+        <button
+          wx:for="{{allRecordsPages}}"
+          wx:key="*this"
+          class="btn mx-1 page-btn {{item == allRecordsCurrentPage ? 'page-btn-selected' : '' }}"
+          bindtap="onAllRecordsPageChange"
+          data-page="{{item}}"
+        >
+          {{item}}
+        </button>
       </view>
     </view>
     <!-- 展示记录 -->

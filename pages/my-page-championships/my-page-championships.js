@@ -17,15 +17,16 @@ Page({
     currentPage: 1,
     pages: [],
 
-    latestRecordsVisible: true,
-    latestRecords: [],
+    allRecordsVisible: true,
+    allRecords: [],
     totalDbRecordsCnt: 0,
+    allRecordsCurrentPage: 1,
+    allRecordsTotalPage: 0,
+    allRecordsPages: [],
   },
 
   onLoad(options) {
-    this.dataInit();
-
-    this.selectComponent('#announcement').showAnnouncement();
+    this.getAllRecords();
   },
   onBack() {
     wx.navigateBack({
@@ -40,8 +41,28 @@ Page({
         const list = result.records || [];
         this.setData({
           totalDbRecordsCnt: cnt,
-          latestRecords: list,
+          allRecords: list,
         });
+      })
+      .catch((err) => {
+        this.showToast('获取失败', err, 5000);
+      });
+  },
+
+  getAllRecords(page = 1) {
+    const { pageSize } = this.data;
+    const offset = (page - 1) * pageSize;
+    apiGet('all-my-championships-records', { offset })
+      .then((result) => {
+        const cnt = result.total || 0;
+        const list = result.records || [];
+        this.setData({
+          totalDbRecordsCnt: cnt,
+          allRecords: list,
+          allRecordsTotalPage: Math.ceil(cnt / pageSize),
+          allRecordsCurrentPage: page,
+        });
+        this.generateAllRecordsPageNumbers();
       })
       .catch((err) => {
         this.showToast('获取失败', err, 5000);
@@ -57,7 +78,7 @@ Page({
     const offset = (page - 1) * pageSize;
     this.setData({
       recordsVisible: true,
-      latestRecordsVisible: false,
+      allRecordsVisible: false,
       currentPage: page,
     });
     apiGet('my-championships-record', {
@@ -90,6 +111,16 @@ Page({
     });
 
     this.getRecords(selectedPage);
+  },
+
+  onAllRecordsPageChange: function (e) {
+    const selectedPage = e.currentTarget.dataset.page;
+
+    if (selectedPage == this.data.allRecordsCurrentPage) {
+      return;
+    }
+
+    this.getAllRecords(selectedPage);
   },
 
   generatePageNumbers: function () {
@@ -130,6 +161,39 @@ Page({
     });
   },
 
+  generateAllRecordsPageNumbers: function () {
+    const totalPage = this.data.allRecordsTotalPage;
+    const currentPage = this.data.allRecordsCurrentPage;
+    const pages = [];
+
+    if (totalPage <= 5) {
+      for (let i = 1; i <= totalPage; i++) {
+        pages.push(i);
+      }
+    } else {
+      let startPage, endPage;
+
+      if (currentPage <= 3) {
+        startPage = 1;
+        endPage = 5;
+      } else if (currentPage > totalPage - 2) {
+        startPage = totalPage - 4;
+        endPage = totalPage;
+      } else {
+        startPage = currentPage - 2;
+        endPage = currentPage + 2;
+      }
+
+      for (let i = startPage; i <= endPage; i++) {
+        pages.push(i);
+      }
+    }
+
+    this.setData({
+      allRecordsPages: pages,
+    });
+  },
+
   showToast(header, body, delay) {
     this.selectComponent('#toast').show(header, body, delay);
   },
@@ -152,8 +216,8 @@ Page({
           apiDelete(`championships-record/${recordId}`)
             .then(() => {
               this.showToast('删除成功', '记录已成功删除', 2000);
-              if (this.data.latestRecordsVisible) {
-                this.dataInit();
+              if (this.data.allRecordsVisible) {
+                this.getAllRecords(this.data.allRecordsCurrentPage);
               } else {
                 this.getRecords(this.data.currentPage);
               }
@@ -169,7 +233,7 @@ Page({
   handleEditRecord: function (e) {
     const recordId = e.detail.recordId;
     const record =
-      this.data.latestRecords.find((r) => r.id === recordId) ||
+      this.data.allRecords.find((r) => r.id === recordId) ||
       this.data.records.find((r) => r.id === recordId);
     if (record) {
       this.setData({
@@ -195,7 +259,7 @@ Page({
         .then(() => {
           this.showToast('更新成功', '记录已成功更新', 2000);
           this.setData({ editFormVisible: false, recordToEdit: null });
-          if (this.data.latestRecordsVisible) {
+          if (this.data.allRecordsVisible) {
             this.dataInit();
           } else {
             this.getRecords(this.data.currentPage);

@@ -1,0 +1,37 @@
+<!--pages/battle-news/battle-news.wxml-->
+<view class="back-button" bindtap="onBack">
+  <svg
+    src="/assets/back.svg"
+    color="lightgrey"
+    width="13px"
+    height="13px"
+  ></svg>
+</view>
+<view class="main-content">
+  <view class="content-wrapper">
+    <text class="h1">「战斗数据报」</text>
+    <text class="sub-text">- Battle Data Report -</text>
+    
+    <view class="chart-container">
+      <view class="chart-title">各属性推荐战力趋势</view>
+      
+      <!-- Canvas moved off-screen/hidden but kept active for drawing -->
+      <canvas type="2d" id="cpChart" class="offscreen-canvas" style="width: {{canvasWidth}}px; height: 300px;"></canvas>
+
+      <scroll-view scroll-x="true" class="canvas-scroll">
+        <view class="canvas-wrapper" style="width: {{canvasWidth}}px; height: 300px;">
+          <image wx:if="{{chartImage}}" src="{{chartImage}}" style="width: 100%; height: 100%; display: block;" />
+          <view wx:else class="loading-placeholder">加载图表中...</view>
+        </view>
+      </scroll-view>
+
+      <view class="legend-container">
+        <view class="legend-item" wx:for="{{legends}}" wx:key="name">
+          <view class="legend-color" style="background-color: {{item.color}};"></view>
+          <text class="legend-text">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<footer style="position: fixed" />

@@ -116,11 +116,21 @@ page {
   color: rgba(255, 255, 255, 0.6);
 }
 
+#all-records-wrapper {
+  margin-bottom: 20px;
+}
+
 .record-wrapper {
-  margin-top: 18px;
+  margin-top: 20px;
 }
 
 #pagination {
+  margin-top: 15px;
+  justify-content: center;
+  display: flex;
+}
+
+#all-records-pagination {
   margin-top: 15px;
   justify-content: center;
   display: flex;
