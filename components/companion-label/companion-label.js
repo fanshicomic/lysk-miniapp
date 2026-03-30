@@ -24,6 +24,7 @@ Component({
       if (data.companion === '银翼恶魔') return 'companion-silverwing-fiend';
       if (data.companion === '远空执舰官') return 'companion-farspace-colonel';
       if (data.companion === '终极兵器X-02') return 'companion-ultimate-weapon-X-02';
+      if (data.companion === '冥罗之主') return 'companion-netherlord';
       return 'companion-normal';
     }
   }

@@ -28,11 +28,11 @@ Component({
       if (purpleCards.includes(card)) return 'set-card-purple';
       const redCards = ['夜誓', '拥雪', '夜色', '碧海', '远空', '长昼'];
       if (redCards.includes(card)) return 'set-card-red';
-      const greenCards = ['逐光', '睱日', '深渊', '离途', '坠浪'];
+      const greenCards = ['逐光', '睱日', '深渊', '离途', '坠浪', '沉冥'];
       if (greenCards.includes(card)) return 'set-card-green';
       const yellowCards = ['雾海', '末夜', '弦光', '深林'];
       if (yellowCards.includes(card)) return 'set-card-yellow';
-      const blueCards = ['猩红', '永恒', '静谧', '戮夜', '鎏光'];
+      const blueCards = ['猩红', '永恒', '静谧', '戮夜', '鎏光', '残宵'];
       if (blueCards.includes(card)) return 'set-card-blue';
       if (card === '心晴') {
         const xavier = DROPDOWN_VALUES['沈星回搭档'];

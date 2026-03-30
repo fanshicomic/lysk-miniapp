@@ -7,7 +7,7 @@ let videoAd = null;
 Page({
   data: {
     title: '深空面板助手',
-    subTitle: 'Deepspace Battle Helper V3.3.1',
+    subTitle: 'Deepspace Battle Helper V3.4.0',
     blobs: [],
     showToast: false,
     userInfo: null,

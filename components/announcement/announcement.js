@@ -39,6 +39,9 @@ Component({
 
     _getAnnouncementLatestUpdates() {
       return `最新更新
+            - 2026-03-30：
+              - 支持夏以昼新搭档
+              - 增加引力轨道上限
             - 2025-12-01：
               - 支持秦彻新搭档
               - 增加能量、引力轨道上限
@@ -59,7 +62,7 @@ Component({
     },
 
     showAnnouncement() {
-      const announcementKey = '3.3.0';
+      const announcementKey = '3.4.0';
       if (wx.getStorageSync(announcementKey)) {
         return null;
       }
